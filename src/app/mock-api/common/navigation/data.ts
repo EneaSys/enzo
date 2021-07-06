@@ -317,14 +317,14 @@ export const compactNavigation: FuseNavigationItem[] = [
 				id   : 'management.application',
 				title: 'Applicazioni',
 				type : 'basic',
-				icon : 'iconsmind:flag_2',
+				icon : 'iconsmind:one_window',
 				link : '/standard/country/list'
 			},
 			{
 				id   : 'management.personalization',
 				title: 'Personalizzazioni',
 				type : 'basic',
-				icon : 'iconsmind:flag_2',
+				icon : 'iconsmind:wrench',
 				link : '/standard/country/list'
 			},
 			{
@@ -332,7 +332,7 @@ export const compactNavigation: FuseNavigationItem[] = [
 				title   : 'Gestione entità',
 				subtitle: 'Oggetti, tipi e campi',
 				type    : 'collapsable',
-				icon    : 'iconsmind:flag_2',
+				icon    : 'iconsmind:tactic',
 				children: [
 					{
 						id   : 'management.entity.object',
@@ -362,20 +362,20 @@ export const compactNavigation: FuseNavigationItem[] = [
 				title   : 'Rbac',
 				subtitle: 'Role based access control',
 				type    : 'collapsable',
-				icon    : 'iconsmind:flag_2',
+				icon    : 'iconsmind:security_block',
 				children: [
 					{
 						id   : 'management.rbac.role',
 						title: 'Ruoli',
 						type : 'basic',
-						icon : 'iconsmind:flag_2',
+						icon : 'iconsmind:fingerprint',
 						link : '/standard/country/list'
 					},
 					{
 						id   : 'management.rbac.permission',
 						title: 'Permessi',
 						type : 'basic',
-						icon : 'iconsmind:flag_2',
+						icon : 'iconsmind:key_lock',
 						link : '/standard/country/list'
 					},
 				]
@@ -392,20 +392,20 @@ export const compactNavigation: FuseNavigationItem[] = [
 				title   : 'Utilizzatori',
 				subtitle: 'Gestisci contesti ed utenti',
 				type    : 'collapsable',
-				icon    : 'iconsmind:flag_2',
+				icon    : 'iconsmind:statistic',
 				children: [
 					{
 						id   : 'management.context_module',
 						title: 'Contesti',
 						type : 'basic',
-						icon : 'iconsmind:flag_2',
+						icon : 'iconsmind:memory_card',
 						link : '/standard/country/list'
 					},
 					{
 						id   : 'management.context_module',
 						title: 'Licenze',
 						type : 'basic',
-						icon : 'iconsmind:flag_2',
+						icon : 'iconsmind:profile',
 						link : '/standard/country/list'
 					},
 				]
@@ -418,14 +418,14 @@ export const compactNavigation: FuseNavigationItem[] = [
 				id   : 'management.tenant_context',
 				title: 'Contesti',
 				type : 'basic',
-				icon : 'iconsmind:flag_2',
+				icon : 'iconsmind:memory_card2',
 				link : '/standard/country/list'
 			},
 			{
 				id   : 'management.user_context',
 				title: 'Utenti',
 				type : 'basic',
-				icon : 'iconsmind:flag_2',
+				icon : 'iconsmind:profile',
 				link : '/standard/country/list'
 			},
 		]
