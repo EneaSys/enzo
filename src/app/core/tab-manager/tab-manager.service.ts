@@ -34,6 +34,9 @@ export class TabManagerService {
 	}
 
 	openMainComponent() {
+		if(!this.mainComponent) {
+			return;
+		}
 		this.setActiveTab(null);
 		this.setActiveCard(null);
 		this.openComponent(this.mainComponent);
