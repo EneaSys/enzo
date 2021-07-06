@@ -1,0 +1,17 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto" cdkScrollable>
+
+    <mat-drawer-container class="flex-auto overflow-visible">
+
+        <mat-drawer-content class="flex flex-col">
+            <div class="flex-auto p-2 sm:p-4">
+                
+				<div class="flex items-center pl-2 ml-auto space-x-2 print:hidden">
+					detail page
+					<button mat-button (click)="_gcs.tabManagerService.openInCard()" [routerLink]="['/home/asd']">List</button>
+				</div>
+
+            </div>
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+</div>

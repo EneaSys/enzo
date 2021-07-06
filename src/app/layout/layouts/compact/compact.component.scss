@@ -1,0 +1,47 @@
+
+
+.tms-box {
+	cursor: pointer;
+	height: 100%;
+
+	.text {
+		min-width: 90px;
+	}
+
+	.tab {
+		height: 80%;
+		margin-top: auto;
+		padding: 0px 5px;
+		border: 3px rgb(var(--fuse-bg-default-rgb)) solid;
+		border-bottom: 0px;
+		margin-right: 5px;
+	}
+	.tab.active {
+		background-color: rgba(var(--fuse-bg-default-rgb), var(--tw-bg-opacity)) !important;
+	}
+	
+	
+	.card {
+		height: 90%;
+		margin-top: auto;
+		padding: 0px 5px;
+		border: 3px white solid;
+		border-bottom: 0px;
+		margin-right: 5px;
+	}
+	.card.active {
+		background-color: white;
+	}
+}
+
+
+
+
+
+
+#component-container {
+	position: relative;
+	display: flex;
+	flex: 1 1 auto;
+	width: 100%;
+}

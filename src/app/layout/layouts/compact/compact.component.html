@@ -1,0 +1,80 @@
+<!-- Navigation -->
+<fuse-vertical-navigation
+    class="dark bg-gray-900 print:hidden"
+    [appearance]="'compact'"
+    [mode]="isScreenSmall ? 'over' : 'side'"
+    [name]="'mainNavigation'"
+    [navigation]="navigation.compact"
+    [opened]="!isScreenSmall">
+    <!-- Navigation header hook -->
+    <ng-container fuseVerticalNavigationContentHeader>
+        <!-- Logo -->
+        <div class="flex items-center justify-center h-20 mt-3 mb-4">
+            <img
+                class="w-10"
+                src="assets/images/logo/logo.svg"
+                alt="Logo image">
+        </div>
+    </ng-container>
+</fuse-vertical-navigation>
+
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full min-w-0">
+
+    <!-- Header -->
+    <div class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
+        <!-- Navigation toggle button -->
+        <button
+            mat-icon-button
+			*ngIf="isScreenSmall"
+            (click)="toggleNavigation('mainNavigation')">
+            <mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+        </button>
+
+		<!-- Button for open main tab -->
+		<mat-icon class="flex items-center tms-box" (click)="tabManagerService.openMainComponent()">list</mat-icon>
+		
+		<!-- List of tabs -->
+		<div class="tms-box flex flex-0 items-center" *ngFor="let tab of tabManagerService.getTabs()">
+			<div 	(click)="tabManagerService.openTab(tab)"
+					[ngClass]="{'active': isActiveTab(tab)}"
+					class="flex items-center tab">
+				<div class="text">{{ tab.name }}</div>
+				<mat-icon (click)="tabManagerService.removeTab(tab)">close</mat-icon>
+			</div>
+		</div>
+
+		<!-- Components -->
+        <div class="flex items-center pl-2 ml-auto space-x-2">
+			<shortcuts></shortcuts>
+            <messages></messages>
+            <notifications></notifications>
+            <!--<user></user>-->
+            <languages></languages>
+        </div>
+    </div>
+
+
+	<div *ngIf="showSubTabMenu()" class="relative flex flex-0 items-center w-full h-8 px-4 md:px-6 z-49 bg-transparent dark:bg-card shadow dark:shadow-none dark:border-b print:hidden">
+		<!-- Button for open active tab -->
+		<mat-icon (click)="tabManagerService.openActiveTab()" class="flex items-center tms-box">home</mat-icon>
+
+		<!-- List of card -->
+		<div class="tms-box flex flex-0 items-center" *ngFor="let card of tabManagerService.getCards()">
+			<div	(click)="tabManagerService.openCard(card)"
+					[ngClass]="{'active': isActiveCard(card) }"
+					class="flex items-center card">
+				<div class="text">{{ card.name }}</div>
+				<mat-icon (click)="tabManagerService.removeCard(card)">close</mat-icon>
+			</div>
+		</div>
+    </div>
+
+    <!-- Content -->
+    <div class="flex flex-col flex-auto">
+		<div id="component-container">
+			<router-outlet *ngIf="true"></router-outlet>
+		</div>
+    </div>
+
+</div>
