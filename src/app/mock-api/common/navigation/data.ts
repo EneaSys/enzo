@@ -318,7 +318,7 @@ export const compactNavigation: FuseNavigationItem[] = [
 				title: 'Applicazioni',
 				type : 'basic',
 				icon : 'iconsmind:one_window',
-				link : '/standard/country/list'
+				link : '/m8t/application-module/list'
 			},
 			{
 				id   : 'management.personalization',
