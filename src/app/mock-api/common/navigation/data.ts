@@ -313,150 +313,121 @@ export const compactNavigation: FuseNavigationItem[] = [
         type    : 'aside',
         icon    : 'heroicons_outline:code',
         children: [
-            {
-                id      : 'navigation-features.level.0',
-                title   : 'Level 0',
-                icon    : 'heroicons_outline:check-circle',
-                type    : 'collapsable',
-                children: [
-                    {
-                        id      : 'navigation-features.level.0.1',
-                        title   : 'Level 1',
-                        type    : 'collapsable',
-                        children: [
-                            {
-                                id      : 'navigation-features.level.0.1.2',
-                                title   : 'Level 2',
-                                type    : 'collapsable',
-                                children: [
-                                    {
-                                        id      : 'navigation-features.level.0.1.2.3',
-                                        title   : 'Level 3',
-                                        type    : 'collapsable',
-                                        children: [
-                                            {
-                                                id      : 'navigation-features.level.0.1.2.3.4',
-                                                title   : 'Level 4',
-                                                type    : 'collapsable',
-                                                children: [
-                                                    {
-                                                        id      : 'navigation-features.level.0.1.2.3.4.5',
-                                                        title   : 'Level 5',
-                                                        type    : 'collapsable',
-                                                        children: [
-                                                            {
-                                                                id   : 'navigation-features.level.0.1.2.3.4.5.6',
-                                                                title: 'Level 6',
-                                                                type : 'basic'
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                id      : 'navigation-features.level.0',
-                title   : 'Level 0',
-                subtitle: 'With subtitle',
-                icon    : 'heroicons_outline:check-circle',
-                type    : 'collapsable',
-                children: [
-                    {
-                        id   : 'navigation-features.level.0.1-1',
-                        title: 'Level 1.1',
-                        type : 'basic'
-                    },
-                    {
-                        id   : 'navigation-features.level.0.1-2',
-                        title: 'Level 1.2',
-                        type : 'basic'
-                    }
-                ]
-            },
-            {
-                id      : 'navigation-features.active',
-                title   : 'Active item',
-                subtitle: 'Manually marked as active',
-                icon    : 'heroicons_outline:check-circle',
-                type    : 'basic',
-                active  : true
-            },
-            {
-                id      : 'navigation-features.disabled-collapsable',
-                title   : 'Disabled collapsable',
-                subtitle: 'Some subtitle',
-                icon    : 'heroicons_outline:check-circle',
-                type    : 'collapsable',
-                disabled: true,
-                children: [
-                    {
-                        id   : 'navigation-features.disabled-collapsable.child',
-                        title: 'You shouldn\'t be able to see this child',
-                        type : 'basic'
-                    }
-                ]
-            },
-            {
-                id      : 'navigation-features.disabled-basic',
-                title   : 'Disabled basic',
-                subtitle: 'Some subtitle',
-                icon    : 'heroicons_outline:check-circle',
-                type    : 'basic',
-                disabled: true
-            },
-            {
-                id   : 'navigation-features.badge-style-oval',
-                title: 'Oval badge',
-                icon : 'heroicons_outline:tag',
-                type : 'basic',
-                badge: {
-                    title  : '8',
-                    classes: 'w-5 h-5 bg-teal-400 text-black rounded-full'
-                }
-            },
-            {
-                id   : 'navigation-features.badge-style-rectangle',
-                title: 'Rectangle badge',
-                icon : 'heroicons_outline:tag',
-                type : 'basic',
-                badge: {
-                    title  : 'Updated!',
-                    classes: 'px-2 bg-teal-400 text-black rounded'
-                }
-            },
-            {
-                id   : 'navigation-features.badge-style-rounded',
-                title: 'Rounded badge',
-                icon : 'heroicons_outline:tag',
-                type : 'basic',
-                badge: {
-                    title  : 'NEW',
-                    classes: 'px-2.5 bg-teal-400 text-black rounded-full'
-                }
-            },
-            {
-                id   : 'navigation-features.badge-style-simple',
-                title: 'Simple badge',
-                icon : 'heroicons_outline:tag',
-                type : 'basic',
-                badge: {
-                    title  : '87 Unread',
-                    classes: 'text-teal-500'
-                }
-            },
-            {
-                id   : 'navigation-features.multi-line',
-                title: 'A multi line navigation item title example which works just fine',
-                icon : 'heroicons_outline:check-circle',
-                type : 'basic'
-            }
-        ]
+			{
+				id   : 'management.application',
+				title: 'Applicazioni',
+				type : 'basic',
+				icon : 'iconsmind:flag_2',
+				link : '/standard/country/list'
+			},
+			{
+				id   : 'management.personalization',
+				title: 'Personalizzazioni',
+				type : 'basic',
+				icon : 'iconsmind:flag_2',
+				link : '/standard/country/list'
+			},
+			{
+				id      : 'management.entity',
+				title   : 'Gestione entità',
+				subtitle: 'Oggetti, tipi e campi',
+				type    : 'collapsable',
+				icon    : 'iconsmind:flag_2',
+				children: [
+					{
+						id   : 'management.entity.object',
+						title: 'Oggetti',
+						type : 'basic',
+						icon : 'iconsmind:flag_2',
+						link : '/standard/country/list'
+					},
+					{
+						id   : 'management.entity.entity',
+						title: 'Entità',
+						type : 'basic',
+						icon : 'iconsmind:flag_2',
+						link : '/standard/country/list'
+					},
+					{
+						id   : 'management.entity.field',
+						title: 'Campi',
+						type : 'basic',
+						icon : 'iconsmind:flag_2',
+						link : '/standard/country/list'
+					},
+				]
+			},
+			{
+				id      : 'management.rbac',
+				title   : 'Rbac',
+				subtitle: 'Role based access control',
+				type    : 'collapsable',
+				icon    : 'iconsmind:flag_2',
+				children: [
+					{
+						id   : 'management.rbac.role',
+						title: 'Ruoli',
+						type : 'basic',
+						icon : 'iconsmind:flag_2',
+						link : '/standard/country/list'
+					},
+					{
+						id   : 'management.rbac.permission',
+						title: 'Permessi',
+						type : 'basic',
+						icon : 'iconsmind:flag_2',
+						link : '/standard/country/list'
+					},
+				]
+			},
+			{
+				id   : 'management.license',
+				title: 'Licenze',
+				type : 'basic',
+				icon : 'iconsmind:flag_2',
+				link : '/standard/country/list'
+			},
+			{
+				id      : 'management.utilizator',
+				title   : 'Utilizzatori',
+				subtitle: 'Gestisci contesti ed utenti',
+				type    : 'collapsable',
+				icon    : 'iconsmind:flag_2',
+				children: [
+					{
+						id   : 'management.context_module',
+						title: 'Contesti',
+						type : 'basic',
+						icon : 'iconsmind:flag_2',
+						link : '/standard/country/list'
+					},
+					{
+						id   : 'management.context_module',
+						title: 'Licenze',
+						type : 'basic',
+						icon : 'iconsmind:flag_2',
+						link : '/standard/country/list'
+					},
+				]
+			},
+			{
+				id  : 'divider-1',
+				type: 'divider'
+			},
+			{
+				id   : 'management.tenant_context',
+				title: 'Contesti',
+				type : 'basic',
+				icon : 'iconsmind:flag_2',
+				link : '/standard/country/list'
+			},
+			{
+				id   : 'management.user_context',
+				title: 'Utenti',
+				type : 'basic',
+				icon : 'iconsmind:flag_2',
+				link : '/standard/country/list'
+			},
+		]
     }
 ];
