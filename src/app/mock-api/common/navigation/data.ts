@@ -399,7 +399,7 @@ export const compactNavigation: FuseNavigationItem[] = [
 						title: 'Contesti',
 						type : 'basic',
 						icon : 'iconsmind:memory_card',
-						link : '/standard/country/list'
+						link : '/m8t/context-module/list'
 					},
 					{
 						id   : 'management.context_module',
