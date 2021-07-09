@@ -1,70 +1,53 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, ReplaySubject } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { User } from 'app/core/user/user.types';
+import { from, Observable, ReplaySubject } from 'rxjs';
+import { EnzoAuthService } from 'app/core/auth/auth.service';
+import { User } from './user.types';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService
 {
-    private _user: ReplaySubject<User> = new ReplaySubject<User>(1);
+	private isLoaded: boolean = false;
+	private isLoading: boolean = false;
 
-    /**
-     * Constructor
-     */
-    constructor(private _httpClient: HttpClient)
-    {
-    }
+    private user: any;
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
+	private _user: ReplaySubject<any> = new ReplaySubject<any>(1);
 
-    /**
-     * Setter & getter for user
-     *
-     * @param value
-     */
-    set user(value: User)
-    {
-        // Store the value
-        this._user.next(value);
-    }
+    constructor(private _enzoAuthService: EnzoAuthService) { }
 
-    get user$(): Observable<User>
-    {
+    
+    get user$(): Observable<User> {
         return this._user.asObservable();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
+    async get() {
+		if(this.isLoaded || this.isLoading) {
+			return this.user;
+		}
+		this.isLoading = true;
 
-    /**
-     * Get the current logged in user data
-     */
-    get(): Observable<User>
-    {
-        return this._httpClient.get<User>('api/common/user').pipe(
+		this.user = await this._enzoAuthService.getUser();
+		this.isLoading = false;
+		this.isLoaded = true;
+        return this.user;
+    }
+
+	load(): Observable<any> {
+		if(this.isLoaded) {
+			return new Observable<any>(observer => {
+				observer.next(this.user);
+				observer.complete();
+			});
+		}
+        return from(this._enzoAuthService.getUser()).pipe(
             tap((user) => {
-                this._user.next(user);
+                this.user = user;
+				this.isLoaded = true;
             })
         );
     }
 
-    /**
-     * Update the user
-     *
-     * @param user
-     */
-    update(user: User): Observable<any>
-    {
-        return this._httpClient.patch<User>('api/common/user', {user}).pipe(
-            map((response) => {
-                this._user.next(response);
-            })
-        );
-    }
 }

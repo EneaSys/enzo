@@ -32,7 +32,7 @@
         </button>
 
 		<!-- Button for open main tab -->
-		<mat-icon class="flex items-center tms-box" (click)="tabManagerService.openMainComponent()">list</mat-icon>
+		<mat-icon class="flex items-center tms-box" *ngIf="tabManagerService.getTabs().length > 0" (click)="tabManagerService.openMainComponent()">list</mat-icon>
 		
 		<!-- List of tabs -->
 		<div class="tms-box flex flex-0 items-center" *ngFor="let tab of tabManagerService.getTabs()">
@@ -49,7 +49,7 @@
 			<shortcuts></shortcuts>
             <messages></messages>
             <notifications></notifications>
-            <!--<user></user>-->
+            <user></user>
             <languages></languages>
         </div>
     </div>

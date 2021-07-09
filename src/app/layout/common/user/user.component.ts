@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
 import { BooleanInput } from '@angular/cdk/coercion';
-import { Subject } from 'rxjs';
+import { from, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { User } from 'app/core/user/user.types';
 import { UserService } from 'app/core/user/user.service';
+import { User } from 'app/core/user/user.types';
+import { Md5 } from 'ts-md5/dist/md5';
+import { EnzoAuthService } from 'app/core/auth/auth.service';
 
 @Component({
     selector       : 'user',
@@ -20,7 +21,7 @@ export class UserComponent implements OnInit, OnDestroy
     /* eslint-enable @typescript-eslint/naming-convention */
 
     @Input() showAvatar: boolean = true;
-    user: User;
+    user: any = {};
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -29,8 +30,8 @@ export class UserComponent implements OnInit, OnDestroy
      */
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
-        private _router: Router,
-        private _userService: UserService
+        private _userService: UserService,
+		private _enzoAuthService: EnzoAuthService,
     )
     {
     }
@@ -42,17 +43,10 @@ export class UserComponent implements OnInit, OnDestroy
     /**
      * On init
      */
-    ngOnInit(): void
-    {
-        // Subscribe to user changes
-        this._userService.user$
-            .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((user: User) => {
-                this.user = user;
-
-                // Mark for check
-                this._changeDetectorRef.markForCheck();
-            });
+    async ngOnInit() {
+		this.user = await this._userService.get()
+		this.user.avatar = 'https://secure.gravatar.com/avatar/' + new Md5().appendStr(this.user.email).end();
+		this._changeDetectorRef.markForCheck();		
     }
 
     /**
@@ -65,35 +59,7 @@ export class UserComponent implements OnInit, OnDestroy
         this._unsubscribeAll.complete();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Update the user status
-     *
-     * @param status
-     */
-    updateUserStatus(status: string): void
-    {
-        // Return if user is not available
-        if ( !this.user )
-        {
-            return;
-        }
-
-        // Update the user
-        this._userService.update({
-            ...this.user,
-            status
-        }).subscribe();
-    }
-
-    /**
-     * Sign out
-     */
-    signOut(): void
-    {
-        this._router.navigate(['/sign-out']);
+	logout(): void {
+        this._enzoAuthService.logout();
     }
 }
