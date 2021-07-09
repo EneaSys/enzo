@@ -56,7 +56,7 @@ export class AigBackendInterceptor implements HttpInterceptor {
         request = request.clone({
             setHeaders: {
                 'Authorization': 'Bearer ' + token,
-                'X-Tenant-Code': context.code,
+                'X-Tenant-Code': context.contextCode,
             }
         });
 

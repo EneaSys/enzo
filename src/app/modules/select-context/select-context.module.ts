@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { EnzoSharedModule } from 'app/shared/shared.module';
 import { SelectContextComponent } from './select-context.component';
+import { AigManagementApiModule } from 'aig-management';
 
 export const selectContextModuleRoutes: Route[] = [
     {
@@ -20,7 +21,7 @@ export const selectContextModuleRoutes: Route[] = [
         RouterModule.forChild(selectContextModuleRoutes),
         MatButtonModule,
         MatIconModule,
-        EnzoSharedModule
+        EnzoSharedModule,
     ]
 })
 export class SelectContextModule

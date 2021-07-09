@@ -1,6 +1,6 @@
 import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { TenantContextResourceService } from 'aig-management';
+import { TenantContextDTO, TenantContextResourceService } from 'aig-management';
 import { LocalStorageService } from 'ngx-webstorage';
 import { UserService } from '../user/user.service';
 
@@ -21,7 +21,8 @@ export class EnzoContextService {
 		return this.activeContext;
 	}
 
-	async setCurrentAndActiveContext(context: any) {
+	async setCurrentAndActiveContext(context: TenantContextDTO) {
+		console.log(context);
 		let user = await this.userService.get();
 		
 		let currentContexts = await this.getCurrentContexts();
@@ -40,7 +41,7 @@ export class EnzoContextService {
 
 		let queryParams = this.getQueryParams();
 		if(queryParams.context != null && queryParams.context != "") {
-			if(currentContext != null && queryParams.context == currentContext.code) {
+			if(currentContext != null && queryParams.context == currentContext.contextCode) {
 				this.activeContext = currentContext;
 				return this.activeContext;
 			}
@@ -142,7 +143,7 @@ export class EnzoContextService {
 
 	navigate(url: string) {
 		let queryParams: any = {};
-		queryParams.context = this.activeContext.code;
+		queryParams.context = this.activeContext.contextCode;
         this.router.navigate([url.substring(1)], { queryParams: queryParams });
 	}
 
