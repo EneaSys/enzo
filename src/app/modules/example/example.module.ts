@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
-import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-
 import { EnzoSharedModule } from 'app/shared/shared.module';
 
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ExampleComponent } from './components/example/example.component';
-import { ButtonModule } from 'primeng/button';
-import { AgalCoreModule } from '@agal-core/agal-core.module';
 import { AgalItalianLegislationModule } from '@agal-italianlegislation/agal-italianlegislation.module';
+import { EnzoDetailPageComponent } from './components/detail-page/detail-page.component';
+import { EnzoListPageComponent } from './components/list-page/list-page.component';
 
 const exampleRoutes: Route[] = [
     {
@@ -19,20 +16,31 @@ const exampleRoutes: Route[] = [
     },
 	{
         path     : 'asd',
-        component: SidebarComponent,
+        component: EnzoDetailPageComponent,
+	},
+	{
+        path     : 'asd/:id',
+        component: EnzoDetailPageComponent,
+	},
+	{
+        path     : 'list',
+        component: EnzoListPageComponent,
 		children : [
 			{
-				path     : ':numero',
-        		component: SidebarComponent,
+				path     : ':id',
+        		component: EnzoDetailPageComponent,
 			}
 		]
-    }
+    },
 ];
 
 @NgModule({
     declarations: [
         ExampleComponent,
-		SidebarComponent
+		SidebarComponent,
+
+		EnzoListPageComponent,
+		EnzoDetailPageComponent,
     ],
     imports     : [
         RouterModule.forChild(exampleRoutes),

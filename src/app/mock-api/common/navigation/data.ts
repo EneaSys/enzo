@@ -242,10 +242,10 @@ export const compactNavigation: FuseNavigationItem[] = [
             },
 			{
                 id   : 'dashboards.analytics',
-                title: 'Analytics',
+                title: 'List',
                 type : 'basic',
                 icon : 'heroicons_outline:chart-pie',
-                link : '/example/asd'
+                link : '/example/list'
             },
 			{
                 id   : 'dashboards.analytics',
