@@ -9,6 +9,7 @@ import { EnzoSharedModule } from 'app/shared/shared.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ExampleComponent } from './components/example/example.component';
 import { ButtonModule } from 'primeng/button';
+import { AgalCoreModule } from '@agal-core/agal-core.module';
 
 const exampleRoutes: Route[] = [
     {
@@ -34,12 +35,8 @@ const exampleRoutes: Route[] = [
     ],
     imports     : [
         RouterModule.forChild(exampleRoutes),
+		
 		EnzoSharedModule,
-		MatSidenavModule,
-		MatIconModule,
-		ButtonModule,
-
-
     ]
 })
 export class ExampleModule

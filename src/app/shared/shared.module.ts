@@ -1,9 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EnzoGenericComponentService1 } from './generic-component1.service';
+
+import { ButtonModule } from 'primeng/button';
+import { SplitButtonModule } from 'primeng/splitbutton';
+
+
+import { AgalCoreModule } from '@agal-core/agal-core.module';
+
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+
+import { EnzoGenericComponentService1 } from './generic-component1.service';
 
 @NgModule({
     imports: [
@@ -18,9 +26,13 @@ import { MatIconModule } from '@angular/material/icon';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+		AgalCoreModule,
 
-		MatSidenavModule,
+		ButtonModule,
+		SplitButtonModule,
+
 		MatIconModule,
+		MatSidenavModule,
     ],
 	providers: [
 		EnzoGenericComponentService1,

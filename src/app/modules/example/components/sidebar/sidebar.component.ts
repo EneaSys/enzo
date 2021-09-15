@@ -16,4 +16,19 @@ export class SidebarComponent extends EnzoGenericComponent1 {
 	rename() {
 		this.tmCurrentComponent.name = 'banana';
 	}
+
+	exportButtons: any[] =  [
+		{
+			label: 'Pdf',
+			icon: 'pi pi-file-pdf', command: () => {
+				console.log("pdf");
+			},
+		},
+		{
+			label: 'Csv',
+			icon: 'pi pi-file-excel', command: () => {
+				console.log("csv");
+			}
+		}
+	]
 }
