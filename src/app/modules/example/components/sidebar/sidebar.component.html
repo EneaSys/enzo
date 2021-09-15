@@ -44,7 +44,7 @@
 
 					<button pButton class="ml-4 p-button-sm p-button-outlined p-button-success" *ngIf="_gcs.tabManagerService.isMainComponent(tmCurrentComponent)" (click)="_gcs.tabManagerService.openInTab()" [routerLink]="['/banana/asd/']">Open Tab</button>
 					
-					<button pButton class="ml-4 p-button-sm p-button-outlined p-button-success" *ngIf="_gcs.tabManagerService.isTab(tmCurrentComponent)" (click)="_gcs.tabManagerService.openInCard()" [routerLink]="['/example/asd']">Open Child</button>
+					<button pButton class="ml-4 p-button-sm p-button-outlined p-button-success" *ngIf="_gcs.tabManagerService.isTab(tmCurrentComponent)" (click)="_gcs.tabManagerService.openInCard()" [routerLink]="['/example/asd']">Open Card</button>
 
 					<pre>{{ tmCurrentComponent | json }}</pre>
 				</div>
