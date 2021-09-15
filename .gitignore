@@ -7,6 +7,10 @@
 # Only exists if Bazel was run
 /bazel-out
 
+# jhipster generator
+.yo-rc.json
+.jhipster/
+
 # dependencies
 /node_modules
 
