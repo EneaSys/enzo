@@ -1,2 +1,0 @@
-ln -s /home/stefano/dev/project/api-gest/back-end/main-apps/management/src/webapp/@agal-management src/@agal-management
-ln -s /home/stefano/dev/project/api-gest/back-end/main-apps/management/src/webapp/enzo-management src/app/modules/management
