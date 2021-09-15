@@ -24,10 +24,11 @@
 				
 				<div class="enzo-content">
 					<agal-procurement-lot-list-loader 
-						[dcs]="['_ck', 'procurement.contractorEopoo', 'cig', 'candidacy', 'description', 'categories', 'baseAmount', 'offerExpiryDate']">
+						[dcs]="['_ck', 'procurement.contractorEopoo', 'cig', 'candidacy', 'description', 'categories', 'baseAmount', 'offerExpiryDate']"
+						[buttons]="tableButtons">
 					</agal-procurement-lot-list-loader>
 
-					<div class="h-200 min-h-200 max-h-200 border-2 border-dashed border-gray-300 rounded-2xl p-8  pl-4 pr-4">
+					<div class="h-50 min-h-50 max-h-50 border-2 border-dashed border-gray-300 rounded-2xl p-8">
 						<button pButton class="p-button-sm p-button-outlined p-button-success" (click)="rename()">rename</button>
 						<button pButton class="ml-4 p-button-sm p-button-outlined p-button-success" *ngIf="_gcs.tabManagerService.isMainComponent(tmCurrentComponent)" (click)="_gcs.tabManagerService.openInTab()" [routerLink]="['/banana/asd/']">Open Tab</button>
 						<button pButton class="ml-4 p-button-sm p-button-outlined p-button-success" *ngIf="_gcs.tabManagerService.isTab(tmCurrentComponent)" (click)="_gcs.tabManagerService.openInCard()" [routerLink]="['/example/asd']">Open Card</button>

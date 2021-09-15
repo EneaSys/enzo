@@ -17,6 +17,7 @@ export class SidebarComponent extends EnzoGenericComponent1 {
 		this.tmCurrentComponent.name = 'banana';
 	}
 
+
 	exportButtons: any[] =  [
 		{
 			label: 'Pdf',
@@ -28,6 +29,46 @@ export class SidebarComponent extends EnzoGenericComponent1 {
 			label: 'Csv',
 			icon: 'pi pi-file-excel', command: () => {
 				console.log("csv");
+			}
+		}
+	]
+
+
+	tableButtons: any[] = [
+		{
+			label: "Partecipa",
+			severity: "secondary",
+			class: "",
+			command: (e: any) => {
+				console.log("partecipa");
+			}
+		},{
+			label: "Dettagli",
+			hideLabel: true,
+			icon: "pi pi-search",
+			severity: "primary",
+			class: "",
+			command: (e: any) => {
+				console.log("details");
+			},
+		},
+		{
+			label: "Edit",
+			hideLabel: true,
+			icon: "pi pi-pencil",
+			severity: "secondary",
+			class: "",
+			command: (e: any) => {
+				console.log("edit");
+			}
+		},{
+			label: "Delete",
+			hideLabel: true,
+			icon: "pi pi-trash",
+			severity: "danger",
+			class: "",
+			command: async (e: any) => {
+				console.log("delete");
 			}
 		}
 	]
