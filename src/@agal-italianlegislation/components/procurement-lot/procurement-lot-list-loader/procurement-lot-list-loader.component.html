@@ -4,7 +4,7 @@
 	</p>
 	<p *ngSwitchDefault>
 		
-		<p-table styleClass="p-datatable-lg" 
+		<p-table styleClass="p-datatable-sm" 
 			[value]="ds" [loading]="loading" 
 			[lazy]="true" (onLazyLoad)="lazyLoad($event)" 
 			[resizableColumns]="true" [(selection)]="selectedElements">
@@ -14,25 +14,25 @@
 
 					<ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
 						<!-- Filed of entity -->
-						<th *ngSwitchCase="'_ck'" style="width:50px"></th>
+						<th *ngSwitchCase="'_ck'" style="width:10px"></th>
 						<th *ngSwitchCase="'id'" style="width:auto" pResizableColumn pSortableColumn="id">id</th>
-						<th *ngSwitchCase="'cig'" style="width:150px" pResizableColumn>cig</th>
+						<th *ngSwitchCase="'cig'" style="width:40px" pResizableColumn>cig</th>
 						<th *ngSwitchCase="'description'" style="width:25%" pResizableColumn pSortableColumn="procurementLotDescription">descrizione</th>
-						<th *ngSwitchCase="'offerExpiryDate'" style="width:100px" pResizableColumn pSortableColumn="procurementLotOfferExpiryDate">data di scadenza offerta</th>
-						<th *ngSwitchCase="'baseAmount'" style="width:auto" pResizableColumn pSortableColumn="procurementLotBaseAmount">importo base</th>
-						<th *ngSwitchCase="'candidacy'" style="width:50px" pResizableColumn pSortableColumn="procurementLotCandidacy">Man. interesse</th>
+						<th *ngSwitchCase="'offerExpiryDate'" style="width:50px" pResizableColumn pSortableColumn="procurementLotOfferExpiryDate">data di scadenza offerta</th>
+						<th *ngSwitchCase="'baseAmount'" style="width:30px" pResizableColumn pSortableColumn="procurementLotBaseAmount">importo base</th>
+						<th *ngSwitchCase="'candidacy'" style="width:20px" pResizableColumn pSortableColumn="procurementLotCandidacy">Man. interesse</th>
 						<th *ngSwitchCase="'securityAmount'" style="width:auto" pResizableColumn pSortableColumn="securityAmount">importo di sicurezza</th>
 						<th *ngSwitchCase="'istatCode'" style="width:auto" pResizableColumn pSortableColumn="istatCode">istatCode</th>
 						<th *ngSwitchCase="'nutsCode'" style="width:auto" pResizableColumn pSortableColumn="nutsCode"></th>
 						<th *ngSwitchCase="'cpvCode'" style="width:auto" pResizableColumn pSortableColumn="cpvCode">cpv</th>
 						<th *ngSwitchCase="'type'" style="width:auto" pResizableColumn pSortableColumn="procurementLotTypeCode">tipo</th>
-						<th *ngSwitchCase="'categories'" style="width:auto" pResizableColumn>categorie</th>
+						<th *ngSwitchCase="'categories'" style="width:30px" pResizableColumn>categorie</th>
 						<th *ngSwitchCase="'awardCriterionCode'" style="width:auto" pResizableColumn pSortableColumn="awardCriterionCode">criterio di aggiudicazione</th>
 						<th *ngSwitchCase="'statusCode'" style="width:auto" pResizableColumn pSortableColumn="statusCode">stato</th>
 						
 						<!-- Filed of relational entity -->
 						<th *ngSwitchCase="'procurement.contractorEopooCode'" style="width:auto" pResizableColumn pSortableColumn="contractorEopooCode">Id Stazione appaltante</th>
-						<th *ngSwitchCase="'procurement.contractorEopoo'" style="width:15%" pResizableColumn pSortableColumn="contractorCompleteName">Stazione appaltante</th>
+						<th *ngSwitchCase="'procurement.contractorEopoo'" style="width:20%" pResizableColumn pSortableColumn="contractorCompleteName">Stazione appaltante</th>
 						<th *ngSwitchCase="'procurement.description'" style="width:auto" pResizableColumn pSortableColumn=""> descrizione</th>
 						<th *ngSwitchCase="'procurement.code'" style="width:auto" pResizableColumn pSortableColumn=""> codice</th>
 						<th *ngSwitchCase="'procurement.ref'" style="width:auto" pResizableColumn pSortableColumn=""> ref</th>
