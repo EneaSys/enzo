@@ -10,6 +10,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ExampleComponent } from './components/example/example.component';
 import { ButtonModule } from 'primeng/button';
 import { AgalCoreModule } from '@agal-core/agal-core.module';
+import { AgalItalianLegislationModule } from '@agal-italianlegislation/agal-italianlegislation.module';
 
 const exampleRoutes: Route[] = [
     {
@@ -37,6 +38,8 @@ const exampleRoutes: Route[] = [
         RouterModule.forChild(exampleRoutes),
 		
 		EnzoSharedModule,
+
+		AgalItalianLegislationModule,
     ]
 })
 export class ExampleModule

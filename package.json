@@ -34,6 +34,7 @@
         "@fullcalendar/timegrid": "4.4.2",
         "@ngneat/transloco": "2.21.0",
         "@okta/okta-angular": "^3.2.0",
+        "aig-italianlegislation": "^1.4.4",
         "aig-management": "^1.2.0",
         "apexcharts": "3.27.1",
         "crypto-js": "3.3.0",

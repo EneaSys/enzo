@@ -1,9 +1,10 @@
 import { AgalListDisplayModality } from "@agal-core/enum/list-display-modality";
-import { Input, SimpleChanges } from "@angular/core";
+import { Injectable, Input, SimpleChanges } from "@angular/core";
 import { LazyLoadEvent } from "primeng/api";
 import { AgalCommonService } from "../services/common.service";
-import { AgalGenericComponent } from "./main-generic-component";
+import { AgalGenericComponent } from "./agal-generic-component";
 
+@Injectable()
 export class AgalGenericTable extends AgalGenericComponent {
 	_filters: any = {};
 
