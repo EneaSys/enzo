@@ -31,8 +31,6 @@
             <div class="flex-auto p-2 sm:p-4">
                 
 				<div class="flex items-center pl-2 ml-auto space-x-2 print:hidden">
-					<button mat-button *ngIf="_gcs.tabManagerService.isMainComponent(tmCurrentComponent)" (click)="_gcs.tabManagerService.openInTab()" [routerLink]="['/banana/asd/']">Open Tab</button>
-					<button mat-button *ngIf="_gcs.tabManagerService.isTab(tmCurrentComponent)" (click)="_gcs.tabManagerService.openInCard()" [routerLink]="['/example/asd']">Open Child</button>
 					<button
 						mat-icon-button
 						(click)="matDrawer.toggle()">
@@ -41,9 +39,14 @@
 				</div>
 				
                 <div class="h-200 min-h-200 max-h-200 border-2 border-dashed border-gray-300 rounded-2xl p-8">
-					<button mat-button (click)="rename()">rename</button>
+					
+					<button pButton class="p-button-sm p-button-outlined p-button-success" (click)="rename()">rename</button>
 
-					<pre>current {{ tmCurrentComponent | json }}</pre>
+					<button pButton class="ml-4 p-button-sm p-button-outlined p-button-success" *ngIf="_gcs.tabManagerService.isMainComponent(tmCurrentComponent)" (click)="_gcs.tabManagerService.openInTab()" [routerLink]="['/banana/asd/']">Open Tab</button>
+					
+					<button pButton class="ml-4 p-button-sm p-button-outlined p-button-success" *ngIf="_gcs.tabManagerService.isTab(tmCurrentComponent)" (click)="_gcs.tabManagerService.openInCard()" [routerLink]="['/example/asd']">Open Child</button>
+
+					<pre>{{ tmCurrentComponent | json }}</pre>
 				</div>
 
             </div>

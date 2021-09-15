@@ -8,6 +8,7 @@ import { EnzoSharedModule } from 'app/shared/shared.module';
 
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ExampleComponent } from './components/example/example.component';
+import { ButtonModule } from 'primeng/button';
 
 const exampleRoutes: Route[] = [
     {
@@ -36,6 +37,9 @@ const exampleRoutes: Route[] = [
 		EnzoSharedModule,
 		MatSidenavModule,
 		MatIconModule,
+		ButtonModule,
+
+
     ]
 })
 export class ExampleModule
