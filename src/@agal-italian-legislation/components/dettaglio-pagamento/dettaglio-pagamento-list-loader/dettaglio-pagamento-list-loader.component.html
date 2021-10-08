@@ -1,0 +1,87 @@
+<div [ngSwitch]="view">
+    <p *ngSwitchCase="'CARD'">
+        CARD
+    </p>
+    <p *ngSwitchDefault>
+        <!-- <dettaglio-pagamento-list-table-prime [ds]="ds"></dettaglio-pagamento-list-table-prime> -->
+        <p-table 
+            styleClass="p-datatable-lg"
+            [value]="ds" [loading]="loading"
+            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            
+            [resizableColumns]="true"
+            [(selection)]="selectedElements" >
+
+            <ng-template pTemplate="header">
+                <tr>
+					<th style="width:50px" ></th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.beneficiario">beneficiario</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.modalitaPagamentoCode">modalitaPagamentoCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataRiferimentoTerminiPagamento">dataRiferimentoTerminiPagamento</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.giorniTerminiPagamento">giorniTerminiPagamento</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataScadenzaPagamento">dataScadenzaPagamento</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.importoPagamento">importoPagamento</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.codUfficioPostale">codUfficioPostale</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.cognomeQuietanzante">cognomeQuietanzante</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.nomeQuietanzante">nomeQuietanzante</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.cFQuietanzante">cFQuietanzante</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.titoloQuietanzante">titoloQuietanzante</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.istitutoFinanziario">istitutoFinanziario</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.iban">iban</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.abi">abi</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.cab">cab</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.bic">bic</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.scontoPagamentoAnticipato">scontoPagamentoAnticipato</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataLimitePagamentoAnticipato">dataLimitePagamentoAnticipato</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.penalitaPagamentiRitardati">penalitaPagamentiRitardati</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataDecorrenzaPenale">dataDecorrenzaPenale</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.codicePagamento">codicePagamento</th>
+
+
+					<th style="width:auto" pResizableColumn pSortableColumn="datiPagamento.condizioniPagamento">condizioniPagamento</th>
+
+            		<th style="width:auto" pResizableColumn pSortableColumn="">buttons</th>    
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-e>
+                <tr>
+                    <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+					<td>{{ e.beneficiario }}</td>
+					<td>{{ e.modalitaPagamentoCode }}</td>
+					<td>{{ e.dataRiferimentoTerminiPagamento }}</td>
+					<td>{{ e.giorniTerminiPagamento }}</td>
+					<td>{{ e.dataScadenzaPagamento }}</td>
+					<td>{{ e.importoPagamento }}</td>
+					<td>{{ e.codUfficioPostale }}</td>
+					<td>{{ e.cognomeQuietanzante }}</td>
+					<td>{{ e.nomeQuietanzante }}</td>
+					<td>{{ e.cFQuietanzante }}</td>
+					<td>{{ e.titoloQuietanzante }}</td>
+					<td>{{ e.istitutoFinanziario }}</td>
+					<td>{{ e.iban }}</td>
+					<td>{{ e.abi }}</td>
+					<td>{{ e.cab }}</td>
+					<td>{{ e.bic }}</td>
+					<td>{{ e.scontoPagamentoAnticipato }}</td>
+					<td>{{ e.dataLimitePagamentoAnticipato }}</td>
+					<td>{{ e.penalitaPagamentiRitardati }}</td>
+					<td>{{ e.dataDecorrenzaPenale }}</td>
+					<td>{{ e.codicePagamento }}</td>
+
+					<td>{{ e.datiPagamento.condizioniPagamento }}</td>
+            <td *ngIf="buttons">
+                <button *ngFor="let button of buttons" (click)="button.fn(e)" >{{button.name}}</button>
+            </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</div>
+
+<agal-paginator 
+    [totalRecords]="totalRecords"
+    [pageSizeOptions]="[30,50,100,500]"
+    [initialSize]="30"
+    (paginator)="changePagination($event)"
+    ></agal-paginator>

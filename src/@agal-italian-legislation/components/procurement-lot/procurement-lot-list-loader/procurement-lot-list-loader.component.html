@@ -1,0 +1,85 @@
+<div [ngSwitch]="view">
+    <p *ngSwitchCase="'CARD'">
+        CARD
+    </p>
+    <p *ngSwitchDefault>
+        <!-- <procurement-lot-list-table-prime [ds]="ds"></procurement-lot-list-table-prime> -->
+        <p-table 
+            styleClass="p-datatable-lg"
+            [value]="ds" [loading]="loading"
+            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            
+            [resizableColumns]="true"
+            [(selection)]="selectedElements" >
+
+            <ng-template pTemplate="header">
+                <tr>
+					<th style="width:50px" ></th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.cig">cig</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.description">description</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.offerExpiryDate">offerExpiryDate</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.baseAmount">baseAmount</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.candidacy">candidacy</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.securityAmount">securityAmount</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.istatCode">istatCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.nutsCode">nutsCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.cpvCode">cpvCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.typeCode">typeCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.awardCriterionCode">awardCriterionCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.statusCode">statusCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="procurementLot.workLocationCode">workLocationCode</th>
+
+
+					<th style="width:auto" pResizableColumn pSortableColumn="procurement.description">description</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="procurement.code">code</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="procurement.ref">ref</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="procurement.contractorEopooCode">contractorEopooCode</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="procurement.sectorCode">sectorCode</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="procurement.procedureCode">procedureCode</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="procurement.modalityCode">modalityCode</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="procurement.statusCode">statusCode</th>
+
+            		<th style="width:auto" pResizableColumn pSortableColumn="">buttons</th>    
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-e>
+                <tr>
+                    <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+					<td>{{ e.cig }}</td>
+					<td>{{ e.description }}</td>
+					<td>{{ e.offerExpiryDate }}</td>
+					<td>{{ e.baseAmount }}</td>
+					<td>{{ e.candidacy }}</td>
+					<td>{{ e.securityAmount }}</td>
+					<td>{{ e.istatCode }}</td>
+					<td>{{ e.nutsCode }}</td>
+					<td>{{ e.cpvCode }}</td>
+					<td>{{ e.typeCode }}</td>
+					<td>{{ e.awardCriterionCode }}</td>
+					<td>{{ e.statusCode }}</td>
+					<td>{{ e.workLocationCode }}</td>
+
+					<td>{{ e.procurement.description }}</td>
+					<td>{{ e.procurement.code }}</td>
+					<td>{{ e.procurement.ref }}</td>
+					<td>{{ e.procurement.contractorEopooCode }}</td>
+					<td>{{ e.procurement.sectorCode }}</td>
+					<td>{{ e.procurement.procedureCode }}</td>
+					<td>{{ e.procurement.modalityCode }}</td>
+					<td>{{ e.procurement.statusCode }}</td>
+            <td *ngIf="buttons">
+                <button *ngFor="let button of buttons" (click)="button.fn(e)" >{{button.name}}</button>
+            </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</div>
+
+<agal-paginator 
+    [totalRecords]="totalRecords"
+    [pageSizeOptions]="[30,50,100,500]"
+    [initialSize]="30"
+    (paginator)="changePagination($event)"
+    ></agal-paginator>

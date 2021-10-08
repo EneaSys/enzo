@@ -1,0 +1,67 @@
+<div [ngSwitch]="view">
+    <p *ngSwitchCase="'CARD'">
+        CARD
+    </p>
+    <p *ngSwitchDefault>
+        <!-- <dati-ritenuta-list-table-prime [ds]="ds"></dati-ritenuta-list-table-prime> -->
+        <p-table 
+            styleClass="p-datatable-lg"
+            [value]="ds" [loading]="loading"
+            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            
+            [resizableColumns]="true"
+            [(selection)]="selectedElements" >
+
+            <ng-template pTemplate="header">
+                <tr>
+					<th style="width:50px" ></th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRitenuta.importoRitenuta">importoRitenuta</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRitenuta.tipoRitenutaCode">tipoRitenutaCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRitenuta.aliquotaRitenuta">aliquotaRitenuta</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRitenuta.causalePagamento">causalePagamento</th>
+
+
+					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.divisa">divisa</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.data">data</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.numero">numero</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.importoTotaleDocumento">importoTotaleDocumento</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.arrotondamento">arrotondamento</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.causale">causale</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.art73">art73</th>
+					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.tipoDocumentoCode">tipoDocumentoCode</th>
+
+            		<th style="width:auto" pResizableColumn pSortableColumn="">buttons</th>    
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-e>
+                <tr>
+                    <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+					<td>{{ e.importoRitenuta }}</td>
+					<td>{{ e.tipoRitenutaCode }}</td>
+					<td>{{ e.aliquotaRitenuta }}</td>
+					<td>{{ e.causalePagamento }}</td>
+
+					<td>{{ e.datiGeneraliDocumento.divisa }}</td>
+					<td>{{ e.datiGeneraliDocumento.data }}</td>
+					<td>{{ e.datiGeneraliDocumento.numero }}</td>
+					<td>{{ e.datiGeneraliDocumento.importoTotaleDocumento }}</td>
+					<td>{{ e.datiGeneraliDocumento.arrotondamento }}</td>
+					<td>{{ e.datiGeneraliDocumento.causale }}</td>
+					<td>{{ e.datiGeneraliDocumento.art73 }}</td>
+					<td>{{ e.datiGeneraliDocumento.tipoDocumentoCode }}</td>
+            <td *ngIf="buttons">
+                <button *ngFor="let button of buttons" (click)="button.fn(e)" >{{button.name}}</button>
+            </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</div>
+
+<agal-paginator 
+    [totalRecords]="totalRecords"
+    [pageSizeOptions]="[30,50,100,500]"
+    [initialSize]="30"
+    (paginator)="changePagination($event)"
+    ></agal-paginator>

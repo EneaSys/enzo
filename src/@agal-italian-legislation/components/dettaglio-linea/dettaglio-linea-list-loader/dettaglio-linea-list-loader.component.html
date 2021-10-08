@@ -1,0 +1,73 @@
+<div [ngSwitch]="view">
+    <p *ngSwitchCase="'CARD'">
+        CARD
+    </p>
+    <p *ngSwitchDefault>
+        <!-- <dettaglio-linea-list-table-prime [ds]="ds"></dettaglio-linea-list-table-prime> -->
+        <p-table 
+            styleClass="p-datatable-lg"
+            [value]="ds" [loading]="loading"
+            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            
+            [resizableColumns]="true"
+            [(selection)]="selectedElements" >
+
+            <ng-template pTemplate="header">
+                <tr>
+					<th style="width:50px" ></th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.numeroLinea">numeroLinea</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.tipoCessionePrestazioneCode">tipoCessionePrestazioneCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.codiceArticoloTipo">codiceArticoloTipo</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.codiceArticoloValore">codiceArticoloValore</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.descrizione">descrizione</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.quantita">quantita</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.unitaMisura">unitaMisura</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.dataInizioPeriodo">dataInizioPeriodo</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.dataFinePeriodo">dataFinePeriodo</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.prezzoUnitario">prezzoUnitario</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.prezzoTotale">prezzoTotale</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.aliquotaIva">aliquotaIva</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.ritenuta">ritenuta</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.naturaCode">naturaCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.riferimentoAmministrazione">riferimentoAmministrazione</th>
+
+
+
+            		<th style="width:auto" pResizableColumn pSortableColumn="">buttons</th>    
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-e>
+                <tr>
+                    <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+					<td>{{ e.numeroLinea }}</td>
+					<td>{{ e.tipoCessionePrestazioneCode }}</td>
+					<td>{{ e.codiceArticoloTipo }}</td>
+					<td>{{ e.codiceArticoloValore }}</td>
+					<td>{{ e.descrizione }}</td>
+					<td>{{ e.quantita }}</td>
+					<td>{{ e.unitaMisura }}</td>
+					<td>{{ e.dataInizioPeriodo }}</td>
+					<td>{{ e.dataFinePeriodo }}</td>
+					<td>{{ e.prezzoUnitario }}</td>
+					<td>{{ e.prezzoTotale }}</td>
+					<td>{{ e.aliquotaIva }}</td>
+					<td>{{ e.ritenuta }}</td>
+					<td>{{ e.naturaCode }}</td>
+					<td>{{ e.riferimentoAmministrazione }}</td>
+
+            <td *ngIf="buttons">
+                <button *ngFor="let button of buttons" (click)="button.fn(e)" >{{button.name}}</button>
+            </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</div>
+
+<agal-paginator 
+    [totalRecords]="totalRecords"
+    [pageSizeOptions]="[30,50,100,500]"
+    [initialSize]="30"
+    (paginator)="changePagination($event)"
+    ></agal-paginator>

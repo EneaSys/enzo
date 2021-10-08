@@ -1,0 +1,57 @@
+<div [ngSwitch]="view">
+    <p *ngSwitchCase="'CARD'">
+        CARD
+    </p>
+    <p *ngSwitchDefault>
+        <!-- <dati-ordine-acquisto-list-table-prime [ds]="ds"></dati-ordine-acquisto-list-table-prime> -->
+        <p-table 
+            styleClass="p-datatable-lg"
+            [value]="ds" [loading]="loading"
+            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            
+            [resizableColumns]="true"
+            [(selection)]="selectedElements" >
+
+            <ng-template pTemplate="header">
+                <tr>
+					<th style="width:50px" ></th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.riferimentoNumeroLinea">riferimentoNumeroLinea</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.idDocumento">idDocumento</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.data">data</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.numItem">numItem</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.codiceCommessaConvenzione">codiceCommessaConvenzione</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.codiceCup">codiceCup</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.codiceCig">codiceCig</th>
+
+
+
+            		<th style="width:auto" pResizableColumn pSortableColumn="">buttons</th>    
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-e>
+                <tr>
+                    <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+					<td>{{ e.riferimentoNumeroLinea }}</td>
+					<td>{{ e.idDocumento }}</td>
+					<td>{{ e.data }}</td>
+					<td>{{ e.numItem }}</td>
+					<td>{{ e.codiceCommessaConvenzione }}</td>
+					<td>{{ e.codiceCup }}</td>
+					<td>{{ e.codiceCig }}</td>
+
+            <td *ngIf="buttons">
+                <button *ngFor="let button of buttons" (click)="button.fn(e)" >{{button.name}}</button>
+            </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</div>
+
+<agal-paginator 
+    [totalRecords]="totalRecords"
+    [pageSizeOptions]="[30,50,100,500]"
+    [initialSize]="30"
+    (paginator)="changePagination($event)"
+    ></agal-paginator>

@@ -1,0 +1,59 @@
+<div [ngSwitch]="view">
+    <p *ngSwitchCase="'CARD'">
+        CARD
+    </p>
+    <p *ngSwitchDefault>
+        <!-- <dati-riepilogo-list-table-prime [ds]="ds"></dati-riepilogo-list-table-prime> -->
+        <p-table 
+            styleClass="p-datatable-lg"
+            [value]="ds" [loading]="loading"
+            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            
+            [resizableColumns]="true"
+            [(selection)]="selectedElements" >
+
+            <ng-template pTemplate="header">
+                <tr>
+					<th style="width:50px" ></th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRiepilogo.aliquotaIva">aliquotaIva</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRiepilogo.esigibilitaIvaCode">esigibilitaIvaCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRiepilogo.naturaCode">naturaCode</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRiepilogo.speseAccessorie">speseAccessorie</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRiepilogo.arrotondamento">arrotondamento</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRiepilogo.imponibileImporto">imponibileImporto</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRiepilogo.imposta">imposta</th>
+                    <th style="width:auto" pResizableColumn pSortableColumn="datiRiepilogo.riferimentoNormativo">riferimentoNormativo</th>
+
+
+
+            		<th style="width:auto" pResizableColumn pSortableColumn="">buttons</th>    
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-e>
+                <tr>
+                    <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+					<td>{{ e.aliquotaIva }}</td>
+					<td>{{ e.esigibilitaIvaCode }}</td>
+					<td>{{ e.naturaCode }}</td>
+					<td>{{ e.speseAccessorie }}</td>
+					<td>{{ e.arrotondamento }}</td>
+					<td>{{ e.imponibileImporto }}</td>
+					<td>{{ e.imposta }}</td>
+					<td>{{ e.riferimentoNormativo }}</td>
+
+            <td *ngIf="buttons">
+                <button *ngFor="let button of buttons" (click)="button.fn(e)" >{{button.name}}</button>
+            </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</div>
+
+<agal-paginator 
+    [totalRecords]="totalRecords"
+    [pageSizeOptions]="[30,50,100,500]"
+    [initialSize]="30"
+    (paginator)="changePagination($event)"
+    ></agal-paginator>
