@@ -13,9 +13,11 @@ export class EnzoDetailPageComponent extends EnzoGenericComponent1 {
 		public _gcs: EnzoGenericComponentService1,
 	) {
 		super(_gcs);
-		let id = activatedRoute.snapshot.paramMap.get('id');
-		this.tmCurrentComponent.name = 'Detail '+id;
+		this.id = +activatedRoute.snapshot.paramMap.get('id');
+		this.tmCurrentComponent.name = 'Detail ' + this.id;
 	}
+
+	id: number;
 
 	rename() {
 		this.tmCurrentComponent.name = 'banana';
