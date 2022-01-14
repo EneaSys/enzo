@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TenantContextDTO, TenantContextResourceService } from 'aig-management';
 import { LocalStorageService } from 'ngx-webstorage';

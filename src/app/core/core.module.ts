@@ -1,10 +1,16 @@
+import { LOCALE_ID, NgModule, Optional, SkipSelf } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule, Optional, SkipSelf } from '@angular/core';
+
+import localeIt from '@angular/common/locales/it';
+
 import { IconsModule } from 'app/core/icons/icons.module';
 import { TranslocoCoreModule } from 'app/core/transloco/transloco.module';
 import { AigBackendInterceptor } from './aig-backend/auth.interceptor';
 import { EnzoAuthModule } from './auth/auth.module';
 import { EnzoContextModule } from './context/context.module';
+
+registerLocaleData(localeIt);
 
 @NgModule({
     imports: [
@@ -19,6 +25,7 @@ import { EnzoContextModule } from './context/context.module';
             useClass: AigBackendInterceptor,
             multi: true
         },
+		{ provide: LOCALE_ID, useValue: 'it'},
 	]
 })
 export class EnzoCoreModule

@@ -83,7 +83,10 @@ export const appRoutes: Route[] = [
 
 			{path: 'm8t', loadChildren: () => import('app/modules/management/management.module').then(m => m.EnzoManagementModule)},
 			{path: 'standard', loadChildren: () => import('app/modules/standard/standard.module').then(m => m.EnzoStandardModule)},
-            {path: 'g5c', loadChildren: () => import('app/modules/enzo-generic/generic.module').then(m => m.EnzoGenericModule)},
+            
+			{path: 'g5c', loadChildren: () => import('app/modules/enzo-generic/generic.module').then(m => m.EnzoGenericModule)},
+
+
         ]
     }
 ];

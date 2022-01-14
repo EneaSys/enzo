@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { TenantContextDTO, TenantContextResourceService } from 'aig-management';
+import { ResponseMyContexts, WsUserContextService } from 'aig-management';
 import { EnzoContextService } from 'app/core/context/context.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { EnzoContextService } from 'app/core/context/context.service';
 export class SelectContextComponent implements OnInit{
     constructor(
 		private enzoContextService: EnzoContextService,
-		private tenantContextResourceService: TenantContextResourceService,
+		private wsUserContextService: WsUserContextService,
 	) { }
 
-	tenantContextDTOs: TenantContextDTO[];
+	tenantContextDTOs: ResponseMyContexts[];
 
 	async ngOnInit() {
-		this.tenantContextDTOs = await this.tenantContextResourceService.getAllTenantContextsUsingGET({}).toPromise();
+		this.tenantContextDTOs = await this.wsUserContextService.getMyContexts().toPromise();
 	}
 
 	selectContext(context: any) {
