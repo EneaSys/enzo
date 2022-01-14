@@ -29,7 +29,7 @@ export const compactNavigation: FuseNavigationItem[] = [
                         title: 'Anagrafiche',
 						icon : 'iconsmind:malefemale',
                         type : 'basic',
-						link : '/il/pp/procurement'
+						link : '/g5c/eopoo'
                     },
                     {
                         id   : 'g5c-eopoo-group',
@@ -37,6 +37,13 @@ export const compactNavigation: FuseNavigationItem[] = [
 						icon : 'iconsmind:conference',
                         type : 'basic',
 						link : '/il/pp/procurement-lot'
+                    },
+					{
+                        id   : 'g5e-contact',
+                        title: 'Contatti',
+						icon : 'iconsmind:conference',
+                        type : 'basic',
+						link : '/g5c/contact'
                     },
 					{
                         id   : 'g5e-settings',
@@ -318,7 +325,7 @@ export const compactNavigation: FuseNavigationItem[] = [
 				title: 'Applicazioni',
 				type : 'basic',
 				icon : 'iconsmind:one_window',
-				link : '/m8t/application-module/list'
+				link : 'management/application-module/list'
 			},
 			{
 				id   : 'management.personalization',

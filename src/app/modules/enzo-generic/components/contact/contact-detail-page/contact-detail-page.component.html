@@ -1,0 +1,53 @@
+<div id="enzo-contact-detail-page" class="page-layout blank">
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+
+        <div class="widget" fxFlex.gt-sm="34">
+            <div class="fuse-card auto-width p-16 m-8">
+                <div class="h1 m-8 ml-16 mb-0 secondary-text">contact DETAIL BOX</div>
+                <hr>
+                <agal-contact-detail-box [contact]="contactDTO"></agal-contact-detail-box>
+                <br>
+                <div fxLayoutAlign="end">
+                    <button class="ml-8" mat-stroked-button color="primary" (click)="editContact(contactDTO)">edit</button>
+                    <button class="ml-8" mat-stroked-button color="warn" (click)="deleteContact(contactDTO)">delete</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget" fxFlex.gt-sm="33">
+            <div class="fuse-card auto-width p-16 m-8">
+                <div class="h1 m-8 ml-16 mb-0 secondary-text"> contact DETAIL BOX </div>
+                <hr>
+                <agal-contact-detail-box [contact]="contactDTO.id"></agal-contact-detail-box>
+                <br>
+                <div fxLayoutAlign="end">
+                    <button class="ml-8" mat-stroked-button color="accent" [routerLink]="'/ipp/contact/detail/' + contactDTO.id">details</button>
+                    <button class="ml-8" mat-stroked-button color="primary" (click)="editContact(contactDTO)">edit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget" fxFlex.gt-sm="33">
+   
+        </div>
+
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+            <div class="widget" fxFlex.gt-sm="50">
+                <div class="fuse-card auto-width p-16 m-8 table-with-add-button">
+                    <agal-eopoo-list-loader></agal-eopoo-list-loader>
+                </div>
+            </div>
+            <div class="widget" fxFlex.gt-sm="50">
+                <div class="fuse-card auto-width p-16 m-8 table-with-add-button">
+                    <agal-referent-list-loader></agal-referent-list-loader>
+                </div>
+            </div>
+            
+
+
+    </div>
+
+</div>

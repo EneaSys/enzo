@@ -1,0 +1,24 @@
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { AgalReferentModule } from '@agal-referent/agal-referent.module';
+
+import { EnzoSharedModule } from 'app/shared/shared.module';
+
+import { referentRoutes } from './referent.route';
+
+@NgModule({
+	imports: [ 
+		RouterModule.forChild(referentRoutes),
+		EnzoSharedModule,
+
+		AgalReferentModule,
+	],
+	declarations: [
+		EnzoApplicationModuleListPageComponent,
+	],
+	providers: [
+		
+	],
+})
+export class EnzoReferentModule {}

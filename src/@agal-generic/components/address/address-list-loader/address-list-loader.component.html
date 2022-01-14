@@ -1,0 +1,65 @@
+<div [ngSwitch]="view">
+    <p *ngSwitchCase="'CARD'">
+        CARD
+    </p>
+    <p *ngSwitchDefault>
+        <!-- <address-list-table-prime [ds]="ds"></address-list-table-prime> -->
+        <p-table styleClass="p-datatable-sm"
+            [value]="ds" [loading]="loading"
+            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            [resizableColumns]="true"
+            [(selection)]="selectedElements" >
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <th style="width:50px" ></th>
+                        <!-- Filed of entity -->
+                        <th *ngSwitchCase="'address.name'" style="width:auto" pResizableColumn pSortableColumn="address.name">name</th>
+                        <th *ngSwitchCase="'address.cityCode'" style="width:auto" pResizableColumn pSortableColumn="address.cityCode">cityCode</th>
+                        <th *ngSwitchCase="'address.address'" style="width:auto" pResizableColumn pSortableColumn="address.address">address</th>
+
+                        <!-- Filed of relational entity -->
+                        <th *ngSwitchCase="'eopoo.taxNumber'" style="width:auto" pResizableColumn pSortableColumn="eopoo.taxNumber">taxNumber</th>
+                    </ng-container>
+                    <th *ngIf="buttons" style="width:140px"></th>    
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-e>
+                <tr>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+                        <!-- Filed of entity -->
+                        <td *ngSwitchCase="'name'">{{ e.name }}</td>
+                        <td *ngSwitchCase="'cityCode'">{{ e.cityCode }}</td>
+                        <td *ngSwitchCase="'address'">{{ e.address }}</td>
+
+                        <!-- Filed of relational entity -->
+                        <td *ngSwitchCase="'eopoo.taxNumber'" >{{ e.eopoo.taxNumber }}</td>
+                    </ng-container>
+                    <td *ngIf="buttons">
+						<ng-container *ngFor="let b of buttons">
+							<p-splitButton *ngIf="b.childs" 
+								styleClass="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" label="{{ b.label }}" 
+								(onClick)="b.command(e)" [model]="b.childs"></p-splitButton>
+
+							<button *ngIf="!b.childs" pButton type="button" 
+								class="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}"
+								label="{{ b.label }}" icon="{{ b.icon }}"
+								(click)="b.command(e)" ></button>
+						</ng-container>
+					</td>
+
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</div>
+
+<agal-paginator 
+    [totalRecords]="totalRecords"
+    [pageSizeOptions]="[30,50,100,500]"
+    [initialSize]="30"
+    (paginator)="changePagination($event)"
+></agal-paginator>

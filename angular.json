@@ -143,6 +143,7 @@
     },
     "defaultProject": "enzo",
     "cli": {
+      "analytics": "240dc7c2-6d5a-4ca9-b179-45975ba87025",
         "defaultCollection": "@angular-eslint/schematics"
     }
 }

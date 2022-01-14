@@ -38,6 +38,8 @@ const routerConfig: ExtraOptions = {
         EnzoCoreModule,
         // Layout module of your application
         EnzoLayoutModule,
+        
+        
 
 		
 

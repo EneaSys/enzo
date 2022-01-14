@@ -3,11 +3,6 @@ import { EnzoApplicationModuleListPageComponent } from './components/application
 
 export const managementRoutes: Route[] = [
 	{
-		path: '', 
-		pathMatch : 'full',
-		redirectTo: 'page'
-	},
-	{
 		path: 'application-module/list', 
 		component: EnzoApplicationModuleListPageComponent
 	}

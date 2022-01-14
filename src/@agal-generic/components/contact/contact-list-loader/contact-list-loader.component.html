@@ -1,0 +1,69 @@
+<div [ngSwitch]="view">
+    <p *ngSwitchCase="'CARD'">
+        CARD
+    </p>
+    <p *ngSwitchDefault>
+        <!-- <contact-list-table-prime [ds]="ds"></contact-list-table-prime> -->
+        <p-table styleClass="p-datatable-sm"
+            [value]="ds" [loading]="loading"
+            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            [resizableColumns]="true"
+            [(selection)]="selectedElements" >
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <th style="width:50px" ></th>
+                        <!-- Filed of entity -->
+                        <th *ngSwitchCase="'contact.contactTypeCode'" style="width:auto" pResizableColumn pSortableColumn="contact.contactTypeCode">contactTypeCode</th>
+                        <th *ngSwitchCase="'contact.value'" style="width:auto" pResizableColumn pSortableColumn="contact.value">value</th>
+
+                        <!-- Filed of relational entity -->
+                        <th *ngSwitchCase="'eopoo.taxNumber'" style="width:auto" pResizableColumn pSortableColumn="eopoo.taxNumber">taxNumber</th>
+                        <th *ngSwitchCase="'referent.firstname'" style="width:auto" pResizableColumn pSortableColumn="referent.firstname">firstname</th>
+                        <th *ngSwitchCase="'referent.lastname'" style="width:auto" pResizableColumn pSortableColumn="referent.lastname">lastname</th>
+                        <th *ngSwitchCase="'referent.position'" style="width:auto" pResizableColumn pSortableColumn="referent.position">position</th>
+                    </ng-container>
+                    <th *ngIf="buttons" style="width:140px"></th>    
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-e>
+                <tr>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+                        <!-- Filed of entity -->
+                        <td *ngSwitchCase="'contactTypeCode'">{{ e.contactTypeCode }}</td>
+                        <td *ngSwitchCase="'value'">{{ e.value }}</td>
+
+                        <!-- Filed of relational entity -->
+                        <td *ngSwitchCase="'eopoo.taxNumber'" >{{ e.eopoo.taxNumber }}</td>
+                        <td *ngSwitchCase="'referent.firstname'" >{{ e.referent.firstname }}</td>
+                        <td *ngSwitchCase="'referent.lastname'" >{{ e.referent.lastname }}</td>
+                        <td *ngSwitchCase="'referent.position'" >{{ e.referent.position }}</td>
+                    </ng-container>
+                    <td *ngIf="buttons">
+						<ng-container *ngFor="let b of buttons">
+							<p-splitButton *ngIf="b.childs" 
+								styleClass="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" label="{{ b.label }}" 
+								(onClick)="b.command(e)" [model]="b.childs"></p-splitButton>
+
+							<button *ngIf="!b.childs" pButton type="button" 
+								class="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}"
+								label="{{ b.label }}" icon="{{ b.icon }}"
+								(click)="b.command(e)" ></button>
+						</ng-container>
+					</td>
+
+                </tr>
+            </ng-template>
+        </p-table>
+    </p>
+</div>
+
+<agal-paginator 
+    [totalRecords]="totalRecords"
+    [pageSizeOptions]="[30,50,100,500]"
+    [initialSize]="30"
+    (paginator)="changePagination($event)"
+></agal-paginator>

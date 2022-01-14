@@ -1,0 +1,48 @@
+<div id="enzo-address-detail-page" class="page-layout blank">
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+
+        <div class="widget" fxFlex.gt-sm="34">
+            <div class="fuse-card auto-width p-16 m-8">
+                <div class="h1 m-8 ml-16 mb-0 secondary-text">address DETAIL BOX</div>
+                <hr>
+                <agal-address-detail-box [address]="addressDTO"></agal-address-detail-box>
+                <br>
+                <div fxLayoutAlign="end">
+                    <button class="ml-8" mat-stroked-button color="primary" (click)="editAddress(addressDTO)">edit</button>
+                    <button class="ml-8" mat-stroked-button color="warn" (click)="deleteAddress(addressDTO)">delete</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget" fxFlex.gt-sm="33">
+            <div class="fuse-card auto-width p-16 m-8">
+                <div class="h1 m-8 ml-16 mb-0 secondary-text"> address DETAIL BOX </div>
+                <hr>
+                <agal-address-detail-box [address]="addressDTO.id"></agal-address-detail-box>
+                <br>
+                <div fxLayoutAlign="end">
+                    <button class="ml-8" mat-stroked-button color="accent" [routerLink]="'/ipp/address/detail/' + addressDTO.id">details</button>
+                    <button class="ml-8" mat-stroked-button color="primary" (click)="editAddress(addressDTO)">edit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget" fxFlex.gt-sm="33">
+   
+        </div>
+
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+            <div class="widget" fxFlex.gt-sm="50">
+                <div class="fuse-card auto-width p-16 m-8 table-with-add-button">
+                    <agal-eopoo-list-loader></agal-eopoo-list-loader>
+                </div>
+            </div>
+            
+
+
+    </div>
+
+</div>

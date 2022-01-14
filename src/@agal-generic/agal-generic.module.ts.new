@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { AgalCoreModule } from '@agal-core/agal-core.module';
 import { EopooNamePipe } from './pipe/eopoo-name.pipe';
+import { AgalAddressListLoaderComponent } from './components/address/address-list-loader/address-list-loader.component';
+
+
+
 
 
 @NgModule({
@@ -15,6 +19,7 @@ import { EopooNamePipe } from './pipe/eopoo-name.pipe';
 	],
 	declarations: [
 		EopooNamePipe,
+		AgalAddressListLoaderComponent,
 
 	],
 	exports: [
