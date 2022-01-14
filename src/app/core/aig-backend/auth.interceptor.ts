@@ -38,8 +38,6 @@ export class AigBackendInterceptor implements HttpInterceptor {
     private async prepareHeaderAuthorized(request: HttpRequest<any>): Promise<HttpRequest<any>> {
         const token = await this.authService.getAccessToken();
 
-		console.log(token);
-
         request = request.clone({
             setHeaders: {
                 'Authorization': 'Bearer ' + token,
@@ -54,10 +52,9 @@ export class AigBackendInterceptor implements HttpInterceptor {
         const contextCodePromise = this.contextService.getActiveContext();
 
 		let res = await Promise.all([tokenPromise, contextCodePromise]);
-		
+
         let token = res[0];
         let context = res[1];
-		console.log(context, token);
 
         request = request.clone({
             setHeaders: {
