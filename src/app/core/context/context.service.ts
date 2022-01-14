@@ -22,7 +22,6 @@ export class EnzoContextService {
 	}
 
 	async setCurrentAndActiveContext(context: TenantContextDTO) {
-		console.log(context);
 		let user = await this.userService.get();
 		
 		let currentContexts = await this.getCurrentContexts();

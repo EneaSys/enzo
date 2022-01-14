@@ -1,16 +1,20 @@
 import { Route } from '@angular/router';
 import { LayoutComponent } from 'app/layout/layout.component';
 import { InitialDataResolver } from 'app/app.resolvers';
-import { OktaCallbackComponent, OktaLoginRedirectComponent } from '@okta/okta-angular';
 import { EnzoAuthGuard } from './core/auth/auth.guard';
 import { EnzoContextGuard } from './core/context/context.guard';
+import { PigesAuthCallbackComponent } from '@piges-auth/piges-auth-callback.component';
+import { PigesAuthLoginComponent } from '@piges-auth/piges-auth-login.component';
 
 // @formatter:off
 // tslint:disable:max-line-length
 export const appRoutes: Route[] = [
 
-    {path: '', pathMatch : 'full', redirectTo: 'example'},
-
+    {
+		path: '',
+		pathMatch : 'full',
+		redirectTo: 'landing'
+	},
 
     // Empty
     {
@@ -24,17 +28,25 @@ export const appRoutes: Route[] = [
         ]
     },
 
-	// login
+
+	// Login
 	{
 		path: 'login',
+		pathMatch : 'full',
+		redirectTo: 'piges/auth/login'
+	},
+
+	// Piges
+	{
+		path: 'piges/auth',
 		children: [
 			{
-				path: '',
-				component: OktaLoginRedirectComponent,
+				path: 'login',
+				component: PigesAuthLoginComponent,
 			},
 			{
 				path: 'callback',
-				component: OktaCallbackComponent
+				component: PigesAuthCallbackComponent
 			},
 		]
 	},

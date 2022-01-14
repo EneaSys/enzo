@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, ReplaySubject } from 'rxjs';
-import { EnzoAuthService } from 'app/core/auth/auth.service';
 import { User } from './user.types';
 import { tap } from 'rxjs/operators';
+import { EnzoAuthService } from '../auth/auth.service';
 
 @Injectable({
     providedIn: 'root'

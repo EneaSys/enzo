@@ -1,5 +1,4 @@
 import { Component, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
-import { OktaAuthService } from '@okta/okta-angular';
 import { EnzoContextService } from 'app/core/context/context.service';
 import { TabManagerService } from 'app/core/tab-manager/tab-manager.service';
 import { SidebarComponent } from '../sidebar/sidebar.component';

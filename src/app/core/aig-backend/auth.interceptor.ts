@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { EnzoAuthService } from '../auth/auth.service';
 import { EnzoContextService } from '../context/context.service';
-
-
+import { EnzoAuthService } from '../auth/auth.service';
 
 @Injectable()
 export class AigBackendInterceptor implements HttpInterceptor {
@@ -38,7 +36,9 @@ export class AigBackendInterceptor implements HttpInterceptor {
     }
 
     private async prepareHeaderAuthorized(request: HttpRequest<any>): Promise<HttpRequest<any>> {
-        const token = this.authService.getAccessToken();
+        const token = await this.authService.getAccessToken();
+
+		console.log(token);
 
         request = request.clone({
             setHeaders: {
@@ -50,8 +50,14 @@ export class AigBackendInterceptor implements HttpInterceptor {
     }
 
     private async prepareHeaderWithContext(request: HttpRequest<any>): Promise<HttpRequest<any>> {
-        const token = this.authService.getAccessToken();
-        const context = this.contextService.getActiveContext();
+        const tokenPromise = this.authService.getAccessToken();
+        const contextCodePromise = this.contextService.getActiveContext();
+
+		let res = await Promise.all([tokenPromise, contextCodePromise]);
+		
+        let token = res[0];
+        let context = res[1];
+		console.log(context, token);
 
         request = request.clone({
             setHeaders: {

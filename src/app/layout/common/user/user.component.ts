@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { BooleanInput } from '@angular/cdk/coercion';
-import { from, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { UserService } from 'app/core/user/user.service';
-import { User } from 'app/core/user/user.types';
 import { Md5 } from 'ts-md5/dist/md5';
 import { EnzoAuthService } from 'app/core/auth/auth.service';
 
@@ -45,8 +43,8 @@ export class UserComponent implements OnInit, OnDestroy
      */
     async ngOnInit() {
 		this.user = await this._userService.get()
-		this.user.avatar = 'https://secure.gravatar.com/avatar/' + new Md5().appendStr(this.user.email).end();
-		this._changeDetectorRef.markForCheck();		
+		//this.user.avatar = 'https://secure.gravatar.com/avatar/' + new Md5().appendStr(this.user.email).end();
+		this._changeDetectorRef.markForCheck();
     }
 
     /**
@@ -60,6 +58,6 @@ export class UserComponent implements OnInit, OnDestroy
     }
 
 	logout(): void {
-        this._enzoAuthService.logout();
+        this._enzoAuthService.logout(window.location.origin);
     }
 }
