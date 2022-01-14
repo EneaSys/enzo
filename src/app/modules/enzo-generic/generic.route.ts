@@ -17,7 +17,7 @@ export const genericRoutes: Route[] = [
 		pathMatch : 'full',
 		redirectTo: 'page'
 	},
-            
+
 		{
 			path: 'eopoo-type', 
 			component: EnzoEopooTypeListPageComponent,

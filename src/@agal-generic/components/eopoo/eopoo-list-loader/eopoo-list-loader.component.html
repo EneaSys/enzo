@@ -13,7 +13,7 @@
             <ng-template pTemplate="header">
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
-                        <th style="width:50px" ></th>
+                        <th *ngSwitchCase="'_ck'" style="width:30px"></th>
                         <!-- Filed of entity -->
                         <th *ngSwitchCase="'eopoo.taxNumber'" style="width:auto" pResizableColumn pSortableColumn="eopoo.taxNumber">taxNumber</th>
 
@@ -35,7 +35,7 @@
             <ng-template pTemplate="body" let-e>
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
-                        <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+                        <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
                         <!-- Filed of entity -->
                         <td *ngSwitchCase="'taxNumber'">{{ e.taxNumber }}</td>
 

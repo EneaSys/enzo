@@ -27,6 +27,7 @@ import {EnzoReferentDetailPageComponent} from './components/referent/referent-de
 		AgalGenericModule,
 	],
 	declarations: [
+
             EnzoEopooTypeListPageComponent,
             EnzoEopooTypeDetailPageComponent,
 
