@@ -47,7 +47,7 @@ import {AgalReferentDetailBoxComponent} from './components/referent/referent-det
 	],
 	exports: [
 		EopooNamePipe,
-
+			
             AgalEopooTypeListLoaderComponent,
             AgalEopooTypeDetailBoxComponent,
 			
