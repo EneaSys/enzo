@@ -9,6 +9,7 @@ import {EnzoAddressListPageComponent} from './components/address/address-list-pa
 import {EnzoContactListPageComponent} from './components/contact/contact-list-page/contact-list-page.component';
 
 import {EnzoReferentListPageComponent} from './components/referent/referent-list-page/referent-list-page.component';
+import { EnzoEopooDetailPageComponent } from './components/eopoo/eopoo-detail-page/eopoo-detail-page.component';
 
 
 export const genericRoutes: Route[] = [
@@ -26,6 +27,16 @@ export const genericRoutes: Route[] = [
 		{
 			path: 'eopoo', 
 			component: EnzoEopooListPageComponent,
+			children : [
+				{
+					path     : ':detail/:id',
+					component: EnzoEopooDetailPageComponent,
+				}
+			]
+		},
+		{
+			path     : 'detail/:id',
+			component: EnzoEopooDetailPageComponent,
 		},
             
 		{
