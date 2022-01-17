@@ -1,36 +1,38 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { EopooDTO } from 'aig-italianlegislation';
-import { EnzoGenericComponentService1 } from 'app/shared/generic-component1.service';
-import { EnzoGenericComponent1 } from 'app/shared/generic1.component';
+import { Component } from "@angular/core";
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from "@angular/router";
+import { EopooDTO, EopooResourceService} from 'aig-generic';
+import { AgalCommonService } from "@agal-core/services/common.service";
+import { AgalGenericComponent } from "@agal-core/components/agal-generic-component";
 
 @Component({
-    templateUrl  : './eopoo-detail-page.component.html',
+  selector: 'enzo-eopoo-detail-page',
+  templateUrl: './eopoo-detail-page.component.html',
+  styleUrls: ['./eopoo-detail-page.component.scss']
 })
-export class EnzoEopooDetailPageComponent extends EnzoGenericComponent1 {
-    constructor(
-		private router: Router,
-		private activatedRoute: ActivatedRoute,
-		public _gcs: EnzoGenericComponentService1,
-	) {
-		super(_gcs);
-		this.id = +activatedRoute.snapshot.paramMap.get('id');
-		this.tmCurrentComponent.name = 'Detail ' + this.id;
-	}
+export class EnzoEopooDetailPageComponent extends AgalGenericComponent {
+  constructor(
+    private resourceService: EopooResourceService,
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
+    agcs: AgalCommonService,
+  ) { super(agcs) }
 
-	id: number;
+  eopooDTO: EopooDTO;
 
-	rename() {
-		this.tmCurrentComponent.name = 'banana';
-	}
+  loadPage() {
+    this.eopooDTO = this.route.snapshot.data.eopoo;
+  }
 
+  async reloadPage() {
+    this.eopooDTO = await this.resourceService.getEopooUsingGET(this.eopooDTO.id).toPromise();
+  }
 
-	eopooDTO: EopooDTO;
+  editEopoo(eopoo: EopooDTO) {
+    //this.dialog.open(EnzoEopooNewUpdateDialogComponent, { data: { eopoo: eopoo } });
+  }
 
-  	loadPage() {
-    this.eopooDTO = this.activatedRoute.snapshot.data.paramMap.get('id');
-	}
-
-
-	
+  async deleteEopoo(eopooDTO: EopooDTO) {
+    
+  }
 }

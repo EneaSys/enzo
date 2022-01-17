@@ -35,5 +35,4 @@ export class EnzoContactDetailPageComponent extends AgalGenericComponent {
   async deleteContact(contactDTO: ContactDTO) {
     
   }
-
 }

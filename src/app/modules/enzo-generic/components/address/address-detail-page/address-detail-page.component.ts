@@ -35,5 +35,4 @@ export class EnzoAddressDetailPageComponent extends AgalGenericComponent {
   async deleteAddress(addressDTO: AddressDTO) {
     
   }
-
 }
