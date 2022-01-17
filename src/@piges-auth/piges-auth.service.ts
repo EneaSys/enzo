@@ -28,7 +28,7 @@ export class PigesAuthService {
 	private _userInfo: any;
 	
 	getAuthorizationUrl(idpIdentifier: string = this.pigesConfig.idp_identifier, state: string = "") {
-		return `${this.pigesConfig.serverUrl}/authorize?response_type=token&client_id=${this.pigesConfig.clientId}&redirect_uri=${this.pigesConfig.redirectUrl}&idp_identifier=${idpIdentifier}&state=${state}`;
+		return `${this.pigesConfig.authorizeUrl}/authorize?response_type=token&client_id=${this.pigesConfig.clientId}&redirect_uri=${this.pigesConfig.redirectUrl}&idp_identifier=${idpIdentifier}&state=${state}`;
 	}
 
     async isAuthenticated(): Promise<boolean> {
@@ -103,7 +103,6 @@ export class PigesAuthService {
 
 	loginRedirect(idpIdentifier: string = this.pigesConfig.idp_identifier, fromUri?: string, additionalParams?: any) {
 		//TODO FARE URL DI CALBACK
-
 		window.location.href = this.getAuthorizationUrl(idpIdentifier);
 	}
 

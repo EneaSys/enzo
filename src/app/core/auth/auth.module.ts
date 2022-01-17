@@ -10,10 +10,11 @@ import { EnzoAuthGuard } from './auth.guard';
 // Piges
 const pigesConfig = {
 	serverUrl: 'https://auth.piges.io',
+	authorizeUrl: 'https://account.piges.io',
 	clientId: 'heemai88do8kq0685e02vbnnj',
 	clientSecret: '',
 	redirectUrl: window.location.origin + '/piges/auth/callback',
-	idp_identifier: 'apigest-okta' //'ya75g8a' //'apigest-okta'
+	idp_identifier: ''
 }
 
 @NgModule({
