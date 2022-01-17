@@ -12,7 +12,7 @@
             
         </div>
         <div>
-            <button *ngFor="let tenantContextDTO of tenantContextDTOs" mat-button (click)="selectContext(tenantContextDTO)">{{ tenantContextDTO.name }}</button>
+            <button *ngFor="let tenantContextDTO of tenantContextDTOs" mat-button (click)="selectContext(tenantContextDTO)">{{ tenantContextDTO.contextName }}</button>
         </div>
     </div>
 </div>

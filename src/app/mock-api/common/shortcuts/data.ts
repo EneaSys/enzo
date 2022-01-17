@@ -2,10 +2,10 @@
 export const shortcuts = [
     {
         id         : 'a1ae91d3-e2cb-459b-9be9-a184694f548b',
-        label      : 'Changelog',
-        description: 'List of changes',
+        label      : 'Tenant',
+        description: 'Seleziona contesto',
         icon       : 'heroicons_outline:clipboard-list',
-        link       : '/docs/changelog',
+        link       : '/select-context',
         useRouter  : true
     },
     {
@@ -13,7 +13,7 @@ export const shortcuts = [
         label      : 'Documentation',
         description: 'Getting started',
         icon       : 'heroicons_outline:book-open',
-        link       : '/docs/guides/getting-started/introduction',
+        link       : '/landing',
         useRouter  : true
     },
     {
@@ -69,7 +69,7 @@ export const shortcuts = [
         label      : 'Reload',
         description: 'Reload the app',
         icon       : 'heroicons_outline:refresh',
-        link       : '/dashboards/project',
+        link       : '/landing',
         useRouter  : false
     }
 ];
