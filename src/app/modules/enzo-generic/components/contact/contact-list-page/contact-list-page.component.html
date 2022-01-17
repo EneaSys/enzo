@@ -10,9 +10,9 @@
 					</div>
 					
 					<div fxFlex fxLayoutAlign="end">
-						<!--<p-splitButton class="mr-2" styleClass="p-button-outlined p-button-secondary p-button-sm" 
+						<p-splitButton class="mr-2" styleClass="p-button-outlined p-button-secondary p-button-sm" 
 							label="Esporta" icon="pi pi-download" [model]="exportButtons"></p-splitButton>
-						-->
+						
 
 						<p-button styleClass="p-button-outlined p-button-secondary p-button-sm" (click)="matDrawer.toggle()">
 							<span class="pr-2">Opzioni</span>
@@ -24,7 +24,11 @@
 				</div>
 				
 				<div class="enzo-content">
-					<agal-contact-list-loader></agal-contact-list-loader> 
+					<agal-contact-list-loader 
+						[dcs]="['id', '_ck' ]"
+						[buttons]="tableButtons">>
+						
+					</agal-contact-list-loader> 
 				</div>
 
             </div>
