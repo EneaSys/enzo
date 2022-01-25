@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PigesAuthModule } from '@piges-auth/piges-auth.module';
-import { PIGES_CONFIG } from '@piges-auth/pigest.export';
+import { PigesAuthModule, PIGES_CONFIG } from '@piges/auth-angular';
 
 import { EnzoAuthService } from './auth.service';
 import { EnzoAuthGuard } from './auth.guard';
@@ -21,6 +20,7 @@ const pigesConfig = {
 	imports: [ 
 		CommonModule,
 		PigesAuthModule,
+		
 	],
 	providers: [
 		EnzoAuthService,
