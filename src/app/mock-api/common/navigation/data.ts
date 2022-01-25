@@ -29,7 +29,7 @@ export const compactNavigation: FuseNavigationItem[] = [
                         title: 'Anagrafiche',
 						icon : 'iconsmind:malefemale',
                         type : 'basic',
-						link : '/g5c/eopoo'
+						link : '/generic/eopoo'
                     },
                     {
                         id   : 'g5c-eopoo-group',

@@ -35,5 +35,4 @@ export class EnzoReferentDetailPageComponent extends AgalGenericComponent {
   async deleteReferent(referentDTO: ReferentDTO) {
     
   }
-
 }

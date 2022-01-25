@@ -15,7 +15,8 @@
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
                         <th *ngSwitchCase="'_ck'" style="width:30px"></th>
                         <!-- Filed of entity -->
-                        <th *ngSwitchCase="'eopoo.taxNumber'" style="width:auto" pResizableColumn pSortableColumn="eopoo.taxNumber">taxNumber</th>
+                        <th *ngSwitchCase="'taxNumber'" style="width:auto" pResizableColumn pSortableColumn="taxNumber">taxNumber</th>
+                        <th *ngSwitchCase="'id'" style="width:auto" pResizableColumn pSortableColumn="id">id</th>
 
                         <!-- Filed of relational entity -->
                         <th *ngSwitchCase="'person.firstname'" style="width:auto" pResizableColumn pSortableColumn="person.firstname">firstname</th>
@@ -38,6 +39,7 @@
                         <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
                         <!-- Filed of entity -->
                         <td *ngSwitchCase="'taxNumber'">{{ e.taxNumber }}</td>
+                        <td *ngSwitchCase="'id'">{{ e.id }}</td>
 
                         <!-- Filed of relational entity -->
                         <td *ngSwitchCase="'person.firstname'" >{{ e.person.firstname }}</td>

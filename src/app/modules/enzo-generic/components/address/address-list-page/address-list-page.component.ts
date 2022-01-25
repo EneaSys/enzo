@@ -40,7 +40,7 @@ export class EnzoAddressListPageComponent extends EnzoGenericComponent1 {
 			class: "",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/example/asd/"+e.id)
+				this.router.navigateByUrl("/generic/address/detail/"+e.id)
 			},
 		},
 		{

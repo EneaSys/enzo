@@ -35,5 +35,4 @@ export class EnzoEopooDetailPageComponent extends AgalGenericComponent {
   async deleteEopoo(eopooDTO: EopooDTO) {
     
   }
-
 }
