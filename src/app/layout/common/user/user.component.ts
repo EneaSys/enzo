@@ -43,7 +43,7 @@ export class UserComponent implements OnInit, OnDestroy
      */
     async ngOnInit() {
 		this.user = await this._userService.get()
-		this.user.avatar = 'https://secure.gravatar.com/avatar/' + new Md5().appendStr(this.user.given_name).end();
+		this.user.avatar = 'https://secure.gravatar.com/avatar/' + new Md5().appendStr(this.user.email).end();
 		this._changeDetectorRef.markForCheck();
     }
 
