@@ -35,60 +35,29 @@ export class EnzoEopooListPageComponent extends EnzoGenericComponent1 {
 		{
 			label: "Dettagli",
 			hideLabel: true,
+			icon: "pi pi-search",
+			severity: "secondary",
+			class: "p-button-sm p-button-outlined",
+			command: (e: any) => {
+				this._gcs.tabManagerService.openInTab()
+				this.router.navigateByUrl("/generic/eopoo/detail/"+e.id)
+			},
 			childs: [
 				{
-					label: "Dettagli",
-					icon: "pi pi-search",
-					command: (e: any) => {
-						this._gcs.tabManagerService.openInTab()
-						this.router.navigateByUrl("/generic/eopoo/detail/"+e.item.data.id)
-					}
-				},
-				{
 					label: "Edit",
-					hideLabel: true,
 					icon: "pi pi-pencil",
-					severity: "secondary",
-					class: "",
 					command: (e: any) => {
-						console.log("edit");
+						console.log("edit", e.item.data.id);
 					}
 				},
 				{
 					label: "Delete",
 					icon: "pi pi-trash",
-					class: "",
 					command: async (e: any) => {
-						console.log("delete");
+						console.log("delete", e.item.data.id);
 					}
 				}
-			],
-			icon: "pi pi-search",
-			severity: "primary mb-2",
-			class: "",
-			command: (e: any) => {
-				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/generic/eopoo/detail/"+e.id)
-			},
-		},
-		{
-			label: "Edit",
-			hideLabel: true,
-			icon: "pi pi-pencil",
-			severity: "secondary",
-			class: "",
-			command: (e: any) => {
-				console.log("edit");
-			}
-		},{
-			label: "Delete",
-			hideLabel: true,
-			icon: "pi pi-trash",
-			severity: "danger",
-			class: "",
-			command: async (e: any) => {
-				console.log("delete");
-			}
+			]
 		}
 	]
 }

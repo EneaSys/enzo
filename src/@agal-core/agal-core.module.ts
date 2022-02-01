@@ -10,6 +10,8 @@ import { ButtonModule } from 'primeng/button';
 
 import { AgalCommonService } from './services/common.service';
 import { AgalPaginatorComponent } from './components/paginator/paginator.component';
+import { MenuModule } from 'primeng/menu';
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
 	imports: [ 
@@ -32,6 +34,8 @@ import { AgalPaginatorComponent } from './components/paginator/paginator.compone
 
 		TableModule,
 		ButtonModule,
+		MenuModule,
+		RippleModule,
 
 		AgalPaginatorComponent,
 	]

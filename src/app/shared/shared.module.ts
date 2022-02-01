@@ -12,6 +12,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 
 import { EnzoGenericComponentService1 } from './generic-component1.service';
+import { MenuModule } from 'primeng/menu';
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
     imports: [
@@ -30,6 +32,8 @@ import { EnzoGenericComponentService1 } from './generic-component1.service';
 
 		ButtonModule,
 		SplitButtonModule,
+		MenuModule,
+		RippleModule,
 
 		MatIconModule,
 		MatSidenavModule,

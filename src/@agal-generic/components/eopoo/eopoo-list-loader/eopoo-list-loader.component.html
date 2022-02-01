@@ -14,7 +14,7 @@
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
                         <th *ngSwitchCase="'_ck'" style="width:30px"></th>
-                        <th *ngSwitchCase="'id'" style="width: 50px;" pResizableColumn pSortableColumn="id">Id</th>
+                        <th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
                         <!-- Filed of entity -->
                         <th *ngSwitchCase="'taxNumber'" style="width:auto" pResizableColumn pSortableColumn="taxNumber">taxNumber</th>
 
@@ -29,15 +29,14 @@
                         <th *ngSwitchCase="'eopooType.eopooTypeCode'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooTypeCode">eopooTypeCode</th>
                         <th *ngSwitchCase="'eopooType.eopooCategory'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooCategory">eopooCategory</th>
                     </ng-container>
-                    <th *ngIf="buttons" style="width:140px"></th>    
-
+                    <th *ngIf="buttons" style="width:170px"></th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-e>
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
-                        <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
-                        <td *ngSwitchCase="'id'">{{ e.id }}</td>
+                        <td *ngSwitchCase="'_ck'" style="text-align:center"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+                        <td *ngSwitchCase="'id'" style="text-align:center">{{ e.id }}</td>
                         <!-- Filed of entity -->
                         <td *ngSwitchCase="'taxNumber'">{{ e.taxNumber }}</td>
 
@@ -52,18 +51,18 @@
                         <td *ngSwitchCase="'eopooType.eopooTypeCode'" >{{ e.eopooType.eopooTypeCode }}</td>
                         <td *ngSwitchCase="'eopooType.eopooCategory'" >{{ e.eopooType.eopooCategory }}</td>
                     </ng-container>
-                    <td *ngIf="buttons">
+                    <td *ngIf="buttons" style="text-align:center">
 						<ng-container *ngFor="let b of buttons">
-							<p-splitButton *ngIf="b.childs"
-								styleClass="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" label="{{ b.label }}" appendTo="body"
-								(onClick)="b.command(e)" [model]="decoreButtons(b.childs, e)">
-                            </p-splitButton>
-                            
-							<button *ngIf="!b.childs" pButton type="button" 
-								class="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}"
-								label="{{ b.label }}" icon="{{ b.icon }}"
-								(click)="b.command(e)" >
+							<button pButton type="button" 
+								class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}"
+								label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)" >
                             </button>
+							<ng-container *ngIf="b.childs">
+								<button pButton type="button" 
+									class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
+									pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)"></button>
+								<p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
+							</ng-container>
 						</ng-container>
 					</td>
 
