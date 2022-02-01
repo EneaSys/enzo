@@ -40,9 +40,8 @@ export class EnzoEopooListPageComponent extends EnzoGenericComponent1 {
 					label: "Dettagli",
 					icon: "pi pi-search",
 					command: (e: any) => {
-						console.log(e);
 						this._gcs.tabManagerService.openInTab()
-						this.router.navigateByUrl("/generic/eopoo/detail/"+e.id)
+						this.router.navigateByUrl("/generic/eopoo/detail/"+e.item.data.id)
 					}
 				},
 				{

@@ -56,7 +56,7 @@
 						<ng-container *ngFor="let b of buttons">
 							<p-splitButton *ngIf="b.childs"
 								styleClass="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" label="{{ b.label }}" appendTo="body"
-								(onClick)="b.command(e)" [model]="b.childs">
+								(onClick)="b.command(e)" [model]="decoreButtons(b.childs, e)">
                             </p-splitButton>
                             
 							<button *ngIf="!b.childs" pButton type="button" 

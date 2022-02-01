@@ -42,9 +42,8 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
                 // Check if the screen is small
                 this.isScreenSmall = !matchingAliases.includes('md');
             });
-
     }
-
+	
     ngOnDestroy(): void {
 		this.tabManagerService.removeAllTabs();
         // Unsubscribe from all subscriptions

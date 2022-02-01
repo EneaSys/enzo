@@ -59,6 +59,12 @@ export abstract class AgalGenericTable extends AgalGenericComponent {
         }
     }
 
+	decoreButtons(items: any[], e: any) {
+		for(let item of items) {
+			item.data = e;
+		}
+		return items;
+	}
 
     async loadData() {
 		if(this.loading) {

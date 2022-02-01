@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 
 import { AgalCommonService } from '@agal-core/services/common.service';
-
 import { AgalGenericTable } from '@agal-core/components/agal-generic-table';
 
-import {EopooResourceService } from 'aig-generic';
-
+import { EopooResourceService } from 'aig-generic';
 
 @Component({
     selector: 'agal-eopoo-list-loader',
