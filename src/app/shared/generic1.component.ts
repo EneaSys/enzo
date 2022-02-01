@@ -1,4 +1,5 @@
 import { Injectable, OnDestroy, OnInit } from "@angular/core";
+import { NavigationEnd } from "@angular/router";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 
@@ -13,7 +14,7 @@ export class EnzoGenericComponent1 implements OnInit, OnDestroy {
 	tmCurrentComponent: any = {};
 	
     constructor(
-		public _gcs: EnzoGenericComponentService1
+		public _gcs: EnzoGenericComponentService1,
 	) {
 		this.tmCurrentComponent = this._gcs.tabManagerService.createComponent("PageName");
 	}
@@ -35,6 +36,14 @@ export class EnzoGenericComponent1 implements OnInit, OnDestroy {
                     this.drawerOpened = false;
                 }
             });
+
+            this._gcs.router.events
+                .pipe(takeUntil(this._unsubscribeAll))
+                .subscribe((e: any) => {
+                    if (e instanceof NavigationEnd) {
+                        this.onLoad();
+                    }
+                });
     }
 
 	ngOnDestroy(): void
@@ -43,4 +52,6 @@ export class EnzoGenericComponent1 implements OnInit, OnDestroy {
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();
     }
+
+    protected onLoad() {}
 }

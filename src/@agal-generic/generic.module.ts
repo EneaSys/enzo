@@ -65,7 +65,8 @@ import { ReferentResolver } from './resolvers/referent.resolver';
 			
 	],
 	providers: [
-			
+		EopooNamePipe,
+            
             EopooTypeResolver,
 			
             EopooResolver,

@@ -31,6 +31,7 @@ import { ReferentResolver } from '@agal-generic/resolvers/referent.resolver';
 		RouterModule.forChild(genericRoutes),
 		EnzoSharedModule,
 		AgalGenericModule,
+
 	],
 	declarations: [
 

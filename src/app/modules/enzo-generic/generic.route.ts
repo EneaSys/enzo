@@ -44,7 +44,7 @@ export const genericRoutes: Route[] = [
 			path: 'eopoo/detail/:id', 
 			component: EnzoEopooDetailPageComponent,
 			resolve: {
-                user: EopooResolver,
+                eopoo: EopooResolver,
             },
 		},
 
