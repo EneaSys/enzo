@@ -14,6 +14,7 @@ import {EnzoContactDetailPageComponent} from './components/contact/contact-detai
 
 import {EnzoReferentListPageComponent} from './components/referent/referent-list-page/referent-list-page.component';
 import {EnzoReferentDetailPageComponent} from './components/referent/referent-detail-page/referent-detail-page.component';
+import { EopooResolver } from '@agal-generic/resolvers/eopoo.resolver';
 
 
 export const genericRoutes: Route[] = [
@@ -42,6 +43,9 @@ export const genericRoutes: Route[] = [
 		{
 			path: 'eopoo/detail/:id', 
 			component: EnzoEopooDetailPageComponent,
+			resolve: {
+                user: EopooResolver,
+            },
 		},
 
             
