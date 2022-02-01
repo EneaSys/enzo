@@ -1,38 +1,48 @@
 import { Component } from "@angular/core";
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from "@angular/router";
 import { ContactDTO, ContactResourceService} from 'aig-generic';
 import { AgalCommonService } from "@agal-core/services/common.service";
-import { AgalGenericComponent } from "@agal-core/components/agal-generic-component";
+import { EnzoGenericComponent1 } from "app/shared/generic1.component";
+import { EnzoGenericComponentService1 } from "app/shared/generic-component1.service";
 
 @Component({
   selector: 'enzo-contact-detail-page',
   templateUrl: './contact-detail-page.component.html',
   styleUrls: ['./contact-detail-page.component.scss']
 })
-export class EnzoContactDetailPageComponent extends AgalGenericComponent {
+export class EnzoContactDetailPageComponent extends EnzoGenericComponent1 {
   constructor(
     private resourceService: ContactResourceService,
     private route: ActivatedRoute,
-    private dialog: MatDialog,
+    public _gcs: EnzoGenericComponentService1,
     agcs: AgalCommonService,
-  ) { super(agcs) }
+  ) {
+      super(_gcs);
+      this.onLoad();
+    }
+
+  id: number;
 
   contactDTO: ContactDTO;
 
-  loadPage() {
+  onLoad() {
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.tmCurrentComponent.name = this.tmCurrentComponent.name = 'Detail ' + this.id;
     this.contactDTO = this.route.snapshot.data.contact;
-  }
+  } 
 
   async reloadPage() {
     this.contactDTO = await this.resourceService.getContactUsingGET(this.contactDTO.id).toPromise();
   }
 
-  editContact(contact: ContactDTO) {
+  /*editContact(contact: ContactDTO) {
     //this.dialog.open(EnzoContactNewUpdateDialogComponent, { data: { contact: contact } });
   }
 
   async deleteContact(contactDTO: ContactDTO) {
     
-  }
+  }*/
 }
+
+
+

@@ -18,12 +18,6 @@ import {EnzoContactDetailPageComponent} from './components/contact/contact-detai
 
 import {EnzoReferentListPageComponent} from './components/referent/referent-list-page/referent-list-page.component';
 import {EnzoReferentDetailPageComponent} from './components/referent/referent-detail-page/referent-detail-page.component';
-import { MatDialog } from '@angular/material/dialog';
-import { EopooTypeResolver } from '@agal-generic/resolvers/eopoo-type.resolver';
-import { EopooResolver } from '@agal-generic/resolvers/eopoo.resolver';
-import { AddressResolver } from '@agal-generic/resolvers/address.resolver';
-import { ContactResolver } from '@agal-generic/resolvers/contact.resolver';
-import { ReferentResolver } from '@agal-generic/resolvers/referent.resolver';
 
 
 @NgModule({
@@ -31,7 +25,6 @@ import { ReferentResolver } from '@agal-generic/resolvers/referent.resolver';
 		RouterModule.forChild(genericRoutes),
 		EnzoSharedModule,
 		AgalGenericModule,
-
 	],
 	declarations: [
 
@@ -52,16 +45,6 @@ import { ReferentResolver } from '@agal-generic/resolvers/referent.resolver';
 
 	],
 	providers: [
-
-        EopooTypeResolver,
-			
-            EopooResolver,
-			
-            AddressResolver,
-			
-            ContactResolver,
-			
-            ReferentResolver,
 		
 	],
 })

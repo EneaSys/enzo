@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AgalCoreModule } from '@agal-core/agal-core.module';
 import { EopooNamePipe } from './pipe/eopoo-name.pipe';
 import { AigGenericClientModule } from 'aig-generic';
+
 import { AgalEopooTypeListLoaderComponent } from './components/eopoo-type/eopoo-type-list-loader/eopoo-type-list-loader.component';
 import { AgalEopooTypeDetailBoxComponent } from './components/eopoo-type/eopoo-type-detail-box/eopoo-type-detail-box.component';
 import { EopooTypeResolver } from './resolvers/eopoo-type.resolver';
@@ -46,7 +47,6 @@ import { ReferentResolver } from './resolvers/referent.resolver';
 	],
 	exports: [
 		EopooNamePipe,
-
 			
             AgalEopooTypeListLoaderComponent,
             AgalEopooTypeDetailBoxComponent,
@@ -66,7 +66,7 @@ import { ReferentResolver } from './resolvers/referent.resolver';
 	],
 	providers: [
 		EopooNamePipe,
-            
+			
             EopooTypeResolver,
 			
             EopooResolver,

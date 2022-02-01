@@ -14,6 +14,7 @@
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
                         <th *ngSwitchCase="'_ck'" style="width:30px"></th>
+                        <th *ngSwitchCase="'id'" style="width: 50px;" pResizableColumn pSortableColumn="id">Id</th>
                         <!-- Filed of entity -->
                         <th *ngSwitchCase="'address.name'" style="width:auto" pResizableColumn pSortableColumn="address.name">name</th>
                         <th *ngSwitchCase="'address.cityCode'" style="width:auto" pResizableColumn pSortableColumn="address.cityCode">cityCode</th>
@@ -30,6 +31,7 @@
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
                         <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+                        <td *ngSwitchCase="'id'">{{ e.id }}</td>
                         <!-- Filed of entity -->
                         <td *ngSwitchCase="'name'">{{ e.name }}</td>
                         <td *ngSwitchCase="'cityCode'">{{ e.cityCode }}</td>
