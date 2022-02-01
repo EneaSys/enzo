@@ -35,8 +35,37 @@ export class EnzoEopooListPageComponent extends EnzoGenericComponent1 {
 		{
 			label: "Dettagli",
 			hideLabel: true,
+			childs: [
+				{
+					label: "Dettagli",
+					icon: "pi pi-search",
+					command: (e: any) => {
+						console.log(e);
+						this._gcs.tabManagerService.openInTab()
+						this.router.navigateByUrl("/generic/eopoo/detail/"+e.id)
+					}
+				},
+				{
+					label: "Edit",
+					hideLabel: true,
+					icon: "pi pi-pencil",
+					severity: "secondary",
+					class: "",
+					command: (e: any) => {
+						console.log("edit");
+					}
+				},
+				{
+					label: "Delete",
+					icon: "pi pi-trash",
+					class: "",
+					command: async (e: any) => {
+						console.log("delete");
+					}
+				}
+			],
 			icon: "pi pi-search",
-			severity: "primary",
+			severity: "primary mb-2",
 			class: "",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()

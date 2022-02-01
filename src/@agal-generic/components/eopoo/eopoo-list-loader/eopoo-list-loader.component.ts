@@ -6,6 +6,7 @@ import { AgalGenericTable } from '@agal-core/components/agal-generic-table';
 
 import {EopooResourceService } from 'aig-generic';
 
+
 @Component({
     selector: 'agal-eopoo-list-loader',
     templateUrl: './eopoo-list-loader.component.html',

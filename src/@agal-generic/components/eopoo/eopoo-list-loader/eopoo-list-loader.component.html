@@ -54,14 +54,16 @@
                     </ng-container>
                     <td *ngIf="buttons">
 						<ng-container *ngFor="let b of buttons">
-							<p-splitButton *ngIf="b.childs" 
-								styleClass="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" label="{{ b.label }}" 
-								(onClick)="b.command(e)" [model]="b.childs"></p-splitButton>
-
+							<p-splitButton *ngIf="b.childs"
+								styleClass="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" label="{{ b.label }}" appendTo="body"
+								(onClick)="b.command(e)" [model]="b.childs">
+                            </p-splitButton>
+                            
 							<button *ngIf="!b.childs" pButton type="button" 
 								class="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}"
 								label="{{ b.label }}" icon="{{ b.icon }}"
-								(click)="b.command(e)" ></button>
+								(click)="b.command(e)" >
+                            </button>
 						</ng-container>
 					</td>
 

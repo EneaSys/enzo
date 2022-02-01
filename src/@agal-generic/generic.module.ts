@@ -19,11 +19,15 @@ import { ContactResolver } from './resolvers/contact.resolver';
 import { AgalReferentListLoaderComponent } from './components/referent/referent-list-loader/referent-list-loader.component';
 import { AgalReferentDetailBoxComponent } from './components/referent/referent-detail-box/referent-detail-box.component';
 import { ReferentResolver } from './resolvers/referent.resolver';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 @NgModule({
 	imports: [ 
 		CommonModule,
 		AgalCoreModule,
+
+            SplitButtonModule,
+            
 		AigGenericClientModule,
 	],
 	declarations: [
