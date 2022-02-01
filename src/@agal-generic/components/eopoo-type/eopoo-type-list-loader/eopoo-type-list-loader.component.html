@@ -38,16 +38,18 @@
 
                         <!-- Filed of relational entity -->
                     </ng-container>
-                    <td *ngIf="buttons">
+                    <td *ngIf="buttons" style="text-align:center">
 						<ng-container *ngFor="let b of buttons">
-							<p-splitButton *ngIf="b.childs" 
-								styleClass="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" label="{{ b.label }}" 
-								(onClick)="b.command(e)" [model]="b.childs"></p-splitButton>
-
-							<button *ngIf="!b.childs" pButton type="button" 
-								class="{{ b.class }} p-button-sm p-button-outlined p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}"
-								label="{{ b.label }}" icon="{{ b.icon }}"
-								(click)="b.command(e)" ></button>
+							<button pButton type="button" 
+								class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}"
+								label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)" >
+                            </button>
+							<ng-container *ngIf="b.childs">
+								<button pButton type="button" 
+									class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
+									pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)"></button>
+								<p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
+							</ng-container>
 						</ng-container>
 					</td>
 

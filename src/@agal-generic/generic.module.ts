@@ -21,64 +21,63 @@ import { AgalReferentDetailBoxComponent } from './components/referent/referent-d
 import { ReferentResolver } from './resolvers/referent.resolver';
 
 @NgModule({
-	imports: [
+	imports: [ 
 		CommonModule,
 		AgalCoreModule,
-
 		AigGenericClientModule,
 	],
 	declarations: [
 		EopooNamePipe,
 
-		AgalEopooTypeListLoaderComponent,
-		AgalEopooTypeDetailBoxComponent,
+            AgalEopooTypeListLoaderComponent,
+            AgalEopooTypeDetailBoxComponent,
 
-		AgalEopooListLoaderComponent,
-		AgalEopooDetailBoxComponent,
+            AgalEopooListLoaderComponent,
+            AgalEopooDetailBoxComponent,
 
-		AgalAddressListLoaderComponent,
-		AgalAddressDetailBoxComponent,
+            AgalAddressListLoaderComponent,
+            AgalAddressDetailBoxComponent,
 
-		AgalContactListLoaderComponent,
-		AgalContactDetailBoxComponent,
+            AgalContactListLoaderComponent,
+            AgalContactDetailBoxComponent,
 
-		AgalReferentListLoaderComponent,
-		AgalReferentDetailBoxComponent,
+            AgalReferentListLoaderComponent,
+            AgalReferentDetailBoxComponent,
 
 	],
 	exports: [
 		EopooNamePipe,
-
-		AgalEopooTypeListLoaderComponent,
-		AgalEopooTypeDetailBoxComponent,
-
-		AgalEopooListLoaderComponent,
-		AgalEopooDetailBoxComponent,
-
-		AgalAddressListLoaderComponent,
-		AgalAddressDetailBoxComponent,
-
-		AgalContactListLoaderComponent,
-		AgalContactDetailBoxComponent,
-
-		AgalReferentListLoaderComponent,
-		AgalReferentDetailBoxComponent,
-
+			
+            AgalEopooTypeListLoaderComponent,
+            AgalEopooTypeDetailBoxComponent,
+			
+            AgalEopooListLoaderComponent,
+            AgalEopooDetailBoxComponent,
+			
+            AgalAddressListLoaderComponent,
+            AgalAddressDetailBoxComponent,
+			
+            AgalContactListLoaderComponent,
+            AgalContactDetailBoxComponent,
+			
+            AgalReferentListLoaderComponent,
+            AgalReferentDetailBoxComponent,
+			
 	],
 	providers: [
 		EopooNamePipe,
-
-		EopooTypeResolver,
-
-		EopooResolver,
-
-		AddressResolver,
-
-		ContactResolver,
-
-		ReferentResolver,
-
-
+			
+            EopooTypeResolver,
+			
+            EopooResolver,
+			
+            AddressResolver,
+			
+            ContactResolver,
+			
+            ReferentResolver,
+			
+		
 	],
 })
-export class AgalGenericModule { }
+export class AgalGenericModule {}
