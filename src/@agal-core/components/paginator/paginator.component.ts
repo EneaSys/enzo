@@ -1,23 +1,27 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+export interface AgalPaginator {
+	page: number,
+	size: number
+}
+
 @Component({
     selector: 'agal-paginator',
     templateUrl: './paginator.component.html',
     styleUrls: ['./paginator.component.scss']
 })
 export class AgalPaginatorComponent implements OnInit {
-    @Input()
-    totalRecords: number;
+    @Input() totalRecords: number;
 
-    @Input()
-    pageSizeOptions: number[] = [10,30,50,100];
+    @Input() pageSizeOptions: number[] = [10,30,50,100];
+    @Input() initialSize: number = 30; ///<-- DA ELIMINARE 
 
-    @Input()
-    initialSize: number = 30;
-
-    @Output()
-	paginator = new EventEmitter<any>();
+	@Input() pageable: AgalPaginator = {
+		page: 0,
+		size: 30
+	};
+    @Output() pageableChange = new EventEmitter<any>();
 
     selectPageForm: FormGroup;
 
@@ -26,27 +30,25 @@ export class AgalPaginatorComponent implements OnInit {
     ) {
         this.selectPageForm = this._formBuilder.group({
             page: [1, Validators.required]
-        })
+        });
     }
     ngOnInit(): void {
-        this.selectSize(this.initialSize);
+        this.selectSize(this.pageable.size);
     }
 
     _page: number = 1;
 
     pages: number = 0;
     
-    pageable: any = {
-        page: 0,
-        size: 30
-    }
-
     pagination: any = {
         first: 0,
         last: 0    
     }
 
     ngOnChanges(changes: SimpleChanges) {
+		if(changes.pageable !== undefined) {
+			this.selectPageForm.controls['page'].patchValue(changes.pageable.currentValue.page+1);
+		}
 		this.calculate();
     }
 
@@ -72,7 +74,9 @@ export class AgalPaginatorComponent implements OnInit {
         }
         this.selectPageForm.controls['page'].patchValue(page);
         this.pageable.page = page-1;
-        this.paginator.emit(this.pageable);
+
+		let eopooListPaginator = { ...this.pageable }
+        this.pageableChange.emit(eopooListPaginator);
         this.calculate();
     }
 

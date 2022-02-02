@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { AgalCommonService } from '@agal-core/services/common.service';
 import { AgalGenericTable2 } from '@agal-core/components/agal-generic-table2';
@@ -6,7 +6,6 @@ import { AgalGenericTable2 } from '@agal-core/components/agal-generic-table2';
 import {EopooResourceService } from 'aig-generic';
 
 @Component({
-	changeDetection: ChangeDetectionStrategy.OnPush,
 	selector: 'agal-eopoo-list-loader',
 	templateUrl: './eopoo-list-loader.component.html',
 	styleUrls: ['./eopoo-list-loader.component.scss']

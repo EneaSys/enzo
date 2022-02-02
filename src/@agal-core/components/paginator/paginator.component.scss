@@ -1,10 +1,10 @@
 .paginator-main {
 	overflow: hidden;
-    padding: 0px 10px;
+	padding: 0px 10px;
     border: 1px solid;
-    color: #607D8B;
-	height: 40px;
 	border-radius: 3px;
+    color: #607D8B;
+	max-width: 450px;
 
 	input {
 		width: 40px;
@@ -20,13 +20,14 @@
 	.paginator-el {
 		float: left;
 		padding: 0 4px;
+		min-width: 140px;
 
 		span, form, input, select {
 			float: left;
 		}
 
 		span {
-			padding: 9px 0;
+			padding: 8.5px 0;
 		}
 		
 		form {

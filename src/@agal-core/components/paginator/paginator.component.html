@@ -8,7 +8,9 @@
 	</div>
 	<div class="paginator-el">
 		<span>Righe: {{ pagination.first }} - {{ pagination.last }} di {{ totalRecords }} </span>
-		<select [ngModel]="initialSize" (ngModelChange)="selectSize($event)">
+	</div>
+	<div class="paginator-el">
+		<select [ngModel]="pageable.size" (ngModelChange)="selectSize($event)">
 			<option *ngFor="let pageSizeOption of pageSizeOptions">{{ pageSizeOption }}</option>
 		</select>
 		<span> per pagina</span>
