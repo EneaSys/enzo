@@ -43,7 +43,7 @@ export const compactNavigation: FuseNavigationItem[] = [
                         title: 'Contatti',
 						icon : 'iconsmind:conference',
                         type : 'basic',
-						link : '/g5c/contact'
+						link : '/generic/contact'
                     },
 					{
                         id   : 'g5e-settings',
@@ -55,7 +55,7 @@ export const compactNavigation: FuseNavigationItem[] = [
 								id   : 'g5e-eopoo-type',
 								title: 'Tipi anagrafiche',
 								type : 'basic',
-								link : '/il/pp/partecipation-status'
+								link : '/generic/eopoo-type'
 							},
 							{
 								id   : 'g5e-eopoo-status',
