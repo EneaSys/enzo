@@ -17,12 +17,6 @@ export class EnzoEopooListPageComponent extends EnzoGenericComponent1 {
 
 	eopooListPaginator: any;
 	eopooCount: number;
-	sort: string[] = ['id,asc'];
-
-
-
-
-
 
 	paginatorEvent(paginator: any) {
 		let eopooListPaginator = { ...paginator }

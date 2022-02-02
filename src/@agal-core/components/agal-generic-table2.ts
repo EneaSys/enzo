@@ -7,7 +7,7 @@ import { AgalGenericComponent } from "./agal-generic-component";
 @Directive()
 export abstract class AgalGenericTable2 extends AgalGenericComponent {
 	_apiFilters: any = {};
-	
+		
 	@Input() filters: any;
     @Input() paginator: any;
 	@Input() sort: string[] = [];
@@ -20,6 +20,9 @@ export abstract class AgalGenericTable2 extends AgalGenericComponent {
 
 	@Output() resultList = new EventEmitter<any[]>();
 	@Output() resultCount = new EventEmitter<number>();
+	
+	@Input() selectedElements: any[] = [];
+	@Output() selectedElementsChange = new EventEmitter<any[]>()
 
 	constructor(
         agcs: AgalCommonService
@@ -30,10 +33,13 @@ export abstract class AgalGenericTable2 extends AgalGenericComponent {
 	ds: any[];
 	totalRecords: number = 0;
 
-	selectedElements: any[] = [];
-
 	ngOnChanges(changes: SimpleChanges) {
-		console.log("change", changes);
+		let nOfChange = 0;
+		for(let change in changes) { nOfChange++ }
+		
+		if(nOfChange == 1 && changes.selectedElements !== undefined) {
+			return;
+		}
 		this.loadData();
 	}
 
@@ -56,6 +62,12 @@ export abstract class AgalGenericTable2 extends AgalGenericComponent {
 			item.data = e;
 		}
 		return items;
+	}
+
+	selection(elements: any[]) {
+		this.selectedElements = elements;
+		console.log(this.selectedElements);
+		this.selectedElementsChange.emit(this.selectedElements);
 	}
 
     async loadData() {

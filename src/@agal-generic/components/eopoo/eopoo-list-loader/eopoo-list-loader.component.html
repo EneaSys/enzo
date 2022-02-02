@@ -12,13 +12,13 @@
             [value]="ds" 
             [lazy]="true" (onLazyLoad)="lazyLoad($event)"
             [resizableColumns]="true"
-            [(selection)]="selectedElements" >
+            [selection]="selectedElements" (selectionChange)="selection($event)" >
 
             <ng-template pTemplate="header">
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
                         <th *ngSwitchCase="'_ck'" style="width:30px"></th>
-                        <th *ngSwitchCase="'id'" style="width: 50px;" pResizableColumn pSortableColumn="id">Id</th>
+                        <th *ngSwitchCase="'id'" style="width: 50px;" pResizableColumn pSortableColumn="id">id</th>
                         <!-- Filed of entity -->
                         <th *ngSwitchCase="'taxNumber'" style="width: auto;" pResizableColumn pSortableColumn="taxNumber">taxNumber</th>
 
@@ -33,7 +33,7 @@
                         <th *ngSwitchCase="'eopooType.eopooTypeCode'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooTypeCode">eopooTypeCode</th>
                         <th *ngSwitchCase="'eopooType.eopooCategory'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooCategory">eopooCategory</th>
                     </ng-container>
-                    <th *ngIf="buttons" style="width:auto"></th>    
+                    <th *ngIf="buttons" style="width: 150px;"></th>    
 
                 </tr>
             </ng-template>
