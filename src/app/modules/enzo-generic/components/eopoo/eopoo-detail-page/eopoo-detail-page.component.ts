@@ -27,10 +27,15 @@ export class EnzoEopooDetailPageComponent extends EnzoGenericComponent1 {
 
   id: number;
 
+  adressFilter: any; 
+
   eopooDTO: EopooDTO;
 
   onLoad() {
     this.eopooDTO = this.route.snapshot.data.eopoo;
+    this.adressFilter = {
+      eopooId: this.eopooDTO.id
+    }
   } 
 
   async reloadPage() {
