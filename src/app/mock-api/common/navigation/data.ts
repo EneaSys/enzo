@@ -39,13 +39,6 @@ export const compactNavigation: FuseNavigationItem[] = [
 						link : '/il/pp/procurement-lot'
                     },
 					{
-                        id   : 'g5e-contact',
-                        title: 'Contatti',
-						icon : 'iconsmind:conference',
-                        type : 'basic',
-						link : '/generic/contact'
-                    },
-					{
                         id   : 'g5e-settings',
                         title: 'Impostazioni',
 						icon : 'iconsmind:gears',
@@ -59,7 +52,7 @@ export const compactNavigation: FuseNavigationItem[] = [
 							},
 							{
 								id   : 'g5e-eopoo-status',
-								title: 'Stato anarafiche',
+								title: 'Stato anagrafiche',
 								type : 'basic',
 								link : '/il/pp/insurance-policy-status'
 							},
