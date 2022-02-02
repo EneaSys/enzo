@@ -77,6 +77,7 @@ export abstract class AgalGenericTable2 extends AgalGenericComponent {
 				this._apiFilters.sort = this.sort;
 			}
 			await this.callApi(this._apiFilters);
+			this.emitUpdate();
 		}
         this.loading = false;
     }

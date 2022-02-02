@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AgalCommonService } from '@agal-core/services/common.service';
 import { AgalGenericTable2 } from '@agal-core/components/agal-generic-table2';
 
-import { EopooResourceService } from 'aig-generic';
+import {EopooResourceService } from 'aig-generic';
 
 @Component({
 	changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,10 +21,8 @@ export class AgalEopooListLoaderComponent extends AgalGenericTable2 {
 		try {
 			this.ds = await this.resourceService.getAllEopoosUsingGET(filters).toPromise();
 			this.totalRecords = await this.resourceService.countEopoosUsingGET(filters).toPromise();
-			this.emitUpdate();
 		} catch(e) {
 			console.log(e);
 		}
 	}
-
 }

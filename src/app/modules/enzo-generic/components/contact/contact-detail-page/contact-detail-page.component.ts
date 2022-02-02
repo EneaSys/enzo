@@ -18,6 +18,8 @@ export class EnzoContactDetailPageComponent extends EnzoGenericComponent1 {
     agcs: AgalCommonService,
   ) {
       super(_gcs);
+      this.id = +this.route.snapshot.paramMap.get('id');
+		  this.tmCurrentComponent.name = 'Detail ' + this.id;
       this.onLoad();
     }
 
@@ -26,8 +28,6 @@ export class EnzoContactDetailPageComponent extends EnzoGenericComponent1 {
   contactDTO: ContactDTO;
 
   onLoad() {
-    this.id = +this.route.snapshot.paramMap.get('id');
-    this.tmCurrentComponent.name = this.tmCurrentComponent.name = 'Detail ' + this.id;
     this.contactDTO = this.route.snapshot.data.contact;
   } 
 

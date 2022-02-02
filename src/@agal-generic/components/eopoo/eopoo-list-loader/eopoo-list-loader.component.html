@@ -18,9 +18,9 @@
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
                         <th *ngSwitchCase="'_ck'" style="width:30px"></th>
-                        <th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
+                        <th *ngSwitchCase="'id'" style="width: 50px;" pResizableColumn pSortableColumn="id">Id</th>
                         <!-- Filed of entity -->
-                        <th *ngSwitchCase="'taxNumber'" style="width:auto" pResizableColumn pSortableColumn="taxNumber">taxNumber</th>
+                        <th *ngSwitchCase="'taxNumber'" style="width: auto;" pResizableColumn pSortableColumn="taxNumber">taxNumber</th>
 
                         <!-- Filed of relational entity -->
                         <th *ngSwitchCase="'person.firstname'" style="width:auto" pResizableColumn pSortableColumn="person.firstname">firstname</th>
@@ -33,14 +33,15 @@
                         <th *ngSwitchCase="'eopooType.eopooTypeCode'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooTypeCode">eopooTypeCode</th>
                         <th *ngSwitchCase="'eopooType.eopooCategory'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooCategory">eopooCategory</th>
                     </ng-container>
-                    <th *ngIf="buttons" style="width:150px"></th>
+                    <th *ngIf="buttons" style="width:auto"></th>    
+
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-e>
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
-                        <td *ngSwitchCase="'_ck'" style="text-align:center"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
-                        <td *ngSwitchCase="'id'" style="text-align:center">{{ e.id }}</td>
+                        <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+                        <td *ngSwitchCase="'id'">{{ e.id }}</td>
                         <!-- Filed of entity -->
                         <td *ngSwitchCase="'taxNumber'">{{ e.taxNumber }}</td>
 
