@@ -1,23 +1,24 @@
 import { AgalListDisplayModality } from "@agal-core/enum/list-display-modality";
-import { Directive, Input, SimpleChanges } from "@angular/core";
+import { Directive, Input, OnInit, SimpleChanges } from "@angular/core";
 import { LazyLoadEvent } from "primeng/api";
 import { AgalCommonService } from "../services/common.service";
 import { AgalGenericComponent } from "./agal-generic-component";
 
 @Directive()
-export abstract class AgalGenericTable extends AgalGenericComponent {
+export abstract class AgalGenericTable extends AgalGenericComponent implements OnInit {
 	_filters: any = {};
 
 	@Input()
 	set filters(filters: any) {
 		this._filters = filters;
-		this.loadData();
+		console.log("filterss on set", filters);
+		//this.loadData();
 	}
     
     @Input()
-    view: AgalListDisplayModality;
+    view: AgalListDisplayModality = AgalListDisplayModality.TABLE;
     @Input()
-    dcs: string[];
+    dcs: string[] = ['_ck', 'id'];
     @Input()
     buttons: any[];
 
@@ -35,14 +36,19 @@ export abstract class AgalGenericTable extends AgalGenericComponent {
 	private pageable: any = {};
 	private sort: string[] = [];
 
+	ngOnInit(): void {
+		//this.loadData();
+	}
 
 	async changePagination(event: any) {
 		this.pageable = event;
 	
+		console.log("changePagination");
 		await this.loadData();
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
+		console.log("ngOnChanges", changes);
 		this.loadData();
 	}
 
@@ -55,6 +61,7 @@ export abstract class AgalGenericTable extends AgalGenericComponent {
         }
 
         if(this.sort.length > 0) {
+			console.log("lazyLoad");
             this.loadData();
         }
     }
@@ -73,10 +80,14 @@ export abstract class AgalGenericTable extends AgalGenericComponent {
 		this.loading = true;
 		{
 			let filters = this._filters;
-			filters.page = this.pageable.page;
-			filters.size = this.pageable.size;
-			filters.sort = this.sort;
-			
+			console.log(this._filters);
+			if(this.pageable.page !== undefined) {
+				filters.page = this.pageable.page;
+				filters.size = this.pageable.size;
+			}
+			if(this.sort.length > 0) {
+				filters.sort = this.sort;
+			}
 			await this.callApi(filters);
 		}
         this.loading = false;

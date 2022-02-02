@@ -1,4 +1,5 @@
 export enum AgalListDisplayModality {
-  TABLE,
-  CARD
+	NONE,
+	TABLE,
+	CARD
 }

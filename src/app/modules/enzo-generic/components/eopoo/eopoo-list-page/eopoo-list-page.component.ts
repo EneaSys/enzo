@@ -15,6 +15,24 @@ export class EnzoEopooListPageComponent extends EnzoGenericComponent1 {
 		this.tmCurrentComponent.name = "Eopoo list";
 	}
 
+	eopooListPaginator: any;
+	eopooCount: number;
+	sort: string[] = ['id,asc'];
+
+
+
+
+
+
+	paginatorEvent(paginator: any) {
+		let eopooListPaginator = { ...paginator }
+		this.eopooListPaginator = eopooListPaginator;
+	}
+
+
+
+
+
 	exportButtons: any[] =  [
 		{
 			label: 'Pdf',
@@ -29,7 +47,6 @@ export class EnzoEopooListPageComponent extends EnzoGenericComponent1 {
 			}
 		}
 	]
-
 
 	tableButtons: any[] = [
 		{

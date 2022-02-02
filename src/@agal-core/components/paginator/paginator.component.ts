@@ -11,7 +11,7 @@ export class AgalPaginatorComponent implements OnInit {
     totalRecords: number;
 
     @Input()
-    pageSizeOptions: number[];
+    pageSizeOptions: number[] = [10,30,50,100];
 
     @Input()
     initialSize: number = 30;

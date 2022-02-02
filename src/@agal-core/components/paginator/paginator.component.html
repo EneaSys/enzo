@@ -7,7 +7,7 @@
 				<td class="paginator-el-bl">pagina: </td>
 				<td>
 					<form [formGroup]="selectPageForm" (ngSubmit)="selectPageFormSubmit()">
-						<input type="text" formControlName="page" required>    
+						<input type="text" formControlName="page">    
 					</form>
 				</td>
 				<td>di {{ pages | number: '1.0-0' }}</td>

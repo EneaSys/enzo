@@ -1,11 +1,15 @@
-<div [ngSwitch]="view">
-    <p *ngSwitchCase="'CARD'">
-        CARD
-    </p>
-    <p *ngSwitchDefault>
+<div *ngIf="loading">LOADING</div>
+<ng-container [ngSwitch]="view">
+	<div *ngSwitchCase="'NONE'"></div>
+    <div *ngSwitchCase="'CARD'">
+		<div *ngFor="let e of ds">
+			<pre>{{ e | json }}</pre>
+		</div>
+	</div>
+    <div *ngSwitchDefault>
         <!-- <eopoo-list-table-prime [ds]="ds"></eopoo-list-table-prime> -->
         <p-table styleClass="p-datatable-sm"
-            [value]="ds" [loading]="loading"
+            [value]="ds" 
             [lazy]="true" (onLazyLoad)="lazyLoad($event)"
             [resizableColumns]="true"
             [(selection)]="selectedElements" >
@@ -69,12 +73,5 @@
                 </tr>
             </ng-template>
         </p-table>
-    </p>
-</div>
-
-<agal-paginator 
-    [totalRecords]="totalRecords"
-    [pageSizeOptions]="[30,50,100,500]"
-    [initialSize]="30"
-    (paginator)="changePagination($event)"
-></agal-paginator>
+    </div>
+</ng-container>

@@ -10,6 +10,9 @@
 					</div>
 
 					<div fxFlex fxLayoutAlign="end">
+
+						<agal-paginator (paginator)="paginatorEvent($event)" [totalRecords]="eopooCount"></agal-paginator>
+
 						<p-button styleClass="p-button-outlined p-button-secondary p-button-sm"
 							(click)="menu.toggle($event)">
 							<mat-icon [svgIcon]="'heroicons_outline:download'"></mat-icon>
@@ -23,15 +26,15 @@
 							<mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
 						</p-button>
 
-
 					</div>
 				</div>
 
 				<div class="enzo-content">
-					<agal-eopoo-list-loader [dcs]="[ '_ck' , 'id', 'eopooType.name', 'genericEopoo.name','taxNumber']"
-						[buttons]="tableButtons">>
-
-					</agal-eopoo-list-loader>
+					<agal-eopoo-list-loader
+						[dcs]="[ '_ck' , 'id', 'eopooType.name', 'genericEopoo.name','taxNumber']"  [buttons]="tableButtons"
+						[paginator]="eopooListPaginator" (resultCount)="eopooCount=$event"
+						[sort]="sort"
+						></agal-eopoo-list-loader>
 				</div>
 
 			</div>
