@@ -36,7 +36,7 @@ export abstract class AgalGenericTable2 extends AgalGenericComponent {
 	ngOnChanges(changes: SimpleChanges) {
 		let nOfChange = 0;
 		for(let change in changes) { nOfChange++ }
-		
+
 		if(nOfChange == 1 && changes.selectedElements !== undefined) {
 			return;
 		}
@@ -66,13 +66,11 @@ export abstract class AgalGenericTable2 extends AgalGenericComponent {
 
 	selection(elements: any[]) {
 		this.selectedElements = elements;
-		console.log(this.selectedElements);
 		this.selectedElementsChange.emit(this.selectedElements);
 	}
 
     async loadData() {
 		if(this.loading) {
-			console.log("no load");
 			return;
 		}
 		this.loading = true;
