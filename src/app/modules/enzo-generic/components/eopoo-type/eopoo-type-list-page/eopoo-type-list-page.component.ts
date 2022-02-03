@@ -17,8 +17,8 @@ export class EnzoEopooTypeListPageComponent extends EnzoGenericComponent1 {
 	}
 
 	eopooTypeListPaginator: AgalPaginator = {
-		page: 1,
-		size: 10
+		page: 0,
+		size: 30
 	};
 	eopooTypeCount: number;
 

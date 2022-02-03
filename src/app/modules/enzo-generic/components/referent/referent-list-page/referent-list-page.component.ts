@@ -17,8 +17,8 @@ export class EnzoReferentListPageComponent extends EnzoGenericComponent1 {
 	}
 
 	referentListPaginator: AgalPaginator = {
-		page: 1,
-		size: 10
+		page: 0,
+		size: 30
 	};
 	referentCount: number;
 

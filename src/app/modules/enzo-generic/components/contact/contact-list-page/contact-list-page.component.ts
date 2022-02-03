@@ -17,8 +17,8 @@ export class EnzoContactListPageComponent extends EnzoGenericComponent1 {
 	}
 
 	contactListPaginator: AgalPaginator = {
-		page: 1,
-		size: 10
+		page: 0,
+		size: 30
 	};
 	contactCount: number;
 

@@ -3,17 +3,17 @@
 		<mat-drawer-content class="flex flex-col">
 			<div>
 				<div class="print:hidden container p-2 pl-1 pr-1 items-center" fxLayout.lt-md="column" fxLayout="row" >
-					<div class="mb-1" fxFlex.lt-md="100" fxFlex="(100%-600px)">
+					<div class="mb-1" fxFlex="100">
 
 					</div>
-					<div class="mb-1" fxFlex.lt-md="100" fxFlex="600px" fxLayout="row" fxLayout.lt-sm="column">
+					<div class="mb-1" fxFlex.lt-md="100" fxFlex="620px" fxLayout="row" fxLayout.lt-sm="column">
 						<div fxFlex.xs="100" fxFlex="500px" fxLayout="row" fxLayoutAlign="end">
 							<agal-paginator class="mt-1" [(pageable)]="contactListPaginator" [totalRecords]="contactCount"></agal-paginator>
 						</div>
-						<div fxFlex.xs="100" fxFlex="100px" fxLayout="row" fxLayoutAlign="end">
+						<div fxFlex.xs="100" fxFlex="120px" fxLayout="row" fxLayoutAlign="end">
 							<p-button styleClass="p-button-outlined p-button-secondary p-button-sm ml-1 mt-1"
 								(click)="matDrawer.toggle()">
-								<span class="pr-2">Filtri</span>
+								<span class="pr-2">Opzioni</span>
 								<mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
 							</p-button>
 						</div>
@@ -31,7 +31,7 @@
 			</div>
 
 			<div class="print:hidden container p-2 pl-1 pr-1 items-center" fxLayout.lt-sm="column" fxLayout="row" >
-				<div fxFlex.lt-sm="100" fxFlex="(100%-500px)">
+				<div fxFlex="100">
 					<p-button styleClass="p-button-outlined p-button-secondary p-button-sm"
 						(click)="menu.toggle($event)">
 						<mat-icon [svgIcon]="'heroicons_outline:download'"></mat-icon>

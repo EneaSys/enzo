@@ -17,8 +17,8 @@ export class EnzoAddressListPageComponent extends EnzoGenericComponent1 {
 	}
 
 	addressListPaginator: AgalPaginator = {
-		page: 1,
-		size: 10
+		page: 0,
+		size: 30
 	};
 	addressCount: number;
 
