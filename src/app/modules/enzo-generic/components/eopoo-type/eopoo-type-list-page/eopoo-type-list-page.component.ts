@@ -1,3 +1,4 @@
+import { AgalPaginator } from '@agal-core/components/paginator/paginator.component';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EnzoGenericComponentService1 } from 'app/shared/generic-component1.service';
@@ -15,6 +16,17 @@ export class EnzoEopooTypeListPageComponent extends EnzoGenericComponent1 {
 		this.tmCurrentComponent.name = "EopooType list";
 	}
 
+	eopooTypeListPaginator: AgalPaginator = {
+		page: 0,
+		size: 30
+	};
+	eopooTypeCount: number;
+
+	paginatorEvent(paginator: any) {
+		let eopooTypeListPaginator = { ...paginator }
+		this.eopooTypeListPaginator = eopooTypeListPaginator;
+	}
+
 	exportButtons: any[] =  [
 		{
 			label: 'Pdf',
@@ -29,7 +41,6 @@ export class EnzoEopooTypeListPageComponent extends EnzoGenericComponent1 {
 			}
 		}
 	]
-
 
 	tableButtons: any[] = [
 		{

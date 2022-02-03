@@ -14,8 +14,8 @@ import { EopooNamePipe } from "@agal-generic/pipe/eopoo-name.pipe";
 export class EnzoEopooDetailPageComponent extends EnzoGenericComponent1 {
   constructor(
     private resourceService: EopooResourceService,
-    private route: ActivatedRoute,
     private eopooName: EopooNamePipe,
+    private route: ActivatedRoute,
     public _gcs: EnzoGenericComponentService1,
     agcs: AgalCommonService,
   ) {
@@ -27,15 +27,10 @@ export class EnzoEopooDetailPageComponent extends EnzoGenericComponent1 {
 
   id: number;
 
-  adressFilter: any; 
-
   eopooDTO: EopooDTO;
 
   onLoad() {
     this.eopooDTO = this.route.snapshot.data.eopoo;
-    this.adressFilter = {
-      eopooId: this.eopooDTO.id
-    }
   } 
 
   async reloadPage() {
