@@ -21,12 +21,20 @@
 				</div>
 				
 				<div class="enzo-content">
-					<div class="h-50 min-h-50 max-h-50 border-2 border-dashed border-gray-300 rounded-2xl p-8">
+					<div class="h-auto min-h-auto max-h-auto border-2 border-dashed border-gray-300 rounded-2xl p-8">
 						detail page {{ id }} 
 						<pre>{{ tmCurrentComponent | json }}</pre>
                         <pre>{{ addressDTO | json }}</pre>
 					</div>
 				</div>
+
+				
+				<div class="enzo-content">
+					<div class="h-auto min-h-auto max-h-auto border-2 border-dashed border-gray-300 rounded-2xl p-8">           
+						<agal-eopoo-detail-box [eopoo]="addressDTO.eopoo" ></agal-eopoo-detail-box>
+					</div>
+				</div>
+					
 
             </div>
         </mat-drawer-content>

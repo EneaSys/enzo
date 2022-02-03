@@ -1,29 +1,30 @@
-<div [ngSwitch]="view">
-    <p *ngSwitchCase="'CARD'">
-        CARD
-    </p>
-    <p *ngSwitchDefault>
+<div *ngIf="loading">LOADING</div>
+<ng-container [ngSwitch]="view">
+    <div *ngSwitchCase="'NONE'"></div>
+    <div *ngSwitchCase="'CARD'">
+        <div *ngFor="let e of ds">
+            <pre>{{ e | json }}</pre>
+        </div>
+    </div>
+    <div *ngSwitchDefault>
         <!-- <referent-list-table-prime [ds]="ds"></referent-list-table-prime> -->
-        <p-table styleClass="p-datatable-sm"
-            [value]="ds" [loading]="loading"
-            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
-            [resizableColumns]="true"
-            [(selection)]="selectedElements" >
+        <p-table styleClass="p-datatable-sm" [value]="ds" [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            [resizableColumns]="true" [selection]="selectedElements" (selectionChange)="selection($event)">
 
             <ng-template pTemplate="header">
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
                         <th *ngSwitchCase="'_ck'" style="width:30px"></th>
-                        <th *ngSwitchCase="'id'" style="width: 50px;" pResizableColumn pSortableColumn="id">Id</th>
+                        <th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
                         <!-- Filed of entity -->
-                        <th *ngSwitchCase="'referent.firstname'" style="width:auto" pResizableColumn pSortableColumn="referent.firstname">firstname</th>
-                        <th *ngSwitchCase="'referent.lastname'" style="width:auto" pResizableColumn pSortableColumn="referent.lastname">lastname</th>
-                        <th *ngSwitchCase="'referent.position'" style="width:auto" pResizableColumn pSortableColumn="referent.position">position</th>
+                        <th *ngSwitchCase="'referent.firstname'" style="width:auto" pResizableColumn pSortableColumn="referent.firstname"> firstname </th>
+                        <th *ngSwitchCase="'referent.lastname'" style="width:auto" pResizableColumn pSortableColumn="referent.lastname"> lastname </th>
+                        <th *ngSwitchCase="'referent.position'" style="width:auto" pResizableColumn pSortableColumn="referent.position"> position </th>
 
-                        <!-- Filed of relational entity -->
-                        <th *ngSwitchCase="'eopoo.taxNumber'" style="width:auto" pResizableColumn pSortableColumn="eopoo.taxNumber">taxNumber</th>
+                                <!-- Filed of relational entity -->
+                        <th *ngSwitchCase="'eopoo.taxNumber'" style="width:auto" pResizableColumn pSortableColumn="eopoo.taxNumber"> taxNumber</th>
                     </ng-container>
-                    <th *ngIf="buttons" style="width:140px"></th>    
+                    <th *ngIf="buttons" style="width:auto"></th>
 
                 </tr>
             </ng-template>
@@ -33,37 +34,32 @@
                         <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
                         <td *ngSwitchCase="'id'">{{ e.id }}</td>
                         <!-- Filed of entity -->
-                        <td *ngSwitchCase="'firstname'">{{ e.firstname }}</td>
-                        <td *ngSwitchCase="'lastname'">{{ e.lastname }}</td>
-                        <td *ngSwitchCase="'position'">{{ e.position }}</td>
+                         <td *ngSwitchCase="'firstname'">{{ e.firstname }}</td>
+                         <td *ngSwitchCase="'lastname'">{{ e.lastname }}</td>
+                         <td *ngSwitchCase="'position'">{{ e.position }}</td>
 
-                        <!-- Filed of relational entity -->
-                        <td *ngSwitchCase="'eopoo.taxNumber'" >{{ e.eopoo.taxNumber }}</td>
+                <!-- Filed of relational entity -->
+                        <td *ngSwitchCase="'eopoo.taxNumber'">{{ e.eopoo.taxNumber }}</td>
                     </ng-container>
-                    <td *ngIf="buttons" style="text-align:center">
-						<ng-container *ngFor="let b of buttons">
-							<button pButton type="button" 
-								class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}"
-								label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)" >
+                        <td *ngIf="buttons" style="text-align:center">
+                        <ng-container *ngFor="let b of buttons">
+                            <button pButton type="button" 
+                                class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}" 
+                                label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)">
                             </button>
-							<ng-container *ngIf="b.childs">
-								<button pButton type="button" 
-									class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
-									pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)"></button>
-								<p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
-							</ng-container>
-						</ng-container>
-					</td>
+                            <ng-container *ngIf="b.childs">
+                                <button pButton type="button" 
+                                    class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
+                                    pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
+                            </ng-container>
+                        </ng-container>
+                    </td>
 
                 </tr>
             </ng-template>
         </p-table>
-    </p>
-</div>
-
-<agal-paginator 
-    [totalRecords]="totalRecords"
-    [pageSizeOptions]="[30,50,100,500]"
-    [initialSize]="30"
-    (paginator)="changePagination($event)"
-></agal-paginator>
+    </div>
+</ng-container> 
+ 

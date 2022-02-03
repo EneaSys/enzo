@@ -1,39 +1,36 @@
 <div *ngIf="loading">LOADING</div>
 <ng-container [ngSwitch]="view">
-	<div *ngSwitchCase="'NONE'"></div>
+    <div *ngSwitchCase="'NONE'"></div>
     <div *ngSwitchCase="'CARD'">
-		<div *ngFor="let e of ds">
-			<pre>{{ e | json }}</pre>
-		</div>
-	</div>
+        <div *ngFor="let e of ds">
+            <pre>{{ e | json }}</pre>
+        </div>
+    </div>
     <div *ngSwitchDefault>
         <!-- <eopoo-list-table-prime [ds]="ds"></eopoo-list-table-prime> -->
-        <p-table styleClass="p-datatable-sm"
-            [value]="ds" 
-            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
-            [resizableColumns]="true"
-            [selection]="selectedElements" (selectionChange)="selection($event)" >
+        <p-table styleClass="p-datatable-sm" [value]="ds" [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            [resizableColumns]="true" [selection]="selectedElements" (selectionChange)="selection($event)">
 
             <ng-template pTemplate="header">
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
                         <th *ngSwitchCase="'_ck'" style="width:30px"></th>
-                        <th *ngSwitchCase="'id'" style="width: 50px;" pResizableColumn pSortableColumn="id">id</th>
+                        <th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
                         <!-- Filed of entity -->
-                        <th *ngSwitchCase="'taxNumber'" style="width: auto;" pResizableColumn pSortableColumn="taxNumber">taxNumber</th>
+                        <th *ngSwitchCase="'taxNumber'" style="width:auto" pResizableColumn pSortableColumn="taxNumber"> taxNumber </th>
 
-                        <!-- Filed of relational entity -->
-                        <th *ngSwitchCase="'person.firstname'" style="width:auto" pResizableColumn pSortableColumn="person.firstname">firstname</th>
-                        <th *ngSwitchCase="'person.lastname'" style="width:auto" pResizableColumn pSortableColumn="person.lastname">lastname</th>
-                        <th *ngSwitchCase="'person.sex'" style="width:auto" pResizableColumn pSortableColumn="person.sex">sex</th>
-                        <th *ngSwitchCase="'person.bornDate'" style="width:auto" pResizableColumn pSortableColumn="person.bornDate">bornDate</th>
-                        <th *ngSwitchCase="'person.cityCode'" style="width:auto" pResizableColumn pSortableColumn="person.cityCode">cityCode</th>
-                        <th *ngSwitchCase="'genericEopoo.name'" style="width:auto" pResizableColumn pSortableColumn="genericEopoo.name">Name</th>
-                        <th *ngSwitchCase="'eopooType.name'" style="width:auto" pResizableColumn pSortableColumn="eopooType.name">Tipo</th>
-                        <th *ngSwitchCase="'eopooType.eopooTypeCode'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooTypeCode">eopooTypeCode</th>
-                        <th *ngSwitchCase="'eopooType.eopooCategory'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooCategory">eopooCategory</th>
+                                <!-- Filed of relational entity -->
+                        <th *ngSwitchCase="'person.firstname'" style="width:auto" pResizableColumn pSortableColumn="person.firstname"> firstname</th>
+                        <th *ngSwitchCase="'person.lastname'" style="width:auto" pResizableColumn pSortableColumn="person.lastname"> lastname</th>
+                        <th *ngSwitchCase="'person.sex'" style="width:auto" pResizableColumn pSortableColumn="person.sex"> sex</th>
+                        <th *ngSwitchCase="'person.bornDate'" style="width:auto" pResizableColumn pSortableColumn="person.bornDate"> bornDate</th>
+                        <th *ngSwitchCase="'person.cityCode'" style="width:auto" pResizableColumn pSortableColumn="person.cityCode"> cityCode</th>
+                        <th *ngSwitchCase="'genericEopoo.name'" style="width:auto" pResizableColumn pSortableColumn="genericEopoo.name"> Name</th>
+                        <th *ngSwitchCase="'eopooType.name'" style="width:auto" pResizableColumn pSortableColumn="eopooType.name"> Tipo</th>
+                        <th *ngSwitchCase="'eopooType.eopooTypeCode'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooTypeCode"> eopooTypeCode</th>
+                        <th *ngSwitchCase="'eopooType.eopooCategory'" style="width:auto" pResizableColumn pSortableColumn="eopooType.eopooCategory"> eopooCategory</th>
                     </ng-container>
-                    <th *ngIf="buttons" style="width: 150px;"></th>    
+                    <th *ngIf="buttons" style="width:auto"></th>
 
                 </tr>
             </ng-template>
@@ -43,36 +40,38 @@
                         <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
                         <td *ngSwitchCase="'id'">{{ e.id }}</td>
                         <!-- Filed of entity -->
-                        <td *ngSwitchCase="'taxNumber'">{{ e.taxNumber }}</td>
+                         <td *ngSwitchCase="'taxNumber'">{{ e.taxNumber }}</td>
 
-                        <!-- Filed of relational entity -->
-                        <td *ngSwitchCase="'person.firstname'" >{{ e.person.firstname }}</td>
-                        <td *ngSwitchCase="'person.lastname'" >{{ e.person.lastname }}</td>
-                        <td *ngSwitchCase="'person.sex'" >{{ e.person.sex }}</td>
-                        <td *ngSwitchCase="'person.bornDate'" >{{ e.person.bornDate }}</td>
-                        <td *ngSwitchCase="'person.cityCode'" >{{ e.person.cityCode }}</td>
-                        <td *ngSwitchCase="'genericEopoo.name'" >{{ e.genericEopoo.name }}</td>
-                        <td *ngSwitchCase="'eopooType.name'" >{{ e.eopooType.name }}</td>
-                        <td *ngSwitchCase="'eopooType.eopooTypeCode'" >{{ e.eopooType.eopooTypeCode }}</td>
-                        <td *ngSwitchCase="'eopooType.eopooCategory'" >{{ e.eopooType.eopooCategory }}</td>
+                <!-- Filed of relational entity -->
+                        <td *ngSwitchCase="'person.firstname'">{{ e.person.firstname }}</td>
+                        <td *ngSwitchCase="'person.lastname'">{{ e.person.lastname }}</td>
+                        <td *ngSwitchCase="'person.sex'">{{ e.person.sex }}</td>
+                        <td *ngSwitchCase="'person.bornDate'">{{ e.person.bornDate }}</td>
+                        <td *ngSwitchCase="'person.cityCode'">{{ e.person.cityCode }}</td>
+                        <td *ngSwitchCase="'genericEopoo.name'">{{ e.genericEopoo.name }}</td>
+                        <td *ngSwitchCase="'eopooType.name'">{{ e.eopooType.name }}</td>
+                        <td *ngSwitchCase="'eopooType.eopooTypeCode'">{{ e.eopooType.eopooTypeCode }}</td>
+                        <td *ngSwitchCase="'eopooType.eopooCategory'">{{ e.eopooType.eopooCategory }}</td>
                     </ng-container>
-                    <td *ngIf="buttons" style="text-align:center">
-						<ng-container *ngFor="let b of buttons">
-							<button pButton type="button" 
-								class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}"
-								label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)" >
+                        <td *ngIf="buttons" style="text-align:center">
+                        <ng-container *ngFor="let b of buttons">
+                            <button pButton type="button" 
+                                class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}" 
+                                label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)">
                             </button>
-							<ng-container *ngIf="b.childs">
-								<button pButton type="button" 
-									class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
-									pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)"></button>
-								<p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
-							</ng-container>
-						</ng-container>
-					</td>
+                            <ng-container *ngIf="b.childs">
+                                <button pButton type="button" 
+                                    class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
+                                    pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
+                            </ng-container>
+                        </ng-container>
+                    </td>
 
                 </tr>
             </ng-template>
         </p-table>
     </div>
-</ng-container>
+</ng-container> 
+ 

@@ -1,3 +1,4 @@
+import { AgalPaginator } from '@agal-core/components/paginator/paginator.component';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EnzoGenericComponentService1 } from 'app/shared/generic-component1.service';
@@ -15,6 +16,17 @@ export class EnzoAddressListPageComponent extends EnzoGenericComponent1 {
 		this.tmCurrentComponent.name = "Address list";
 	}
 
+	addressListPaginator: AgalPaginator = {
+		page: 1,
+		size: 10
+	};
+	addressCount: number;
+
+	paginatorEvent(paginator: any) {
+		let addressListPaginator = { ...paginator }
+		this.addressListPaginator = addressListPaginator;
+	}
+
 	exportButtons: any[] =  [
 		{
 			label: 'Pdf',
@@ -29,7 +41,6 @@ export class EnzoAddressListPageComponent extends EnzoGenericComponent1 {
 			}
 		}
 	]
-
 
 	tableButtons: any[] = [
 		{

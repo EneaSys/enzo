@@ -27,7 +27,6 @@ export class EnzoEopooListPageComponent extends EnzoGenericComponent1 {
 		this.eopooListPaginator = eopooListPaginator;
 	}
 
-
 	exportButtons: any[] =  [
 		{
 			label: 'Pdf',
