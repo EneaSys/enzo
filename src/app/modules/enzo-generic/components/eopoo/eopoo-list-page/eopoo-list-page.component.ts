@@ -16,6 +16,7 @@ export class EnzoEopooListPageComponent extends EnzoGenericComponent1 {
 		this.tmCurrentComponent.name = "Eopoo list";
 	}
 
+	eopooListDc = [ '_ck', 'id', 'eopooType.name', 'genericEopoo.name','taxNumber'];
 	eopooListPaginator: AgalPaginator = {
 		page: 0,
 		size: 30

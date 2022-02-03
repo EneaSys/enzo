@@ -22,7 +22,7 @@
 				</div>
 
 				<div class="enzo-content">
-					<agal-eopoo-list-loader [dcs]="[ '_ck', 'id', 'eopooType.name', 'genericEopoo.name','taxNumber']"
+					<agal-eopoo-list-loader [dcs]="eopooListDc"
 						[buttons]="tableButtons" [paginator]="eopooListPaginator" (resultCount)="eopooCount=$event">
 					</agal-eopoo-list-loader>
 				</div>
@@ -48,10 +48,10 @@
 				<div class="mx-6 text-3xl font-bold tracking-tighter">Colonne</div>
 
 				<div class="mx-6 mt-10">
-					<div class="flex items-center">
-						<mat-icon class="mr-2 icon-size-5" [svgIcon]="'heroicons_solid:users'"></mat-icon>
-						<div class="text-lg font-semibold">Users</div>
-					</div>
+					<eopoo-display-column [(dc)]="eopooListDc"></eopoo-display-column>
+					<pre>{{ eopooListDc | json }}</pre>
+					<button (click)="eopooListDc = [ '_ck', 'id', 'eopooType.name', 'genericEopoo.name','taxNumber']">cambia</button>
+
 					<div class="flex flex-col flex-auto mt-4">
 						<span class="text-sm leading-none mb-3">8 of 20 users used</span>
 					</div>

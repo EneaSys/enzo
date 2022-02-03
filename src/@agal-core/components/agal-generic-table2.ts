@@ -40,6 +40,9 @@ export abstract class AgalGenericTable2 extends AgalGenericComponent {
 		if(nOfChange == 1 && changes.selectedElements !== undefined) {
 			return;
 		}
+		if(nOfChange == 1 && changes.dcs !== undefined) {
+			return;
+		}
 		this.loadData();
 	}
 
