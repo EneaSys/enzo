@@ -1,0 +1,13 @@
+import { Route } from '@angular/router';
+
+export const allegatiRoutes: Route[] = [
+	{
+		path: '', 
+		pathMatch : 'full',
+		redirectTo: 'page'
+	},
+	{
+		path: 'application-module/list', 
+		component: EnzoApplicationModuleListPageComponent	
+	}
+];

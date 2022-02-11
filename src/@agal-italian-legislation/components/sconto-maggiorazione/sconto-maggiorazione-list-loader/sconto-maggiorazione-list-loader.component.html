@@ -1,65 +1,79 @@
-<div [ngSwitch]="view">
-    <p *ngSwitchCase="'CARD'">
-        CARD
-    </p>
-    <p *ngSwitchDefault>
+<div *ngIf="loading">LOADING</div>
+<ng-container [ngSwitch]="view">
+    <div *ngSwitchCase="'NONE'"></div>
+    <div *ngSwitchCase="'CARD'">
+        <div *ngFor="let e of ds">
+            <pre>{{ e | json }}</pre>
+        </div>
+    </div>
+    <div *ngSwitchDefault>
         <!-- <sconto-maggiorazione-list-table-prime [ds]="ds"></sconto-maggiorazione-list-table-prime> -->
-        <p-table 
-            styleClass="p-datatable-lg"
-            [value]="ds" [loading]="loading"
-            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
-            
-            [resizableColumns]="true"
-            [(selection)]="selectedElements" >
+        <p-table styleClass="p-datatable-sm" [value]="ds" [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            [resizableColumns]="true" [selection]="selectedElements" (selectionChange)="selection($event)">
 
             <ng-template pTemplate="header">
                 <tr>
-					<th style="width:50px" ></th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="scontoMaggiorazione.percentuale">percentuale</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="scontoMaggiorazione.importo">importo</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="scontoMaggiorazione.tipoScontoMaggiorazioneCode">tipoScontoMaggiorazioneCode</th>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <th *ngSwitchCase="'_ck'" style="width:30px"></th>
+                        <th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
+                        <!-- Filed of entity -->
+                        <th *ngSwitchCase="'scontoMaggiorazione.percentuale'" style="width:auto" pResizableColumn pSortableColumn="scontoMaggiorazione.percentuale"> percentuale </th>
+                        <th *ngSwitchCase="'scontoMaggiorazione.importo'" style="width:auto" pResizableColumn pSortableColumn="scontoMaggiorazione.importo"> importo </th>
+                        <th *ngSwitchCase="'scontoMaggiorazione.tipoScontoMaggiorazioneCode'" style="width:auto" pResizableColumn pSortableColumn="scontoMaggiorazione.tipoScontoMaggiorazioneCode"> tipoScontoMaggiorazioneCode </th>
 
-
-					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.divisa">divisa</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.data">data</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.numero">numero</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.importoTotaleDocumento">importoTotaleDocumento</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.arrotondamento">arrotondamento</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.causale">causale</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.art73">art73</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.tipoDocumentoCode">tipoDocumentoCode</th>
-
-            		<th style="width:auto" pResizableColumn pSortableColumn="">buttons</th>    
+                                <!-- Filed of relational entity -->
+                        <th *ngSwitchCase="'datiGeneraliDocumento.divisa'" style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.divisa"> divisa</th>
+                        <th *ngSwitchCase="'datiGeneraliDocumento.data'" style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.data"> data</th>
+                        <th *ngSwitchCase="'datiGeneraliDocumento.numero'" style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.numero"> numero</th>
+                        <th *ngSwitchCase="'datiGeneraliDocumento.importoTotaleDocumento'" style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.importoTotaleDocumento"> importoTotaleDocumento</th>
+                        <th *ngSwitchCase="'datiGeneraliDocumento.arrotondamento'" style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.arrotondamento"> arrotondamento</th>
+                        <th *ngSwitchCase="'datiGeneraliDocumento.causale'" style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.causale"> causale</th>
+                        <th *ngSwitchCase="'datiGeneraliDocumento.art73'" style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.art73"> art73</th>
+                        <th *ngSwitchCase="'datiGeneraliDocumento.tipoDocumentoCode'" style="width:auto" pResizableColumn pSortableColumn="datiGeneraliDocumento.tipoDocumentoCode"> tipoDocumentoCode</th>
+                    </ng-container>
+                    <th *ngIf="buttons" style="width:auto"></th>
 
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-e>
                 <tr>
-                    <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
-					<td>{{ e.percentuale }}</td>
-					<td>{{ e.importo }}</td>
-					<td>{{ e.tipoScontoMaggiorazioneCode }}</td>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+                        <td *ngSwitchCase="'id'">{{ e.id }}</td>
+                        <!-- Filed of entity -->
+                         <td *ngSwitchCase="'percentuale'">{{ e.percentuale }}</td>
+                         <td *ngSwitchCase="'importo'">{{ e.importo }}</td>
+                         <td *ngSwitchCase="'tipoScontoMaggiorazioneCode'">{{ e.tipoScontoMaggiorazioneCode }}</td>
 
-					<td>{{ e.datiGeneraliDocumento.divisa }}</td>
-					<td>{{ e.datiGeneraliDocumento.data }}</td>
-					<td>{{ e.datiGeneraliDocumento.numero }}</td>
-					<td>{{ e.datiGeneraliDocumento.importoTotaleDocumento }}</td>
-					<td>{{ e.datiGeneraliDocumento.arrotondamento }}</td>
-					<td>{{ e.datiGeneraliDocumento.causale }}</td>
-					<td>{{ e.datiGeneraliDocumento.art73 }}</td>
-					<td>{{ e.datiGeneraliDocumento.tipoDocumentoCode }}</td>
-            <td *ngIf="buttons">
-                <button *ngFor="let button of buttons" (click)="button.fn(e)" >{{button.name}}</button>
-            </td>
+                <!-- Filed of relational entity -->
+                        <td *ngSwitchCase="'datiGeneraliDocumento.divisa'">{{ e.datiGeneraliDocumento.divisa }}</td>
+                        <td *ngSwitchCase="'datiGeneraliDocumento.data'">{{ e.datiGeneraliDocumento.data }}</td>
+                        <td *ngSwitchCase="'datiGeneraliDocumento.numero'">{{ e.datiGeneraliDocumento.numero }}</td>
+                        <td *ngSwitchCase="'datiGeneraliDocumento.importoTotaleDocumento'">{{ e.datiGeneraliDocumento.importoTotaleDocumento }}</td>
+                        <td *ngSwitchCase="'datiGeneraliDocumento.arrotondamento'">{{ e.datiGeneraliDocumento.arrotondamento }}</td>
+                        <td *ngSwitchCase="'datiGeneraliDocumento.causale'">{{ e.datiGeneraliDocumento.causale }}</td>
+                        <td *ngSwitchCase="'datiGeneraliDocumento.art73'">{{ e.datiGeneraliDocumento.art73 }}</td>
+                        <td *ngSwitchCase="'datiGeneraliDocumento.tipoDocumentoCode'">{{ e.datiGeneraliDocumento.tipoDocumentoCode }}</td>
+                    </ng-container>
+                        <td *ngIf="buttons" style="text-align:center">
+                        <ng-container *ngFor="let b of buttons">
+                            <button pButton type="button" 
+                                class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}" 
+                                label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)">
+                            </button>
+                            <ng-container *ngIf="b.childs">
+                                <button pButton type="button" 
+                                    class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
+                                    pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
+                            </ng-container>
+                        </ng-container>
+                    </td>
+
                 </tr>
             </ng-template>
         </p-table>
-    </p>
-</div>
-
-<agal-paginator 
-    [totalRecords]="totalRecords"
-    [pageSizeOptions]="[30,50,100,500]"
-    [initialSize]="30"
-    (paginator)="changePagination($event)"
-    ></agal-paginator>
+    </div>
+</ng-container> 
+ 

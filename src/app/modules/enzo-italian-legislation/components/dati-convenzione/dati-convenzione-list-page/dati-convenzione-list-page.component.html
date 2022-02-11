@@ -1,0 +1,78 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto" cdkScrollable>
+	<mat-drawer-container class="flex-auto overflow-visible">
+		<mat-drawer-content class="flex flex-col">
+			<div>
+				<div class="print:hidden container p-2 pl-1 pr-1 items-center" fxLayout.lt-md="column" fxLayout="row" >
+					<div class="mb-1" fxFlex="100">
+
+					</div>
+					<div class="mb-1" fxFlex.lt-md="100" fxFlex="620px" fxLayout="row" fxLayout.lt-sm="column">
+						<div fxFlex.xs="100" fxFlex="500px" fxLayout="row" fxLayoutAlign="end">
+							<agal-paginator class="mt-1" [(pageable)]="datiConvenzioneListPaginator" [totalRecords]="datiConvenzioneCount"></agal-paginator>
+						</div>
+						<div fxFlex.xs="100" fxFlex="120px" fxLayout="row" fxLayoutAlign="end">
+							<p-button styleClass="p-button-outlined p-button-secondary p-button-sm ml-1 mt-1"
+								(click)="matDrawer.toggle()">
+								<span class="pr-2">Opzioni</span>
+								<mat-icon [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+							</p-button>
+						</div>
+	
+					</div>
+
+				</div>
+
+				<div class="enzo-content">
+					<agal-dati-convenzione-list-loader 
+						[dcs]="datiConvenzioneListDc" [buttons]="tableButtons" 
+						[paginator]="datiConvenzioneListPaginator" (resultCount)="datiConvenzioneCount=$event"> 
+					</agal-dati-convenzione-list-loader>
+				</div>
+			</div>
+
+			<div class="print:hidden container p-2 pl-1 pr-1 items-center" fxLayout.lt-sm="column" fxLayout="row" >
+				<div fxFlex="100">
+					<p-button styleClass="p-button-outlined p-button-secondary p-button-sm"
+						(click)="menu.toggle($event)">
+						<mat-icon [svgIcon]="'heroicons_outline:download'"></mat-icon>
+						<span class="pr-2">Esporta</span>
+					</p-button>
+					<p-menu #menu [popup]="true" [model]="exportButtons" appendTo="body"></p-menu>
+				</div>
+				<div fxFlex.lt-sm="100" fxFlex="500px" fxLayoutAlign="end">
+					<agal-paginator class="ml-1" [(pageable)]="datiConvenzioneListPaginator" [totalRecords]="datiConvenzioneCount"></agal-paginator>
+				</div>
+			</div>
+		</mat-drawer-content>
+
+		<mat-drawer class="w-72 dark:bg-gray-900 print:hidden" [autoFocus]="false" [mode]="drawerMode" [opened]="drawerOpened" [position]="'end'" #matDrawer>
+
+			<div class="py-10">
+				<div class="mx-6 text-3xl font-bold tracking-tighter">Colonne</div>
+
+				<div class="mx-6 mt-10">
+
+					<agal-dati-convenzione-display-column [(dc)]="datiConvenzioneListDc"></agal-dati-convenzione-display-column>
+					<pre>{{ datiConvenzioneListDc | json }}</pre>
+					<button (click)="datiConvenzioneListDc = [ 'id','_ck' ]">cambia</button>
+
+					<div class="flex flex-col flex-auto mt-4">
+						<span class="text-sm leading-none mb-3">8 of 20 users used</span>
+					</div>
+				</div>
+
+				<div class="mx-6 text-3xl font-bold tracking-tighter">Filtri</div>
+
+				<div class="mx-6 mt-10">
+					<div class="flex items-center">
+						<mat-icon class="mr-2 icon-size-5" [svgIcon]="'heroicons_solid:users'"></mat-icon>
+						<div class="text-lg font-semibold">Users</div>
+					</div>
+					<div class="flex flex-col flex-auto mt-4">
+						<span class="text-sm leading-none mb-3">8 of 20 users used</span>
+					</div>
+				</div>
+			</div>
+		</mat-drawer>
+	</mat-drawer-container>
+</div>

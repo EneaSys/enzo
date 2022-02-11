@@ -1,87 +1,101 @@
-<div [ngSwitch]="view">
-    <p *ngSwitchCase="'CARD'">
-        CARD
-    </p>
-    <p *ngSwitchDefault>
+<div *ngIf="loading">LOADING</div>
+<ng-container [ngSwitch]="view">
+    <div *ngSwitchCase="'NONE'"></div>
+    <div *ngSwitchCase="'CARD'">
+        <div *ngFor="let e of ds">
+            <pre>{{ e | json }}</pre>
+        </div>
+    </div>
+    <div *ngSwitchDefault>
         <!-- <dettaglio-pagamento-list-table-prime [ds]="ds"></dettaglio-pagamento-list-table-prime> -->
-        <p-table 
-            styleClass="p-datatable-lg"
-            [value]="ds" [loading]="loading"
-            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
-            
-            [resizableColumns]="true"
-            [(selection)]="selectedElements" >
+        <p-table styleClass="p-datatable-sm" [value]="ds" [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            [resizableColumns]="true" [selection]="selectedElements" (selectionChange)="selection($event)">
 
             <ng-template pTemplate="header">
                 <tr>
-					<th style="width:50px" ></th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.beneficiario">beneficiario</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.modalitaPagamentoCode">modalitaPagamentoCode</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataRiferimentoTerminiPagamento">dataRiferimentoTerminiPagamento</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.giorniTerminiPagamento">giorniTerminiPagamento</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataScadenzaPagamento">dataScadenzaPagamento</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.importoPagamento">importoPagamento</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.codUfficioPostale">codUfficioPostale</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.cognomeQuietanzante">cognomeQuietanzante</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.nomeQuietanzante">nomeQuietanzante</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.cFQuietanzante">cFQuietanzante</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.titoloQuietanzante">titoloQuietanzante</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.istitutoFinanziario">istitutoFinanziario</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.iban">iban</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.abi">abi</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.cab">cab</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.bic">bic</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.scontoPagamentoAnticipato">scontoPagamentoAnticipato</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataLimitePagamentoAnticipato">dataLimitePagamentoAnticipato</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.penalitaPagamentiRitardati">penalitaPagamentiRitardati</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataDecorrenzaPenale">dataDecorrenzaPenale</th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.codicePagamento">codicePagamento</th>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <th *ngSwitchCase="'_ck'" style="width:30px"></th>
+                        <th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
+                        <!-- Filed of entity -->
+                        <th *ngSwitchCase="'dettaglioPagamento.beneficiario'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.beneficiario"> beneficiario </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.modalitaPagamentoCode'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.modalitaPagamentoCode"> modalitaPagamentoCode </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.dataRiferimentoTerminiPagamento'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataRiferimentoTerminiPagamento"> dataRiferimentoTerminiPagamento </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.giorniTerminiPagamento'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.giorniTerminiPagamento"> giorniTerminiPagamento </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.dataScadenzaPagamento'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataScadenzaPagamento"> dataScadenzaPagamento </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.importoPagamento'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.importoPagamento"> importoPagamento </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.codUfficioPostale'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.codUfficioPostale"> codUfficioPostale </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.cognomeQuietanzante'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.cognomeQuietanzante"> cognomeQuietanzante </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.nomeQuietanzante'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.nomeQuietanzante"> nomeQuietanzante </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.cFQuietanzante'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.cFQuietanzante"> cFQuietanzante </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.titoloQuietanzante'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.titoloQuietanzante"> titoloQuietanzante </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.istitutoFinanziario'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.istitutoFinanziario"> istitutoFinanziario </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.iban'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.iban"> iban </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.abi'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.abi"> abi </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.cab'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.cab"> cab </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.bic'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.bic"> bic </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.scontoPagamentoAnticipato'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.scontoPagamentoAnticipato"> scontoPagamentoAnticipato </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.dataLimitePagamentoAnticipato'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataLimitePagamentoAnticipato"> dataLimitePagamentoAnticipato </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.penalitaPagamentiRitardati'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.penalitaPagamentiRitardati"> penalitaPagamentiRitardati </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.dataDecorrenzaPenale'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.dataDecorrenzaPenale"> dataDecorrenzaPenale </th>
+                        <th *ngSwitchCase="'dettaglioPagamento.codicePagamento'" style="width:auto" pResizableColumn pSortableColumn="dettaglioPagamento.codicePagamento"> codicePagamento </th>
 
-
-					<th style="width:auto" pResizableColumn pSortableColumn="datiPagamento.condizioniPagamento">condizioniPagamento</th>
-
-            		<th style="width:auto" pResizableColumn pSortableColumn="">buttons</th>    
+                                <!-- Filed of relational entity -->
+                        <th *ngSwitchCase="'datiPagamento.condizioniPagamento'" style="width:auto" pResizableColumn pSortableColumn="datiPagamento.condizioniPagamento"> condizioniPagamento</th>
+                    </ng-container>
+                    <th *ngIf="buttons" style="width:auto"></th>
 
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-e>
                 <tr>
-                    <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
-					<td>{{ e.beneficiario }}</td>
-					<td>{{ e.modalitaPagamentoCode }}</td>
-					<td>{{ e.dataRiferimentoTerminiPagamento }}</td>
-					<td>{{ e.giorniTerminiPagamento }}</td>
-					<td>{{ e.dataScadenzaPagamento }}</td>
-					<td>{{ e.importoPagamento }}</td>
-					<td>{{ e.codUfficioPostale }}</td>
-					<td>{{ e.cognomeQuietanzante }}</td>
-					<td>{{ e.nomeQuietanzante }}</td>
-					<td>{{ e.cFQuietanzante }}</td>
-					<td>{{ e.titoloQuietanzante }}</td>
-					<td>{{ e.istitutoFinanziario }}</td>
-					<td>{{ e.iban }}</td>
-					<td>{{ e.abi }}</td>
-					<td>{{ e.cab }}</td>
-					<td>{{ e.bic }}</td>
-					<td>{{ e.scontoPagamentoAnticipato }}</td>
-					<td>{{ e.dataLimitePagamentoAnticipato }}</td>
-					<td>{{ e.penalitaPagamentiRitardati }}</td>
-					<td>{{ e.dataDecorrenzaPenale }}</td>
-					<td>{{ e.codicePagamento }}</td>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+                        <td *ngSwitchCase="'id'">{{ e.id }}</td>
+                        <!-- Filed of entity -->
+                         <td *ngSwitchCase="'beneficiario'">{{ e.beneficiario }}</td>
+                         <td *ngSwitchCase="'modalitaPagamentoCode'">{{ e.modalitaPagamentoCode }}</td>
+                         <td *ngSwitchCase="'dataRiferimentoTerminiPagamento'">{{ e.dataRiferimentoTerminiPagamento }}</td>
+                         <td *ngSwitchCase="'giorniTerminiPagamento'">{{ e.giorniTerminiPagamento }}</td>
+                         <td *ngSwitchCase="'dataScadenzaPagamento'">{{ e.dataScadenzaPagamento }}</td>
+                         <td *ngSwitchCase="'importoPagamento'">{{ e.importoPagamento }}</td>
+                         <td *ngSwitchCase="'codUfficioPostale'">{{ e.codUfficioPostale }}</td>
+                         <td *ngSwitchCase="'cognomeQuietanzante'">{{ e.cognomeQuietanzante }}</td>
+                         <td *ngSwitchCase="'nomeQuietanzante'">{{ e.nomeQuietanzante }}</td>
+                         <td *ngSwitchCase="'cFQuietanzante'">{{ e.cFQuietanzante }}</td>
+                         <td *ngSwitchCase="'titoloQuietanzante'">{{ e.titoloQuietanzante }}</td>
+                         <td *ngSwitchCase="'istitutoFinanziario'">{{ e.istitutoFinanziario }}</td>
+                         <td *ngSwitchCase="'iban'">{{ e.iban }}</td>
+                         <td *ngSwitchCase="'abi'">{{ e.abi }}</td>
+                         <td *ngSwitchCase="'cab'">{{ e.cab }}</td>
+                         <td *ngSwitchCase="'bic'">{{ e.bic }}</td>
+                         <td *ngSwitchCase="'scontoPagamentoAnticipato'">{{ e.scontoPagamentoAnticipato }}</td>
+                         <td *ngSwitchCase="'dataLimitePagamentoAnticipato'">{{ e.dataLimitePagamentoAnticipato }}</td>
+                         <td *ngSwitchCase="'penalitaPagamentiRitardati'">{{ e.penalitaPagamentiRitardati }}</td>
+                         <td *ngSwitchCase="'dataDecorrenzaPenale'">{{ e.dataDecorrenzaPenale }}</td>
+                         <td *ngSwitchCase="'codicePagamento'">{{ e.codicePagamento }}</td>
 
-					<td>{{ e.datiPagamento.condizioniPagamento }}</td>
-            <td *ngIf="buttons">
-                <button *ngFor="let button of buttons" (click)="button.fn(e)" >{{button.name}}</button>
-            </td>
+                <!-- Filed of relational entity -->
+                        <td *ngSwitchCase="'datiPagamento.condizioniPagamento'">{{ e.datiPagamento.condizioniPagamento }}</td>
+                    </ng-container>
+                        <td *ngIf="buttons" style="text-align:center">
+                        <ng-container *ngFor="let b of buttons">
+                            <button pButton type="button" 
+                                class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}" 
+                                label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)">
+                            </button>
+                            <ng-container *ngIf="b.childs">
+                                <button pButton type="button" 
+                                    class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
+                                    pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
+                            </ng-container>
+                        </ng-container>
+                    </td>
+
                 </tr>
             </ng-template>
         </p-table>
-    </p>
-</div>
-
-<agal-paginator 
-    [totalRecords]="totalRecords"
-    [pageSizeOptions]="[30,50,100,500]"
-    [initialSize]="30"
-    (paginator)="changePagination($event)"
-    ></agal-paginator>
+    </div>
+</ng-container> 
+ 

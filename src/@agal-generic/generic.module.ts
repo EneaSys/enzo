@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgalCoreModule } from '@agal-core/agal-core.module';
-import { EopooNamePipe } from './pipe/eopoo-name.pipe';
+import { EopooNamePipe } from '@agal-generic/pipe/eopoo-name.pipe';
 import { AigGenericClientModule } from 'aig-generic';
 
 import { AgalEopooTypeListLoaderComponent } from './components/eopoo-type/eopoo-type-list-loader/eopoo-type-list-loader.component';

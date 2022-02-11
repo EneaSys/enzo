@@ -1,69 +1,83 @@
-<div [ngSwitch]="view">
-    <p *ngSwitchCase="'CARD'">
-        CARD
-    </p>
-    <p *ngSwitchDefault>
+<div *ngIf="loading">LOADING</div>
+<ng-container [ngSwitch]="view">
+    <div *ngSwitchCase="'NONE'"></div>
+    <div *ngSwitchCase="'CARD'">
+        <div *ngFor="let e of ds">
+            <pre>{{ e | json }}</pre>
+        </div>
+    </div>
+    <div *ngSwitchDefault>
         <!-- <indirizzo-resa-list-table-prime [ds]="ds"></indirizzo-resa-list-table-prime> -->
-        <p-table 
-            styleClass="p-datatable-lg"
-            [value]="ds" [loading]="loading"
-            [lazy]="true" (onLazyLoad)="lazyLoad($event)"
-            
-            [resizableColumns]="true"
-            [(selection)]="selectedElements" >
+        <p-table styleClass="p-datatable-sm" [value]="ds" [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+            [resizableColumns]="true" [selection]="selectedElements" (selectionChange)="selection($event)">
 
             <ng-template pTemplate="header">
                 <tr>
-					<th style="width:50px" ></th>
-                    <th style="width:auto" pResizableColumn pSortableColumn="indirizzoResa.indirizzo">indirizzo</th>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <th *ngSwitchCase="'_ck'" style="width:30px"></th>
+                        <th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
+                        <!-- Filed of entity -->
+                        <th *ngSwitchCase="'indirizzoResa.indirizzo'" style="width:auto" pResizableColumn pSortableColumn="indirizzoResa.indirizzo"> indirizzo </th>
 
-
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.vettoreEopooCode">vettoreEopooCode</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.mezzoTrasporto">mezzoTrasporto</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.causaleTrasporto">causaleTrasporto</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.numeroColli">numeroColli</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.descrizione">descrizione</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.unitaMisuraPeso">unitaMisuraPeso</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.pesoLordo">pesoLordo</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.pesoNetto">pesoNetto</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.dataOraRitiro">dataOraRitiro</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.dataInizioTrasporto">dataInizioTrasporto</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.tipoResa">tipoResa</th>
-					<th style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.dataOraConsegna">dataOraConsegna</th>
-
-            		<th style="width:auto" pResizableColumn pSortableColumn="">buttons</th>    
+                                <!-- Filed of relational entity -->
+                        <th *ngSwitchCase="'datiTrasporto.vettoreEopooCode'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.vettoreEopooCode"> vettoreEopooCode</th>
+                        <th *ngSwitchCase="'datiTrasporto.mezzoTrasporto'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.mezzoTrasporto"> mezzoTrasporto</th>
+                        <th *ngSwitchCase="'datiTrasporto.causaleTrasporto'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.causaleTrasporto"> causaleTrasporto</th>
+                        <th *ngSwitchCase="'datiTrasporto.numeroColli'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.numeroColli"> numeroColli</th>
+                        <th *ngSwitchCase="'datiTrasporto.descrizione'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.descrizione"> descrizione</th>
+                        <th *ngSwitchCase="'datiTrasporto.unitaMisuraPeso'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.unitaMisuraPeso"> unitaMisuraPeso</th>
+                        <th *ngSwitchCase="'datiTrasporto.pesoLordo'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.pesoLordo"> pesoLordo</th>
+                        <th *ngSwitchCase="'datiTrasporto.pesoNetto'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.pesoNetto"> pesoNetto</th>
+                        <th *ngSwitchCase="'datiTrasporto.dataOraRitiro'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.dataOraRitiro"> dataOraRitiro</th>
+                        <th *ngSwitchCase="'datiTrasporto.dataInizioTrasporto'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.dataInizioTrasporto"> dataInizioTrasporto</th>
+                        <th *ngSwitchCase="'datiTrasporto.tipoResa'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.tipoResa"> tipoResa</th>
+                        <th *ngSwitchCase="'datiTrasporto.dataOraConsegna'" style="width:auto" pResizableColumn pSortableColumn="datiTrasporto.dataOraConsegna"> dataOraConsegna</th>
+                    </ng-container>
+                    <th *ngIf="buttons" style="width:auto"></th>
 
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-e>
                 <tr>
-                    <td><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
-					<td>{{ e.indirizzo }}</td>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+                        <td *ngSwitchCase="'id'">{{ e.id }}</td>
+                        <!-- Filed of entity -->
+                         <td *ngSwitchCase="'indirizzo'">{{ e.indirizzo }}</td>
 
-					<td>{{ e.datiTrasporto.vettoreEopooCode }}</td>
-					<td>{{ e.datiTrasporto.mezzoTrasporto }}</td>
-					<td>{{ e.datiTrasporto.causaleTrasporto }}</td>
-					<td>{{ e.datiTrasporto.numeroColli }}</td>
-					<td>{{ e.datiTrasporto.descrizione }}</td>
-					<td>{{ e.datiTrasporto.unitaMisuraPeso }}</td>
-					<td>{{ e.datiTrasporto.pesoLordo }}</td>
-					<td>{{ e.datiTrasporto.pesoNetto }}</td>
-					<td>{{ e.datiTrasporto.dataOraRitiro }}</td>
-					<td>{{ e.datiTrasporto.dataInizioTrasporto }}</td>
-					<td>{{ e.datiTrasporto.tipoResa }}</td>
-					<td>{{ e.datiTrasporto.dataOraConsegna }}</td>
-            <td *ngIf="buttons">
-                <button *ngFor="let button of buttons" (click)="button.fn(e)" >{{button.name}}</button>
-            </td>
+                <!-- Filed of relational entity -->
+                        <td *ngSwitchCase="'datiTrasporto.vettoreEopooCode'">{{ e.datiTrasporto.vettoreEopooCode }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.mezzoTrasporto'">{{ e.datiTrasporto.mezzoTrasporto }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.causaleTrasporto'">{{ e.datiTrasporto.causaleTrasporto }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.numeroColli'">{{ e.datiTrasporto.numeroColli }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.descrizione'">{{ e.datiTrasporto.descrizione }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.unitaMisuraPeso'">{{ e.datiTrasporto.unitaMisuraPeso }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.pesoLordo'">{{ e.datiTrasporto.pesoLordo }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.pesoNetto'">{{ e.datiTrasporto.pesoNetto }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.dataOraRitiro'">{{ e.datiTrasporto.dataOraRitiro }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.dataInizioTrasporto'">{{ e.datiTrasporto.dataInizioTrasporto }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.tipoResa'">{{ e.datiTrasporto.tipoResa }}</td>
+                        <td *ngSwitchCase="'datiTrasporto.dataOraConsegna'">{{ e.datiTrasporto.dataOraConsegna }}</td>
+                    </ng-container>
+                        <td *ngIf="buttons" style="text-align:center">
+                        <ng-container *ngFor="let b of buttons">
+                            <button pButton type="button" 
+                                class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}" 
+                                label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)">
+                            </button>
+                            <ng-container *ngIf="b.childs">
+                                <button pButton type="button" 
+                                    class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
+                                    pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
+                            </ng-container>
+                        </ng-container>
+                    </td>
+
                 </tr>
             </ng-template>
         </p-table>
-    </p>
-</div>
-
-<agal-paginator 
-    [totalRecords]="totalRecords"
-    [pageSizeOptions]="[30,50,100,500]"
-    [initialSize]="30"
-    (paginator)="changePagination($event)"
-    ></agal-paginator>
+    </div>
+</ng-container> 
+ 

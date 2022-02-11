@@ -1,0 +1,1845 @@
+
+entity Procurement (pp_procurement) {
+	contractorEopooCode String required,
+	description String,
+	code String,
+	ref String,
+	externalRef String,
+	creationDateTime ZonedDateTime,
+}
+
+entity ProcurementLotCategory (pp_procurement_lot_category) {
+	categoryCode String required,
+	level String required,
+}
+
+entity ProcurementLot (pp_procurement_lot) {
+	cig String,
+	description String required,
+	sectorCode String required,
+	procedureCode String required,
+	modalityCode String required,
+	offerExpiryDate ZonedDateTime required,
+	baseAmount Double required,
+	candidacy Boolean required,
+	securityAmount Double,
+	istatCode String,
+	nutsCode String,
+	cpvCode String,
+	typeCode String required,
+	awardCriterionCode String required,
+	statusCode String required,
+	workLocationCode String,
+	creationDateTime ZonedDateTime,
+}
+relationship ManyToOne {
+	ProcurementLot { procurement (description) required } to Procurement,
+}
+relationship OneToMany {
+	ProcurementLot { categories (categoryCode) } to ProcurementLotCategory { procurementLot (cig) required },
+}
+
+entity PartecipationStatus (pp_partecipation_status) {
+	description String required,
+}
+
+entity PartecipationModality (pp_partecipation_modality) {
+	description String required,
+}
+
+entity Partecipation (pp_partecipation) {
+	proposerEopooCode String required,
+	partecipationTypeCode String,
+	siteInspection Boolean,
+	offering String,
+	note String,
+	creationDateTime ZonedDateTime,
+}
+relationship ManyToOne {
+	Partecipation { status (description) required } to PartecipationStatus,
+	Partecipation { modality (description) required } to PartecipationModality,
+	Partecipation { procurementLot (cig) required } to ProcurementLot,
+}
+
+entity PreparationStatus (pp_preparation_status) {
+	description String required,
+}
+
+entity PreparationModality (pp_preparation_modality) {
+	description String required,
+}
+
+entity Preparation (pp_preparation) {
+	companyPreparatorEopooCode String,
+	note String,
+}
+relationship ManyToOne {
+	Preparation { partecipation (proposerEopooCode) required } to Partecipation,
+	Preparation { status (description) required } to PreparationStatus,
+	Preparation { modality (description) required } to PreparationModality,
+}
+
+
+entity DesignatedCompany (pp_designated_company) {
+	companyEopooCode String required,
+	note String,
+}
+relationship OneToMany {
+	Partecipation { designatedCompanies (companyEopooCode) } to DesignatedCompany { partecipation (proposerEopooCode) required },
+}
+
+
+entity InsurancePolicyStatus (pp_insurance_policy_status) {
+	description String required,
+}
+
+entity InsurancePolicy (pp_insurance_policy) {
+	companyPreparatorEopooCode String,
+	note String,
+	totalAmount Double required,
+}
+relationship ManyToOne {
+	InsurancePolicy { status (description) required } to InsurancePolicyStatus,
+	InsurancePolicy { partecipation (proposerEopooCode) required } to Partecipation,
+}
+
+
+
+
+entity Dossier (dossier) {
+	description String,
+	dossierCode String required,
+}
+relationship OneToMany {
+	Procurement { dossier (dossierCode) } to Dossier,
+	ProcurementLot { dossier (dossierCode) } to Dossier,
+	Partecipation { dossier (dossierCode) } to Dossier,
+	Preparation { dossier (dossierCode) } to Dossier,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+entity FatturaElettronicaHeader {}
+
+		entity DatiTrasmissione {
+				IdTrasmittentePaese String required,
+				IdTrasmittenteCodice String required,
+		}
+
+		entity CedentePrestatore {
+		eopooCode String required
+	}
+		entity RappresentanteFiscale {
+		eopooCode String required
+	}
+		entity CessionarioCommittente {
+		eopooCode String required
+	}
+		entity TerzoIntermediarioOSoggettoEmittente {
+		eopooCode String required
+	}
+		entity SoggettoEmittente {
+		eopooCode String required
+	}
+
+entity FatturaElettronicaBody {
+		Numero String required
+		}
+		entity DatiGenerali {}
+				entity DatiGeneraliDocumento {
+						Divisa String,
+						Data String,
+						Numero String,
+						ImportoTotaleDocumento String,
+						Arrotondamento String,
+						Causale String,
+						Art73 String,
+			TipoDocumentoCode String required,
+						}
+						entity DatiRitenuta {
+								ImportoRitenuta Float required,
+								TipoRitenutaCode String required,
+								AliquotaRitenuta Float required,
+								CausalePagamento String required
+								}
+						entity DatiBollo {
+								BolloVirtuale String required,
+								ImportoBollo Float,
+								}
+						entity DatiCassaPrevidenziale {
+										AlCassa Float required,
+										ImportoContributo Float required,
+										ImponibileCassa Float,
+										TipoCassaCode String required,
+										aliquotaIVA Float required,
+										NaturaCode String,
+										Ritenuta String,
+										RiferimentoAmministrativo String
+								}
+						entity ScontoMaggiorazione {
+								Percentuale Float,
+								Importo Float,
+								TipoScontoMaggiorazioneCode String required
+								}
+						relationship OneToOne {
+								DatiGeneraliDocumento{DatiBollo} to DatiBollo{DatiGeneraliDocumento},
+								}
+						relationship OneToMany {
+								DatiGeneraliDocumento to DatiRitenuta{DatiGeneraliDocumento},
+								DatiGeneraliDocumento to DatiCassaPrevidenziale{DatiGeneraliDocumento},
+								DatiGeneraliDocumento to ScontoMaggiorazione{DatiGeneraliDocumento},
+								}
+				entity DatiOrdineAcquisto {
+						RiferimentoNumeroLinea Integer,
+						IdDocumento String required,
+						Data LocalDate,
+						NumItem String,
+						CodiceCommessaConvenzione String,
+						CodiceCUP String,
+						CodiceCIG String,
+						}
+				entity DatiContratto {
+						Value String required
+						}
+				entity DatiConvenzione {
+						Value String required
+						}
+				entity DatiRicezione {
+						Value String required
+						}
+				entity DatiFattureCollegate {
+						Value String required
+						}
+				entity DatiSal {
+						RiferimentoFase Integer required
+						}
+				entity DatiDdt {
+						NumeroDdt String required,
+						DataDdt LocalDate required,
+						}
+						entity RiferimentoNumeroLinea {
+								Value Integer required
+								}
+						relationship OneToMany {
+								DatiDdt to RiferimentoNumeroLinea{DatiDdt}
+								}
+		
+				entity DatiTrasporto {
+			VettoreEopooCode String required,
+			MezzoTrasporto String required,
+			CausaleTrasporto String required,
+			NumeroColli Integer required,
+			Descrizione String required,
+			UnitaMisuraPeso String required,
+			PesoLordo Float required,
+			PesoNetto Float required,
+			DataOraRitiro LocalDate required,
+			DataInizioTrasporto LocalDate required,
+			TipoResa String required,
+			DataOraConsegna LocalDate required,
+			}
+			entity IndirizzoResa {
+				Indirizzo String required,	
+			}
+			relationship OneToOne {
+				DatiTrasporto {IndirizzoResa} to IndirizzoResa {DatiTrasporto}
+			}
+			
+
+				entity FatturaPrincipale {
+						Numero String required,
+						Data LocalDate required
+						}
+				relationship OneToOne {
+						DatiGenerali{DatiGeneraliDocumento} to DatiGeneraliDocumento{DatiGenerali},
+						DatiGenerali{DatiSal} to DatiSal{DatiGenerali},
+						DatiGenerali{DatiTrasporto} to DatiTrasporto{DatiGenerali},
+						DatiGenerali{FatturaPrincipale} to FatturaPrincipale{DatiGenerali},
+						}
+				relationship OneToMany {
+						DatiGenerali to DatiOrdineAcquisto{DatiGenerali},
+						DatiGenerali to DatiContratto{DatiGenerali},
+						DatiGenerali to DatiConvenzione{DatiGenerali},
+						DatiGenerali to DatiRicezione{DatiGenerali},
+						DatiGenerali to DatiFattureCollegate{DatiGenerali},
+						DatiGenerali to DatiDdt{DatiGenerali},
+						}
+		entity DatiBeniServizi {}
+				entity DettaglioLinea {
+								NumeroLinea Integer required,
+								TipoCessionePrestazioneCode String required,
+								CodiceArticoloTipo String,
+								CodiceArticoloValore String,
+								Descrizione String required,
+								Quantita Integer,
+								UnitaMisura String,
+								DataInizioPeriodo LocalDate,
+								DataFinePeriodo LocalDate,
+								PrezzoUnitario Float required,
+								PrezzoTotale Float required,
+								aliquotaIVA Float required,
+								Ritenuta String,
+								NaturaCode String,
+								RiferimentoAmministrazione String
+						}
+						entity ScontoMaggiorazioneLinea {
+								Percentuale Float,
+								Importo Float,
+								TipoScontoMaggiorazioneCode String required
+								}
+						entity AltriDatiGestionali {
+								TipiDato String required,
+								RiferimentoTesto String,
+								RiferimentoNumero Float,
+								RiferimentoData LocalDate
+								}
+						relationship OneToMany {
+								DettaglioLinea to ScontoMaggiorazioneLinea{DettaglioLinea},
+								DettaglioLinea to AltriDatiGestionali{DettaglioLinea},
+								}
+				entity DatiRiepilogo {
+						aliquotaIVA Float required,
+						EsigibilitaIvaCode String,
+						NaturaCode String,
+						SpeseAccessorie Float,
+						Arrotondamento Float,
+						ImponibileImporto Float required,	
+						Imposta Float required,
+						RiferimentoNormativo String
+						}
+				relationship OneToMany {
+						DatiBeniServizi to DettaglioLinea{DatiBeniServizi},
+						DatiBeniServizi to DatiRiepilogo{DatiBeniServizi},
+						}
+		entity DatiPagamento {
+				CondizioniPagamento String required,
+						}
+				entity DettaglioPagamento {
+						Beneficiario String,
+						ModalitaPagamentoCode String required,
+						DataRiferimentoTerminiPagamento LocalDate,
+						GiorniTerminiPagamento Integer,
+						DataScadenzaPagamento LocalDate,
+						ImportoPagamento Float required,
+						CodUfficioPostale String,
+						CognomeQuietanzante String,
+						NomeQuietanzante String,
+						CFQuietanzante String,
+						TitoloQuietanzante String,
+						IstitutoFinanziario String,
+						Iban String,
+						Abi String,
+						Cab String,
+						Bic String,
+						ScontoPagamentoAnticipato Float,
+						DataLimitePagamentoAnticipato LocalDate,
+						PenalitaPagamentiRitardati Float,
+						DataDecorrenzaPenale LocalDate,
+						CodicePagamento String
+						}
+				relationship OneToMany {
+						DatiPagamento to DettaglioPagamento,
+						}
+		entity DatiVeicoli {}
+		entity Allegati {}
+		relationship OneToOne {
+				FatturaElettronicaBody{DatiGenerali} to DatiGenerali{FatturaElettronicaBody},
+				FatturaElettronicaBody{DatiBeniServizi} to DatiBeniServizi{FatturaElettronicaBody},
+				}
+		relationship OneToMany {
+				FatturaElettronicaBody to DatiPagamento{FatturaElettronicaBody},
+				FatturaElettronicaBody to DatiVeicoli{FatturaElettronicaBody},
+				FatturaElettronicaBody to Allegati{FatturaElettronicaBody},
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Aggregate
+entity AggregateDossier (agg_dossier) {
+	dossierID Long required unique,
+	dossierDescription String maxlength(25),
+	dossierDossierCode String maxlength(25),
+
+	procurementID Long,
+
+	procurementLotID Long,
+
+	partecipationID Long,
+
+	preparationID Long,
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+entity AggregateProcurement (agg_pp_procurement) {
+	procurementID Long required unique,
+		procurementDescription String maxlength(255),
+		procurementCode String maxlength(25),
+		procurementRef String maxlength(50),
+		procurementExternalRef String maxlength(50),
+		procurementCreationDateTime ZonedDateTime,
+			
+		//Cache
+		procurementAmount BigDecimal,
+				
+	contractorCode String maxlength(25),
+		contractorTaxNumber String maxlength(25),
+		contractorCompleteName String maxlength(255), //Cache
+		contractorTypeID Long ,
+			contractorTypeName String maxlength(25),
+			contractorTypeCode String maxlength(25),
+			contractorTypeEopooCategory String maxlength(25),
+		contractorPersonID Long,
+			contractorPersonFirstname String maxlength(50),
+			contractorPersonLastname String maxlength(50),
+			contractorPersonSex String maxlength(5),
+			contractorPersonBornDate ZonedDateTime,
+			contractorPersonCityCode String maxlength(25),
+				contractorPersonCityName String maxlength(100),
+				contractorPersonCityWikiCode String maxlength(25),
+		contractorGenericEopooID Long,
+			contractorGenericEopooName String maxlength(255),
+}
+
+entity AggregateProcurementLot (agg_pp_procurement_lot) {
+	procurementLotID Long required unique,
+		procurementLotCig String maxlength(25),
+		procurementLotDescription String maxlength(255),
+		procurementLotOfferExpiryDate ZonedDateTime,
+		procurementLotBaseAmount Double,
+		procurementLotCandidacy Boolean,
+		procurementLotSecurityAmount Double,
+		procurementLotCreationDateTime ZonedDateTime,
+			
+		procurementLotIstatCode String maxlength(25),
+			
+		procurementLotNutsCode String maxlength(25),
+
+		procurementLotCpvCode String maxlength(25),
+			procurementLotCpvName String maxlength(100),
+			procurementLotCpvDescription String maxlength(255),
+			procurementLotCpvWikiCode String maxlength(25),
+
+		procurementLotTypeCode String maxlength(25),
+			procurementLotTypeName String maxlength(100),
+			procurementLotTypeDescription String maxlength(255),
+			procurementLotTypeWikiCode String maxlength(25),
+				
+		procurementLotAwardCriterionCode String maxlength(25),
+			procurementLotAwardCriterionName String maxlength(100),
+			procurementLotAwardCriterionDescription String maxlength(255),
+			procurementLotAwardCriterionWikiCode String maxlength(25),
+		
+		procurementLotStatusCode String maxlength(25),
+			procurementLotStatusName String maxlength(100),
+			procurementLotStatusDescription String maxlength(255),
+			procurementLotStatusWikiCode String maxlength(25),
+
+		procurementLotSectorCode String maxlength(25),
+			procurementLotSectorName String maxlength(100),
+			procurementLotSectorDescription String maxlength(255),
+			procurementLotSectorWikiCode String maxlength(25),
+
+		procurementLotProcedureCode String maxlength(25),
+			procurementLotProcedureName String maxlength(100),
+			procurementLotProcedureDescription String maxlength(255),
+			procurementLotProcedureWikiCode String maxlength(25),
+
+		procurementLotModalityCode String maxlength(25),
+			procurementLotModalityName String maxlength(100),
+			procurementLotModalityDescription String maxlength(255),
+			procurementLotModalityWikiCode String maxlength(25),
+
+
+		workLocationCityCode String maxlength(25),
+			workLocationCityName String maxlength(100),
+			workLocationCityDescription String maxlength(255),
+			workLocationCityWikiCode String maxlength(25),
+
+		workLocationCityZipCode String maxlength(25),
+			workLocationCityZipName String maxlength(100),
+			workLocationCityZipDescription String maxlength(255),
+			workLocationCityZipWikiCode String maxlength(25),
+
+		workLocationCityTypeCode String maxlength(25),
+			workLocationCityTypeName String maxlength(100),
+			workLocationCityTypeDescription String maxlength(255),
+			workLocationCityTypeWikiCode String maxlength(25),
+
+		workLocationStateCode String maxlength(25),
+			workLocationStateName String maxlength(100),
+			workLocationStateDescription String maxlength(255),
+			workLocationStateWikiCode String maxlength(25),
+
+		workLocationStateTypeCode String maxlength(25),
+			workLocationStateTypeName String maxlength(100),
+			workLocationStateTypeDescription String maxlength(255),
+			workLocationStateTypeWikiCode String maxlength(25),
+
+		workLocationNationCode String maxlength(25),
+			workLocationNationName String maxlength(100),
+			workLocationNationDescription String maxlength(255),
+			workLocationNationWikiCode String maxlength(25),
+
+
+
+	procurementID Long,
+		procurementDescription String maxlength(255),
+		procurementCode String maxlength(25),
+		procurementRef String maxlength(50),
+		procurementExternalRef String maxlength(50),
+		procurementCreationDateTime ZonedDateTime,
+			
+		//Cache
+		procurementAmount BigDecimal,
+				
+	contractorCode String maxlength(25),
+		contractorTaxNumber String maxlength(25),
+		contractorCompleteName String maxlength(255), //Cache
+		contractorTypeID Long ,
+			contractorTypeName String maxlength(25),
+			contractorTypeCode String maxlength(25),
+			contractorTypeEopooCategory String maxlength(25),
+		contractorPersonID Long,
+			contractorPersonFirstname String maxlength(50),
+			contractorPersonLastname String maxlength(50),
+			contractorPersonSex String maxlength(5),
+			contractorPersonBornDate ZonedDateTime,
+			contractorPersonCityCode String maxlength(25),
+				contractorPersonCityName String maxlength(100),
+				contractorPersonCityWikiCode String maxlength(25),
+		contractorGenericEopooID Long,
+			contractorGenericEopooName String maxlength(255),
+}
+
+
+
+entity AggregateProcurementLotCategory (agg_pp_procurement_lot_category) {
+	procurementLotCategoryID Long required unique,
+		procurementLotCategoryLevel String maxlength(25),
+		
+		procurementLotCategoryCode String maxlength(25),
+			procurementLotCategoryName String maxlength(100),
+			procurementLotCategoryDescription String maxlength(255),
+			procurementLotCategoryWikiCode String maxlength(25),
+		
+	procurementLotID Long,
+		procurementLotCig String maxlength(25),
+		procurementLotDescription String maxlength(255),
+		procurementLotOfferExpiryDate ZonedDateTime,
+		procurementLotBaseAmount Double,
+		procurementLotCandidacy Boolean,
+		procurementLotSecurityAmount Double,
+		procurementLotCreationDateTime ZonedDateTime,
+			
+		procurementLotIstatCode String maxlength(25),
+			
+		procurementLotNutsCode String maxlength(25),
+
+		procurementLotCpvCode String maxlength(25),
+			procurementLotCpvName String maxlength(100),
+			procurementLotCpvDescription String maxlength(255),
+			procurementLotCpvWikiCode String maxlength(25),
+
+		procurementLotTypeCode String maxlength(25),
+			procurementLotTypeName String maxlength(100),
+			procurementLotTypeDescription String maxlength(255),
+			procurementLotTypeWikiCode String maxlength(25),
+				
+		procurementLotAwardCriterionCode String maxlength(25),
+			procurementLotAwardCriterionName String maxlength(100),
+			procurementLotAwardCriterionDescription String maxlength(255),
+			procurementLotAwardCriterionWikiCode String maxlength(25),
+		
+		procurementLotStatusCode String maxlength(25),
+			procurementLotStatusName String maxlength(100),
+			procurementLotStatusDescription String maxlength(255),
+			procurementLotStatusWikiCode String maxlength(25),
+
+		procurementLotSectorCode String maxlength(25),
+			procurementLotSectorName String maxlength(100),
+			procurementLotSectorDescription String maxlength(255),
+			procurementLotSectorWikiCode String maxlength(25),
+
+		procurementLotProcedureCode String maxlength(25),
+			procurementLotProcedureName String maxlength(100),
+			procurementLotProcedureDescription String maxlength(255),
+			procurementLotProcedureWikiCode String maxlength(25),
+
+		procurementLotModalityCode String maxlength(25),
+			procurementLotModalityName String maxlength(100),
+			procurementLotModalityDescription String maxlength(255),
+			procurementLotModalityWikiCode String maxlength(25),
+
+
+		workLocationCityCode String maxlength(25),
+			workLocationCityName String maxlength(100),
+			workLocationCityDescription String maxlength(255),
+			workLocationCityWikiCode String maxlength(25),
+
+		workLocationCityZipCode String maxlength(25),
+			workLocationCityZipName String maxlength(100),
+			workLocationCityZipDescription String maxlength(255),
+			workLocationCityZipWikiCode String maxlength(25),
+
+		workLocationCityTypeCode String maxlength(25),
+			workLocationCityTypeName String maxlength(100),
+			workLocationCityTypeDescription String maxlength(255),
+			workLocationCityTypeWikiCode String maxlength(25),
+
+		workLocationStateCode String maxlength(25),
+			workLocationStateName String maxlength(100),
+			workLocationStateDescription String maxlength(255),
+			workLocationStateWikiCode String maxlength(25),
+
+		workLocationStateTypeCode String maxlength(25),
+			workLocationStateTypeName String maxlength(100),
+			workLocationStateTypeDescription String maxlength(255),
+			workLocationStateTypeWikiCode String maxlength(25),
+
+		workLocationNationCode String maxlength(25),
+			workLocationNationName String maxlength(100),
+			workLocationNationDescription String maxlength(255),
+			workLocationNationWikiCode String maxlength(25),
+
+
+
+	procurementID Long,
+		procurementDescription String maxlength(255),
+		procurementCode String maxlength(25),
+		procurementRef String maxlength(50),
+		procurementExternalRef String maxlength(50),
+		procurementCreationDateTime ZonedDateTime,
+			
+		//Cache
+		procurementAmount BigDecimal,
+				
+	contractorCode String maxlength(25),
+		contractorTaxNumber String maxlength(25),
+		contractorCompleteName String maxlength(255), //Cache
+		contractorTypeID Long ,
+			contractorTypeName String maxlength(25),
+			contractorTypeCode String maxlength(25),
+			contractorTypeEopooCategory String maxlength(25),
+		contractorPersonID Long,
+			contractorPersonFirstname String maxlength(50),
+			contractorPersonLastname String maxlength(50),
+			contractorPersonSex String maxlength(5),
+			contractorPersonBornDate ZonedDateTime,
+			contractorPersonCityCode String maxlength(25),
+				contractorPersonCityName String maxlength(100),
+				contractorPersonCityWikiCode String maxlength(25),
+		contractorGenericEopooID Long,
+			contractorGenericEopooName String maxlength(255),
+}
+
+
+entity AggregatePartecipation (agg_pp_partecipation) {
+	partecipationID Long required unique,
+		partecipationNote String maxlength(25),
+		partecipationCdt ZonedDateTime,
+		partecipationOffering String maxlength(25),
+		partecipationSiteInspection Boolean,
+			
+		partecipationStatusID Long,
+			partecipationStatusDescription String maxlength(255),
+				
+		partecipationModalityID Long,
+			partecipationModalityDescription String maxlength(255),
+			
+			
+		partecipationTypeCode String maxlength(25),
+			partecipationTypeName String maxlength(100),
+			partecipationTypeDescription String maxlength(255),
+			partecipationTypeWikiCode String maxlength(25),
+		
+		
+		proposerCode String maxlength(25),
+			proposerTaxNumber String maxlength(25),
+			proposerCompleteName String maxlength(255), //Cache
+			proposerTypeID Long ,
+				proposerTypeName String maxlength(25),
+				proposerTypeCode String maxlength(25),
+				proposerTypeEopooCategory String maxlength(25),
+			proposerPersonID Long,
+				proposerPersonFirstname String maxlength(50),
+				proposerPersonLastname String maxlength(50),
+				proposerPersonSex String maxlength(5),
+				proposerPersonBornDate ZonedDateTime,
+				proposerPersonCityCode String maxlength(25),
+					proposerPersonCityName String maxlength(100),
+					proposerPersonCityWikiCode String maxlength(25),
+			proposerGenericEopooID Long,
+				proposerGenericEopooName String maxlength(255),
+		
+	procurementLotID Long,
+		procurementLotCig String maxlength(25),
+		procurementLotDescription String maxlength(255),
+		procurementLotOfferExpiryDate ZonedDateTime,
+		procurementLotBaseAmount Double,
+		procurementLotCandidacy Boolean,
+		procurementLotSecurityAmount Double,
+		procurementLotCreationDateTime ZonedDateTime,
+			
+		procurementLotIstatCode String maxlength(25),
+			
+		procurementLotNutsCode String maxlength(25),
+
+		procurementLotCpvCode String maxlength(25),
+			procurementLotCpvName String maxlength(100),
+			procurementLotCpvDescription String maxlength(255),
+			procurementLotCpvWikiCode String maxlength(25),
+
+		procurementLotTypeCode String maxlength(25),
+			procurementLotTypeName String maxlength(100),
+			procurementLotTypeDescription String maxlength(255),
+			procurementLotTypeWikiCode String maxlength(25),
+				
+		procurementLotAwardCriterionCode String maxlength(25),
+			procurementLotAwardCriterionName String maxlength(100),
+			procurementLotAwardCriterionDescription String maxlength(255),
+			procurementLotAwardCriterionWikiCode String maxlength(25),
+		
+		procurementLotStatusCode String maxlength(25),
+			procurementLotStatusName String maxlength(100),
+			procurementLotStatusDescription String maxlength(255),
+			procurementLotStatusWikiCode String maxlength(25),
+
+		procurementLotSectorCode String maxlength(25),
+			procurementLotSectorName String maxlength(100),
+			procurementLotSectorDescription String maxlength(255),
+			procurementLotSectorWikiCode String maxlength(25),
+
+		procurementLotProcedureCode String maxlength(25),
+			procurementLotProcedureName String maxlength(100),
+			procurementLotProcedureDescription String maxlength(255),
+			procurementLotProcedureWikiCode String maxlength(25),
+
+		procurementLotModalityCode String maxlength(25),
+			procurementLotModalityName String maxlength(100),
+			procurementLotModalityDescription String maxlength(255),
+			procurementLotModalityWikiCode String maxlength(25),
+
+
+		workLocationCityCode String maxlength(25),
+			workLocationCityName String maxlength(100),
+			workLocationCityDescription String maxlength(255),
+			workLocationCityWikiCode String maxlength(25),
+
+		workLocationCityZipCode String maxlength(25),
+			workLocationCityZipName String maxlength(100),
+			workLocationCityZipDescription String maxlength(255),
+			workLocationCityZipWikiCode String maxlength(25),
+
+		workLocationCityTypeCode String maxlength(25),
+			workLocationCityTypeName String maxlength(100),
+			workLocationCityTypeDescription String maxlength(255),
+			workLocationCityTypeWikiCode String maxlength(25),
+
+		workLocationStateCode String maxlength(25),
+			workLocationStateName String maxlength(100),
+			workLocationStateDescription String maxlength(255),
+			workLocationStateWikiCode String maxlength(25),
+
+		workLocationStateTypeCode String maxlength(25),
+			workLocationStateTypeName String maxlength(100),
+			workLocationStateTypeDescription String maxlength(255),
+			workLocationStateTypeWikiCode String maxlength(25),
+
+		workLocationNationCode String maxlength(25),
+			workLocationNationName String maxlength(100),
+			workLocationNationDescription String maxlength(255),
+			workLocationNationWikiCode String maxlength(25),
+
+	procurementID Long,
+		procurementDescription String maxlength(255),
+		procurementCode String maxlength(25),
+		procurementRef String maxlength(50),
+		procurementExternalRef String maxlength(50),
+		procurementCreationDateTime ZonedDateTime,
+			
+		//Cache
+		procurementAmount BigDecimal,
+				
+	contractorCode String maxlength(25),
+		contractorTaxNumber String maxlength(25),
+		contractorCompleteName String maxlength(255), //Cache
+		contractorTypeID Long ,
+			contractorTypeName String maxlength(25),
+			contractorTypeCode String maxlength(25),
+			contractorTypeEopooCategory String maxlength(25),
+		contractorPersonID Long,
+			contractorPersonFirstname String maxlength(50),
+			contractorPersonLastname String maxlength(50),
+			contractorPersonSex String maxlength(5),
+			contractorPersonBornDate ZonedDateTime,
+			contractorPersonCityCode String maxlength(25),
+				contractorPersonCityName String maxlength(100),
+				contractorPersonCityWikiCode String maxlength(25),
+		contractorGenericEopooID Long,
+			contractorGenericEopooName String maxlength(255),
+}
+
+entity AggregatePartecipationStatus (agg_pp_partecipation_status) {
+	partecipationStatusID Long required unique,
+		partecipationStatusDescription String maxlength(255),
+}
+
+entity AggregatePartecipationModality (agg_pp_partecipation_modality) {
+	partecipationModalityID Long required unique,
+		partecipationModalityDescription String maxlength(255),
+}
+
+entity AggregateDesignatedCompany (agg_pp_designated_company) {
+	designatedCompanyID Long required unique,
+		designatedCompanyNote String maxlength(25),
+		
+		designatedCompanyCode String maxlength(25),
+			designatedCompanyTaxNumber String maxlength(25),
+			designatedCompanyCompleteName String maxlength(255), //Cache
+			designatedCompanyTypeID Long ,
+				designatedCompanyTypeName String maxlength(25),
+				designatedCompanyTypeCode String maxlength(25),
+				designatedCompanyTypeEopooCategory String maxlength(25),
+			designatedCompanyPersonID Long,
+				designatedCompanyPersonFirstname String maxlength(50),
+				designatedCompanyPersonLastname String maxlength(50),
+				designatedCompanyPersonSex String maxlength(5),
+				designatedCompanyPersonBornDate ZonedDateTime,
+				designatedCompanyPersonCityCode String maxlength(25),
+					designatedCompanyPersonCityName String maxlength(100),
+					designatedCompanyPersonCityWikiCode String maxlength(25),
+			designatedCompanyGenericEopooID Long,
+				designatedCompanyGenericEopooName String maxlength(255),
+
+
+	partecipationID Long,
+		partecipationNote String maxlength(25),
+		partecipationCdt ZonedDateTime,
+		partecipationOffering String maxlength(25),
+		partecipationSiteInspection Boolean,
+			
+		partecipationStatusID Long,
+			partecipationStatusDescription String maxlength(255),
+				
+		partecipationModalityID Long,
+			partecipationModalityDescription String maxlength(255),
+			
+			
+		partecipationTypeCode String maxlength(25),
+			partecipationTypeName String maxlength(100),
+			partecipationTypeDescription String maxlength(255),
+			partecipationTypeWikiCode String maxlength(25),
+		
+		
+		proposerCode String maxlength(25),
+			proposerTaxNumber String maxlength(25),
+			proposerCompleteName String maxlength(255), //Cache
+			proposerTypeID Long ,
+				proposerTypeName String maxlength(25),
+				proposerTypeCode String maxlength(25),
+				proposerTypeEopooCategory String maxlength(25),
+			proposerPersonID Long,
+				proposerPersonFirstname String maxlength(50),
+				proposerPersonLastname String maxlength(50),
+				proposerPersonSex String maxlength(5),
+				proposerPersonBornDate ZonedDateTime,
+				proposerPersonCityCode String maxlength(25),
+					proposerPersonCityName String maxlength(100),
+					proposerPersonCityWikiCode String maxlength(25),
+			proposerGenericEopooID Long,
+				proposerGenericEopooName String maxlength(255),
+		
+	procurementLotID Long,
+		procurementLotCig String maxlength(25),
+		procurementLotDescription String maxlength(255),
+		procurementLotOfferExpiryDate ZonedDateTime,
+		procurementLotBaseAmount Double,
+		procurementLotCandidacy Boolean,
+		procurementLotSecurityAmount Double,
+		procurementLotCreationDateTime ZonedDateTime,
+			
+		procurementLotIstatCode String maxlength(25),
+			
+		procurementLotNutsCode String maxlength(25),
+
+		procurementLotCpvCode String maxlength(25),
+			procurementLotCpvName String maxlength(100),
+			procurementLotCpvDescription String maxlength(255),
+			procurementLotCpvWikiCode String maxlength(25),
+
+		procurementLotTypeCode String maxlength(25),
+			procurementLotTypeName String maxlength(100),
+			procurementLotTypeDescription String maxlength(255),
+			procurementLotTypeWikiCode String maxlength(25),
+				
+		procurementLotAwardCriterionCode String maxlength(25),
+			procurementLotAwardCriterionName String maxlength(100),
+			procurementLotAwardCriterionDescription String maxlength(255),
+			procurementLotAwardCriterionWikiCode String maxlength(25),
+		
+		procurementLotStatusCode String maxlength(25),
+			procurementLotStatusName String maxlength(100),
+			procurementLotStatusDescription String maxlength(255),
+			procurementLotStatusWikiCode String maxlength(25),
+
+		procurementLotSectorCode String maxlength(25),
+			procurementLotSectorName String maxlength(100),
+			procurementLotSectorDescription String maxlength(255),
+			procurementLotSectorWikiCode String maxlength(25),
+
+		procurementLotProcedureCode String maxlength(25),
+			procurementLotProcedureName String maxlength(100),
+			procurementLotProcedureDescription String maxlength(255),
+			procurementLotProcedureWikiCode String maxlength(25),
+
+		procurementLotModalityCode String maxlength(25),
+			procurementLotModalityName String maxlength(100),
+			procurementLotModalityDescription String maxlength(255),
+			procurementLotModalityWikiCode String maxlength(25),
+
+
+		workLocationCityCode String maxlength(25),
+			workLocationCityName String maxlength(100),
+			workLocationCityDescription String maxlength(255),
+			workLocationCityWikiCode String maxlength(25),
+
+		workLocationCityZipCode String maxlength(25),
+			workLocationCityZipName String maxlength(100),
+			workLocationCityZipDescription String maxlength(255),
+			workLocationCityZipWikiCode String maxlength(25),
+
+		workLocationCityTypeCode String maxlength(25),
+			workLocationCityTypeName String maxlength(100),
+			workLocationCityTypeDescription String maxlength(255),
+			workLocationCityTypeWikiCode String maxlength(25),
+
+		workLocationStateCode String maxlength(25),
+			workLocationStateName String maxlength(100),
+			workLocationStateDescription String maxlength(255),
+			workLocationStateWikiCode String maxlength(25),
+
+		workLocationStateTypeCode String maxlength(25),
+			workLocationStateTypeName String maxlength(100),
+			workLocationStateTypeDescription String maxlength(255),
+			workLocationStateTypeWikiCode String maxlength(25),
+
+		workLocationNationCode String maxlength(25),
+			workLocationNationName String maxlength(100),
+			workLocationNationDescription String maxlength(255),
+			workLocationNationWikiCode String maxlength(25),
+
+	procurementID Long,
+		procurementDescription String maxlength(255),
+		procurementCode String maxlength(25),
+		procurementRef String maxlength(50),
+		procurementExternalRef String maxlength(50),
+		procurementCreationDateTime ZonedDateTime,
+			
+		//Cache
+		procurementAmount BigDecimal,
+				
+	contractorCode String maxlength(25),
+		contractorTaxNumber String maxlength(25),
+		contractorCompleteName String maxlength(255), //Cache
+		contractorTypeID Long ,
+			contractorTypeName String maxlength(25),
+			contractorTypeCode String maxlength(25),
+			contractorTypeEopooCategory String maxlength(25),
+		contractorPersonID Long,
+			contractorPersonFirstname String maxlength(50),
+			contractorPersonLastname String maxlength(50),
+			contractorPersonSex String maxlength(5),
+			contractorPersonBornDate ZonedDateTime,
+			contractorPersonCityCode String maxlength(25),
+				contractorPersonCityName String maxlength(100),
+				contractorPersonCityWikiCode String maxlength(25),
+		contractorGenericEopooID Long,
+			contractorGenericEopooName String maxlength(255),
+}
+
+
+entity AggregateInsurancePolicy (agg_pp_insurance_policy) {
+	insurancePolicyID Long required unique,
+		insurancePolicyNote String maxlength(25),
+		insurancePolicyTotalAmount Double,
+		
+		insurancePolicyStatusID Long,
+			insurancePolicyStatusDescription String maxlength(255),
+		
+		companyPreparatorCode String maxlength(25),
+			companyPreparatorTaxNumber String maxlength(25),
+			companyPreparatorCompleteName String maxlength(255), //Cache
+			companyPreparatorTypeID Long ,
+				companyPreparatorTypeName String maxlength(25),
+				companyPreparatorTypeCode String maxlength(25),
+				companyPreparatorTypeEopooCategory String maxlength(25),
+			companyPreparatorPersonID Long,
+				companyPreparatorPersonFirstname String maxlength(50),
+				companyPreparatorPersonLastname String maxlength(50),
+				companyPreparatorPersonSex String maxlength(5),
+				companyPreparatorPersonBornDate ZonedDateTime,
+				companyPreparatorPersonCityCode String maxlength(25),
+					companyPreparatorPersonCityName String maxlength(100),
+					companyPreparatorPersonCityWikiCode String maxlength(25),
+			companyPreparatorGenericEopooID Long,
+				companyPreparatorGenericEopooName String maxlength(255),
+				
+				
+	partecipationID Long,
+		partecipationNote String maxlength(25),
+		partecipationCdt ZonedDateTime,
+		partecipationOffering String maxlength(25),
+		partecipationSiteInspection Boolean,
+			
+		partecipationStatusID Long,
+			partecipationStatusDescription String maxlength(255),
+				
+		partecipationModalityID Long,
+			partecipationModalityDescription String maxlength(255),
+			
+			
+		partecipationTypeCode String maxlength(25),
+			partecipationTypeName String maxlength(100),
+			partecipationTypeDescription String maxlength(255),
+			partecipationTypeWikiCode String maxlength(25),
+		
+		
+		proposerCode String maxlength(25),
+			proposerTaxNumber String maxlength(25),
+			proposerCompleteName String maxlength(255), //Cache
+			proposerTypeID Long ,
+				proposerTypeName String maxlength(25),
+				proposerTypeCode String maxlength(25),
+				proposerTypeEopooCategory String maxlength(25),
+			proposerPersonID Long,
+				proposerPersonFirstname String maxlength(50),
+				proposerPersonLastname String maxlength(50),
+				proposerPersonSex String maxlength(5),
+				proposerPersonBornDate ZonedDateTime,
+				proposerPersonCityCode String maxlength(25),
+					proposerPersonCityName String maxlength(100),
+					proposerPersonCityWikiCode String maxlength(25),
+			proposerGenericEopooID Long,
+				proposerGenericEopooName String maxlength(255),
+		
+	procurementLotID Long,
+		procurementLotCig String maxlength(25),
+		procurementLotDescription String maxlength(255),
+		procurementLotOfferExpiryDate ZonedDateTime,
+		procurementLotBaseAmount Double,
+		procurementLotCandidacy Boolean,
+		procurementLotSecurityAmount Double,
+		procurementLotCreationDateTime ZonedDateTime,
+			
+		procurementLotIstatCode String maxlength(25),
+			
+		procurementLotNutsCode String maxlength(25),
+
+		procurementLotCpvCode String maxlength(25),
+			procurementLotCpvName String maxlength(100),
+			procurementLotCpvDescription String maxlength(255),
+			procurementLotCpvWikiCode String maxlength(25),
+
+		procurementLotTypeCode String maxlength(25),
+			procurementLotTypeName String maxlength(100),
+			procurementLotTypeDescription String maxlength(255),
+			procurementLotTypeWikiCode String maxlength(25),
+				
+		procurementLotAwardCriterionCode String maxlength(25),
+			procurementLotAwardCriterionName String maxlength(100),
+			procurementLotAwardCriterionDescription String maxlength(255),
+			procurementLotAwardCriterionWikiCode String maxlength(25),
+		
+		procurementLotStatusCode String maxlength(25),
+			procurementLotStatusName String maxlength(100),
+			procurementLotStatusDescription String maxlength(255),
+			procurementLotStatusWikiCode String maxlength(25),
+
+		procurementLotSectorCode String maxlength(25),
+			procurementLotSectorName String maxlength(100),
+			procurementLotSectorDescription String maxlength(255),
+			procurementLotSectorWikiCode String maxlength(25),
+
+		procurementLotProcedureCode String maxlength(25),
+			procurementLotProcedureName String maxlength(100),
+			procurementLotProcedureDescription String maxlength(255),
+			procurementLotProcedureWikiCode String maxlength(25),
+
+		procurementLotModalityCode String maxlength(25),
+			procurementLotModalityName String maxlength(100),
+			procurementLotModalityDescription String maxlength(255),
+			procurementLotModalityWikiCode String maxlength(25),
+
+
+		workLocationCityCode String maxlength(25),
+			workLocationCityName String maxlength(100),
+			workLocationCityDescription String maxlength(255),
+			workLocationCityWikiCode String maxlength(25),
+
+		workLocationCityZipCode String maxlength(25),
+			workLocationCityZipName String maxlength(100),
+			workLocationCityZipDescription String maxlength(255),
+			workLocationCityZipWikiCode String maxlength(25),
+
+		workLocationCityTypeCode String maxlength(25),
+			workLocationCityTypeName String maxlength(100),
+			workLocationCityTypeDescription String maxlength(255),
+			workLocationCityTypeWikiCode String maxlength(25),
+
+		workLocationStateCode String maxlength(25),
+			workLocationStateName String maxlength(100),
+			workLocationStateDescription String maxlength(255),
+			workLocationStateWikiCode String maxlength(25),
+
+		workLocationStateTypeCode String maxlength(25),
+			workLocationStateTypeName String maxlength(100),
+			workLocationStateTypeDescription String maxlength(255),
+			workLocationStateTypeWikiCode String maxlength(25),
+
+		workLocationNationCode String maxlength(25),
+			workLocationNationName String maxlength(100),
+			workLocationNationDescription String maxlength(255),
+			workLocationNationWikiCode String maxlength(25),
+
+	procurementID Long,
+		procurementDescription String maxlength(255),
+		procurementCode String maxlength(25),
+		procurementRef String maxlength(50),
+		procurementExternalRef String maxlength(50),
+		procurementCreationDateTime ZonedDateTime,
+			
+		//Cache
+		procurementAmount BigDecimal,
+				
+	contractorCode String maxlength(25),
+		contractorTaxNumber String maxlength(25),
+		contractorCompleteName String maxlength(255), //Cache
+		contractorTypeID Long ,
+			contractorTypeName String maxlength(25),
+			contractorTypeCode String maxlength(25),
+			contractorTypeEopooCategory String maxlength(25),
+		contractorPersonID Long,
+			contractorPersonFirstname String maxlength(50),
+			contractorPersonLastname String maxlength(50),
+			contractorPersonSex String maxlength(5),
+			contractorPersonBornDate ZonedDateTime,
+			contractorPersonCityCode String maxlength(25),
+				contractorPersonCityName String maxlength(100),
+				contractorPersonCityWikiCode String maxlength(25),
+		contractorGenericEopooID Long,
+			contractorGenericEopooName String maxlength(255),
+}
+
+entity AggregateInsurancePolicyStatus (agg_pp_insurance_policy_status) {
+	insurancePolicyStatusID Long required unique,
+		insurancePolicyStatusDescription String maxlength(255),
+}
+
+
+entity AggregatePreparation (agg_pp_preparation) {
+	preparationID Long required unique,
+		preparationNote String maxlength(25),
+		
+		preparationModalityID Long,
+			preparationModalityDescription String maxlength(255),
+
+		preparationStatusID Long,
+			preparationStatusDescription String maxlength(255),
+		
+		preparatorCode String maxlength(25),
+			preparatorTaxNumber String maxlength(25),
+			preparatorCompleteName String maxlength(255), //Cache
+			preparatorTypeID Long ,
+				preparatorTypeName String maxlength(25),
+				preparatorTypeCode String maxlength(25),
+				preparatorTypeEopooCategory String maxlength(25),
+			preparatorPersonID Long,
+				preparatorPersonFirstname String maxlength(50),
+				preparatorPersonLastname String maxlength(50),
+				preparatorPersonSex String maxlength(5),
+				preparatorPersonBornDate ZonedDateTime,
+				preparatorPersonCityCode String maxlength(25),
+					preparatorPersonCityName String maxlength(100),
+					preparatorPersonCityWikiCode String maxlength(25),
+			preparatorGenericEopooID Long,
+				preparatorGenericEopooName String maxlength(255),
+				
+				
+	partecipationID Long,
+		partecipationNote String maxlength(25),
+		partecipationCdt ZonedDateTime,
+		partecipationOffering String maxlength(25),
+		partecipationSiteInspection Boolean,
+			
+		partecipationStatusID Long,
+			partecipationStatusDescription String maxlength(255),
+				
+		partecipationModalityID Long,
+			partecipationModalityDescription String maxlength(255),
+			
+			
+		partecipationTypeCode String maxlength(25),
+			partecipationTypeName String maxlength(100),
+			partecipationTypeDescription String maxlength(255),
+			partecipationTypeWikiCode String maxlength(25),
+		
+		
+		proposerCode String maxlength(25),
+			proposerTaxNumber String maxlength(25),
+			proposerCompleteName String maxlength(255), //Cache
+			proposerTypeID Long ,
+				proposerTypeName String maxlength(25),
+				proposerTypeCode String maxlength(25),
+				proposerTypeEopooCategory String maxlength(25),
+			proposerPersonID Long,
+				proposerPersonFirstname String maxlength(50),
+				proposerPersonLastname String maxlength(50),
+				proposerPersonSex String maxlength(5),
+				proposerPersonBornDate ZonedDateTime,
+				proposerPersonCityCode String maxlength(25),
+					proposerPersonCityName String maxlength(100),
+					proposerPersonCityWikiCode String maxlength(25),
+			proposerGenericEopooID Long,
+				proposerGenericEopooName String maxlength(255),
+		
+	procurementLotID Long,
+		procurementLotCig String maxlength(25),
+		procurementLotDescription String maxlength(255),
+		procurementLotOfferExpiryDate ZonedDateTime,
+		procurementLotBaseAmount Double,
+		procurementLotCandidacy Boolean,
+		procurementLotSecurityAmount Double,
+		procurementLotCreationDateTime ZonedDateTime,
+			
+		procurementLotIstatCode String maxlength(25),
+			
+		procurementLotNutsCode String maxlength(25),
+
+		procurementLotCpvCode String maxlength(25),
+			procurementLotCpvName String maxlength(100),
+			procurementLotCpvDescription String maxlength(255),
+			procurementLotCpvWikiCode String maxlength(25),
+
+		procurementLotTypeCode String maxlength(25),
+			procurementLotTypeName String maxlength(100),
+			procurementLotTypeDescription String maxlength(255),
+			procurementLotTypeWikiCode String maxlength(25),
+				
+		procurementLotAwardCriterionCode String maxlength(25),
+			procurementLotAwardCriterionName String maxlength(100),
+			procurementLotAwardCriterionDescription String maxlength(255),
+			procurementLotAwardCriterionWikiCode String maxlength(25),
+		
+		procurementLotStatusCode String maxlength(25),
+			procurementLotStatusName String maxlength(100),
+			procurementLotStatusDescription String maxlength(255),
+			procurementLotStatusWikiCode String maxlength(25),
+
+		procurementLotSectorCode String maxlength(25),
+			procurementLotSectorName String maxlength(100),
+			procurementLotSectorDescription String maxlength(255),
+			procurementLotSectorWikiCode String maxlength(25),
+
+		procurementLotProcedureCode String maxlength(25),
+			procurementLotProcedureName String maxlength(100),
+			procurementLotProcedureDescription String maxlength(255),
+			procurementLotProcedureWikiCode String maxlength(25),
+
+		procurementLotModalityCode String maxlength(25),
+			procurementLotModalityName String maxlength(100),
+			procurementLotModalityDescription String maxlength(255),
+			procurementLotModalityWikiCode String maxlength(25),
+
+
+		workLocationCityCode String maxlength(25),
+			workLocationCityName String maxlength(100),
+			workLocationCityDescription String maxlength(255),
+			workLocationCityWikiCode String maxlength(25),
+
+		workLocationCityZipCode String maxlength(25),
+			workLocationCityZipName String maxlength(100),
+			workLocationCityZipDescription String maxlength(255),
+			workLocationCityZipWikiCode String maxlength(25),
+
+		workLocationCityTypeCode String maxlength(25),
+			workLocationCityTypeName String maxlength(100),
+			workLocationCityTypeDescription String maxlength(255),
+			workLocationCityTypeWikiCode String maxlength(25),
+
+		workLocationStateCode String maxlength(25),
+			workLocationStateName String maxlength(100),
+			workLocationStateDescription String maxlength(255),
+			workLocationStateWikiCode String maxlength(25),
+
+		workLocationStateTypeCode String maxlength(25),
+			workLocationStateTypeName String maxlength(100),
+			workLocationStateTypeDescription String maxlength(255),
+			workLocationStateTypeWikiCode String maxlength(25),
+
+		workLocationNationCode String maxlength(25),
+			workLocationNationName String maxlength(100),
+			workLocationNationDescription String maxlength(255),
+			workLocationNationWikiCode String maxlength(25),
+
+	procurementID Long,
+		procurementDescription String maxlength(255),
+		procurementCode String maxlength(25),
+		procurementRef String maxlength(50),
+		procurementExternalRef String maxlength(50),
+		procurementCreationDateTime ZonedDateTime,
+			
+		//Cache
+		procurementAmount BigDecimal,
+				
+	contractorCode String maxlength(25),
+		contractorTaxNumber String maxlength(25),
+		contractorCompleteName String maxlength(255), //Cache
+		contractorTypeID Long ,
+			contractorTypeName String maxlength(25),
+			contractorTypeCode String maxlength(25),
+			contractorTypeEopooCategory String maxlength(25),
+		contractorPersonID Long,
+			contractorPersonFirstname String maxlength(50),
+			contractorPersonLastname String maxlength(50),
+			contractorPersonSex String maxlength(5),
+			contractorPersonBornDate ZonedDateTime,
+			contractorPersonCityCode String maxlength(25),
+				contractorPersonCityName String maxlength(100),
+				contractorPersonCityWikiCode String maxlength(25),
+		contractorGenericEopooID Long,
+			contractorGenericEopooName String maxlength(255),
+}
+
+
+entity AggregatePreparationStatus (agg_pp_preparation_status) {
+	preparationStatusID Long required unique,
+		preparationStatusDescription String maxlength(255),
+}
+
+entity AggregatePreparationModality (agg_pp_preparation_modality) {
+	preparationModalityID Long required unique,
+		preparationModalityDescription String maxlength(255),
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+entity AggregateFatturaElettronicaHeader (agg_fe_fattura_elettronica_header) {
+	fatturaElettronicaHeaderID Long required unique,
+}
+
+entity AggregateDatiTrasmissione (agg_fe_dati_trasmissione) {
+	datiTrasmissioneID Long required unique,
+	datiTrasmissioneIdTrasmittentePaese String maxlength(25),
+	datiTrasmissioneIdTrasmittenteCodice String maxlength(25),
+}
+
+entity AggregateCedentePrestatore (agg_fe_cedente_prestatore) {
+	cedentePrestatoreID Long required unique,
+	cedentePrestatoreEopooCode String maxlength(25),
+}
+
+entity AggregateRappresentanteFiscale (agg_fe_rappresentante_fiscale) {
+	rappresentanteFiscaleID Long required unique,
+	rappresentanteFiscaleEopooCode String maxlength(25),
+}
+
+entity AggregateCessionarioCommittente (agg_fe_cessionario_committente) {
+	cessionarioCommittenteID Long required unique,
+	cessionarioCommittenteEopooCode String maxlength(25),
+}
+
+entity AggregateTerzoIntermediarioOSoggettoEmittente (agg_fe_terzo_intermediario_o_soggetto_emittente) {
+	terzoIntermediarioOSoggettoEmittenteID Long required unique,
+	terzoIntermediarioOSoggettoEmittenteEopooCode String maxlength(25),
+}
+
+entity AggregateSoggettoEmittente (agg_fe_soggetto_emittente) {
+	soggettoEmittenteID Long required unique,
+	soggettoEmittenteEopooCode String maxlength(25),
+}
+
+entity AggregateFatturaElettronicaBody (agg_fe_fattura_elettronica_body) {
+	fatturaElettronicaBodyID Long required unique,
+	fatturaElettronicaBodyNumero String maxlength(25),
+
+	datiGeneraliID Long,
+
+	datiBeniServiziID Long,
+
+	datiPagamentoID Long,
+
+	datiVeicoliID Long,
+
+	allegatiID Long,
+}
+
+entity AggregateDatiGenerali (agg_fe_dati_generali) {
+	datiGeneraliID Long required unique,
+
+	datiGeneraliDocumentoID Long,
+
+	datiSalID Long,
+
+	datiTrasportoID Long,
+
+	fatturaPrincipaleID Long,
+
+	datiOrdineAcquistoID Long,
+
+	datiContrattoID Long,
+
+	datiConvenzioneID Long,
+
+	datiRicezioneID Long,
+
+	datiFattureCollegateID Long,
+
+	datiDdtID Long,
+
+	fatturaElettronicaBodyID Long,
+}
+
+entity AggregateDatiGeneraliDocumento (agg_fe_dati_generali_documento) {
+	datiGeneraliDocumentoID Long required unique,
+	datiGeneraliDocumentoDivisa String maxlength(25),
+	datiGeneraliDocumentoData String maxlength(25),
+	datiGeneraliDocumentoNumero String maxlength(25),
+	datiGeneraliDocumentoImportoTotaleDocumento String maxlength(25),
+	datiGeneraliDocumentoArrotondamento String maxlength(25),
+	datiGeneraliDocumentoCausale String maxlength(25),
+	datiGeneraliDocumentoArt73 String maxlength(25),
+	datiGeneraliDocumentoTipoDocumentoCode String maxlength(25),
+
+	datiBolloID Long,
+
+	datiRitenutaID Long,
+
+	datiCassaPrevidenzialeID Long,
+
+	scontoMaggiorazioneID Long,
+
+	datiGeneraliID Long,
+}
+
+entity AggregateDatiRitenuta (agg_fe_dati_ritenuta) {
+	datiRitenutaID Long required unique,
+	datiRitenutaImportoRitenuta String maxlength(25),
+	datiRitenutaTipoRitenutaCode String maxlength(25),
+	datiRitenutaAliquotaRitenuta String maxlength(25),
+	datiRitenutaCausalePagamento String maxlength(25),
+
+	datiGeneraliDocumentoID Long,
+}
+
+entity AggregateDatiBollo (agg_fe_dati_bollo) {
+	datiBolloID Long required unique,
+	datiBolloBolloVirtuale String maxlength(25),
+	datiBolloImportoBollo String maxlength(25),
+
+	datiGeneraliDocumentoID Long,
+}
+
+entity AggregateDatiCassaPrevidenziale (agg_fe_dati_cassa_previdenziale) {
+	datiCassaPrevidenzialeID Long required unique,
+	datiCassaPrevidenzialeAlCassa String maxlength(25),
+	datiCassaPrevidenzialeImportoContributo String maxlength(25),
+	datiCassaPrevidenzialeImponibileCassa String maxlength(25),
+	datiCassaPrevidenzialeTipoCassaCode String maxlength(25),
+	datiCassaPrevidenzialealiquotaIVA String maxlength(25),
+	datiCassaPrevidenzialeNaturaCode String maxlength(25),
+	datiCassaPrevidenzialeRitenuta String maxlength(25),
+	datiCassaPrevidenzialeRiferimentoAmministrativo String maxlength(25),
+
+	datiGeneraliDocumentoID Long,
+}
+
+entity AggregateScontoMaggiorazione (agg_fe_sconto_maggiorazione) {
+	scontoMaggiorazioneID Long required unique,
+	scontoMaggiorazionePercentuale String maxlength(25),
+	scontoMaggiorazioneImporto String maxlength(25),
+	scontoMaggiorazioneTipoScontoMaggiorazioneCode String maxlength(25),
+
+	datiGeneraliDocumentoID Long,
+}
+
+entity AggregateDatiOrdineAcquisto (agg_fe_dati_ordine_acquisto) {
+	datiOrdineAcquistoID Long required unique,
+	datiOrdineAcquistoRiferimentoNumeroLinea String maxlength(25),
+	datiOrdineAcquistoIdDocumento String maxlength(25),
+	datiOrdineAcquistoData String maxlength(25),
+	datiOrdineAcquistoNumItem String maxlength(25),
+	datiOrdineAcquistoCodiceCommessaConvenzione String maxlength(25),
+	datiOrdineAcquistoCodiceCup String maxlength(25),
+	datiOrdineAcquistoCodiceCig String maxlength(25),
+
+	datiGeneraliID Long,
+}
+
+entity AggregateDatiContratto (agg_fe_dati_contratto) {
+	datiContrattoID Long required unique,
+	datiContrattoValue String maxlength(25),
+
+	datiGeneraliID Long,
+}
+
+entity AggregateDatiConvenzione (agg_fe_dati_convenzione) {
+	datiConvenzioneID Long required unique,
+	datiConvenzioneValue String maxlength(25),
+
+	datiGeneraliID Long,
+}
+
+entity AggregateDatiRicezione (agg_fe_dati_ricezione) {
+	datiRicezioneID Long required unique,
+	datiRicezioneValue String maxlength(25),
+
+	datiGeneraliID Long,
+}
+
+entity AggregateDatiFattureCollegate (agg_fe_dati_fatture_collegate) {
+	datiFattureCollegateID Long required unique,
+	datiFattureCollegateValue String maxlength(25),
+
+	datiGeneraliID Long,
+}
+
+entity AggregateDatiSal (agg_fe_dati_sal) {
+	datiSalID Long required unique,
+	datiSalRiferimentoFase String maxlength(25),
+
+	datiGeneraliID Long,
+}
+
+entity AggregateDatiDdt (agg_fe_dati_ddt) {
+	datiDdtID Long required unique,
+	datiDdtNumeroDdt String maxlength(25),
+	datiDdtDataDdt String maxlength(25),
+
+	riferimentoNumeroLineaID Long,
+
+	datiGeneraliID Long,
+}
+
+entity AggregateRiferimentoNumeroLinea (agg_fe_riferimento_numero_linea) {
+	riferimentoNumeroLineaID Long required unique,
+	riferimentoNumeroLineaValue String maxlength(25),
+
+	datiDdtID Long,
+}
+
+entity AggregateDatiTrasporto (agg_fe_dati_trasporto) {
+	datiTrasportoID Long required unique,
+	datiTrasportoVettoreEopooCode String maxlength(25),
+	datiTrasportoMezzoTrasporto String maxlength(25),
+	datiTrasportoCausaleTrasporto String maxlength(25),
+	datiTrasportoNumeroColli String maxlength(25),
+	datiTrasportoDescrizione String maxlength(25),
+	datiTrasportoUnitaMisuraPeso String maxlength(25),
+	datiTrasportoPesoLordo String maxlength(25),
+	datiTrasportoPesoNetto String maxlength(25),
+	datiTrasportoDataOraRitiro String maxlength(25),
+	datiTrasportoDataInizioTrasporto String maxlength(25),
+	datiTrasportoTipoResa String maxlength(25),
+	datiTrasportoDataOraConsegna String maxlength(25),
+
+	indirizzoResaID Long,
+
+	datiGeneraliID Long,
+}
+
+entity AggregateIndirizzoResa (agg_fe_indirizzo_resa) {
+	indirizzoResaID Long required unique,
+	indirizzoResaIndirizzo String maxlength(25),
+
+	datiTrasportoID Long,
+}
+
+entity AggregateFatturaPrincipale (agg_fe_fattura_principale) {
+	fatturaPrincipaleID Long required unique,
+	fatturaPrincipaleNumero String maxlength(25),
+	fatturaPrincipaleData String maxlength(25),
+
+	datiGeneraliID Long,
+}
+
+entity AggregateDatiBeniServizi (agg_fe_dati_beni_servizi) {
+	datiBeniServiziID Long required unique,
+
+	dettaglioLineaID Long,
+
+	datiRiepilogoID Long,
+
+	fatturaElettronicaBodyID Long,
+}
+
+entity AggregateDettaglioLinea (agg_fe_dettaglio_linea) {
+	dettaglioLineaID Long required unique,
+	dettaglioLineaNumeroLinea String maxlength(25),
+	dettaglioLineaTipoCessionePrestazioneCode String maxlength(25),
+	dettaglioLineaCodiceArticoloTipo String maxlength(25),
+	dettaglioLineaCodiceArticoloValore String maxlength(25),
+	dettaglioLineaDescrizione String maxlength(25),
+	dettaglioLineaQuantita String maxlength(25),
+	dettaglioLineaUnitaMisura String maxlength(25),
+	dettaglioLineaDataInizioPeriodo String maxlength(25),
+	dettaglioLineaDataFinePeriodo String maxlength(25),
+	dettaglioLineaPrezzoUnitario String maxlength(25),
+	dettaglioLineaPrezzoTotale String maxlength(25),
+	dettaglioLineaaliquotaIVA String maxlength(25),
+	dettaglioLineaRitenuta String maxlength(25),
+	dettaglioLineaNaturaCode String maxlength(25),
+	dettaglioLineaRiferimentoAmministrazione String maxlength(25),
+
+	scontoMaggiorazioneLineaID Long,
+
+	altriDatiGestionaliID Long,
+
+	datiBeniServiziID Long,
+}
+
+entity AggregateScontoMaggiorazioneLinea (agg_fe_sconto_maggiorazione_linea) {
+	scontoMaggiorazioneLineaID Long required unique,
+	scontoMaggiorazioneLineaPercentuale String maxlength(25),
+	scontoMaggiorazioneLineaImporto String maxlength(25),
+	scontoMaggiorazioneLineaTipoScontoMaggiorazioneCode String maxlength(25),
+
+	dettaglioLineaID Long,
+}
+
+entity AggregateAltriDatiGestionali (agg_fe_altri_dati_gestionali) {
+	altriDatiGestionaliID Long required unique,
+	altriDatiGestionaliTipiDato String maxlength(25),
+	altriDatiGestionaliRiferimentoTesto String maxlength(25),
+	altriDatiGestionaliRiferimentoNumero String maxlength(25),
+	altriDatiGestionaliRiferimentoData String maxlength(25),
+
+	dettaglioLineaID Long,
+}
+
+entity AggregateDatiRiepilogo (agg_fe_dati_riepilogo) {
+	datiRiepilogoID Long required unique,
+	datiRiepilogoaliquotaIVA String maxlength(25),
+	datiRiepilogoEsigibilitaIvaCode String maxlength(25),
+	datiRiepilogoNaturaCode String maxlength(25),
+	datiRiepilogoSpeseAccessorie String maxlength(25),
+	datiRiepilogoArrotondamento String maxlength(25),
+	datiRiepilogoImponibileImporto String maxlength(25),
+	datiRiepilogoImposta String maxlength(25),
+	datiRiepilogoRiferimentoNormativo String maxlength(25),
+
+	datiBeniServiziID Long,
+}
+
+entity AggregateDatiPagamento (agg_fe_dati_pagamento) {
+	datiPagamentoID Long required unique,
+	datiPagamentoCondizioniPagamento String maxlength(25),
+
+	dettaglioPagamentoID Long,
+
+	fatturaElettronicaBodyID Long,
+}
+
+entity AggregateDettaglioPagamento (agg_fe_dettaglio_pagamento) {
+	dettaglioPagamentoID Long required unique,
+	dettaglioPagamentoBeneficiario String maxlength(25),
+	dettaglioPagamentoModalitaPagamentoCode String maxlength(25),
+	dettaglioPagamentoDataRiferimentoTerminiPagamento String maxlength(25),
+	dettaglioPagamentoGiorniTerminiPagamento String maxlength(25),
+	dettaglioPagamentoDataScadenzaPagamento String maxlength(25),
+	dettaglioPagamentoImportoPagamento String maxlength(25),
+	dettaglioPagamentoCodUfficioPostale String maxlength(25),
+	dettaglioPagamentoCognomeQuietanzante String maxlength(25),
+	dettaglioPagamentoNomeQuietanzante String maxlength(25),
+	dettaglioPagamentoCFQuietanzante String maxlength(25),
+	dettaglioPagamentoTitoloQuietanzante String maxlength(25),
+	dettaglioPagamentoIstitutoFinanziario String maxlength(25),
+	dettaglioPagamentoIban String maxlength(25),
+	dettaglioPagamentoAbi String maxlength(25),
+	dettaglioPagamentoCab String maxlength(25),
+	dettaglioPagamentoBic String maxlength(25),
+	dettaglioPagamentoScontoPagamentoAnticipato String maxlength(25),
+	dettaglioPagamentoDataLimitePagamentoAnticipato String maxlength(25),
+	dettaglioPagamentoPenalitaPagamentiRitardati String maxlength(25),
+	dettaglioPagamentoDataDecorrenzaPenale String maxlength(25),
+	dettaglioPagamentoCodicePagamento String maxlength(25),
+
+	datiPagamentoID Long,
+}
+
+entity AggregateDatiVeicoli (agg_fe_dati_veicoli) {
+	datiVeicoliID Long required unique,
+
+	fatturaElettronicaBodyID Long,
+}
+
+entity AggregateAllegati (agg_fe_allegati) {
+	allegatiID Long required unique,
+
+	fatturaElettronicaBodyID Long,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------
+// Set pagination options
+paginate * with pagination
+
+// JPA filtering
+filter *
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
