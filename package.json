@@ -35,7 +35,7 @@
         "@ngneat/transloco": "2.21.0",
         "@piges/auth-angular": "0.0.10",
         "aig-generic": "^1.0.0",
-        "aig-italianlegislation": "^1.5.0",
+        "aig-italianlegislation": "^1.6.0",
         "aig-management": "^1.2.2",
         "apexcharts": "3.27.1",
         "crypto-js": "3.3.0",
