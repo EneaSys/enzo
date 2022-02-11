@@ -20,12 +20,17 @@ import { AgalReferentListLoaderComponent } from './components/referent/referent-
 import { AgalReferentDetailBoxComponent } from './components/referent/referent-detail-box/referent-detail-box.component';
 import { ReferentResolver } from './resolvers/referent.resolver';
 import { AgalEopooDisplayColumnComponent } from './components/eopoo/eopoo-display-column/eopoo-display-column.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
 	imports: [ 
 		CommonModule,
 		AgalCoreModule,
 		AigGenericClientModule,
+		FormsModule,
+		ReactiveFormsModule,
+
+		
 	],
 	declarations: [
 		EopooNamePipe,

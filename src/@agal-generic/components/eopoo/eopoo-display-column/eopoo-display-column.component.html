@@ -1,3 +1,12 @@
-<pre>{{ dc | json }}</pre>
-<button (click)="cambia(['id'])">cambia</button>
-<hr>
+<form [formGroup]="dcfg">
+	<ng-container *ngFor="let dc of dcs; let i = index" formArrayName="columns">
+		<label>
+			<input type="checkbox" [formControlName]="i" /> {{dc.name}}
+		</label>
+		<br>
+	</ng-container>
+	<p-button styleClass="p-button-outlined p-button-secondary p-button-sm ml-1 mt-1" 
+		(click)="apply()">
+		Apply
+	</p-button>
+</form>
