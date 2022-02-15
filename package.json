@@ -33,7 +33,7 @@
         "@fullcalendar/rrule": "4.4.2",
         "@fullcalendar/timegrid": "4.4.2",
         "@ngneat/transloco": "2.21.0",
-        "@piges/auth-angular": "0.0.10",
+        "@piges/auth-angular": "0.0.11",
         "aig-generic": "^1.0.0",
         "aig-italianlegislation": "^1.6.1",
         "aig-management": "^1.2.2",
