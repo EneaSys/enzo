@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { AgalCoreModule } from '@agal-core/agal-core.module';
 import { EopooNamePipe } from '@agal-generic/pipe/eopoo-name.pipe';
+
 import { AigGenericClientModule } from 'aig-generic';
 
 import { AgalEopooTypeListLoaderComponent } from './components/eopoo-type/eopoo-type-list-loader/eopoo-type-list-loader.component';
@@ -20,72 +20,66 @@ import { AgalReferentListLoaderComponent } from './components/referent/referent-
 import { AgalReferentDetailBoxComponent } from './components/referent/referent-detail-box/referent-detail-box.component';
 import { ReferentResolver } from './resolvers/referent.resolver';
 import { AgalEopooDisplayColumnComponent } from './components/eopoo/eopoo-display-column/eopoo-display-column.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-	imports: [ 
-		CommonModule,
+	imports: [
 		AgalCoreModule,
 		AigGenericClientModule,
-		FormsModule,
-		ReactiveFormsModule,
-
-		
 	],
 	declarations: [
 		EopooNamePipe,
 
-            AgalEopooTypeListLoaderComponent,
-            AgalEopooTypeDetailBoxComponent,
+		AgalEopooTypeListLoaderComponent,
+		AgalEopooTypeDetailBoxComponent,
 
-            AgalEopooListLoaderComponent,
-            AgalEopooDetailBoxComponent,
-			AgalEopooDisplayColumnComponent,
+		AgalEopooListLoaderComponent,
+		AgalEopooDetailBoxComponent,
+		AgalEopooDisplayColumnComponent,
 
-            AgalAddressListLoaderComponent,
-            AgalAddressDetailBoxComponent,
+		AgalAddressListLoaderComponent,
+		AgalAddressDetailBoxComponent,
 
-            AgalContactListLoaderComponent,
-            AgalContactDetailBoxComponent,
+		AgalContactListLoaderComponent,
+		AgalContactDetailBoxComponent,
 
-            AgalReferentListLoaderComponent,
-            AgalReferentDetailBoxComponent,
+		AgalReferentListLoaderComponent,
+		AgalReferentDetailBoxComponent,
 
 	],
 	exports: [
 		EopooNamePipe,
-			
-            AgalEopooTypeListLoaderComponent,
-            AgalEopooTypeDetailBoxComponent,
-			
-            AgalEopooListLoaderComponent,
-            AgalEopooDetailBoxComponent,
-			AgalEopooDisplayColumnComponent,
-			
-            AgalAddressListLoaderComponent,
-            AgalAddressDetailBoxComponent,
-			
-            AgalContactListLoaderComponent,
-            AgalContactDetailBoxComponent,
-			
-            AgalReferentListLoaderComponent,
-            AgalReferentDetailBoxComponent,
-			
+
+		AgalEopooTypeListLoaderComponent,
+		AgalEopooTypeDetailBoxComponent,
+
+		AgalEopooListLoaderComponent,
+		AgalEopooDetailBoxComponent,
+		AgalEopooDisplayColumnComponent,
+
+		AgalAddressListLoaderComponent,
+		AgalAddressDetailBoxComponent,
+
+		AgalContactListLoaderComponent,
+		AgalContactDetailBoxComponent,
+
+		AgalReferentListLoaderComponent,
+		AgalReferentDetailBoxComponent,
+
 	],
 	providers: [
 		EopooNamePipe,
-			
-            EopooTypeResolver,
-			
-            EopooResolver,
-			
-            AddressResolver,
-			
-            ContactResolver,
-			
-            ReferentResolver,
-			
-		
+
+		EopooTypeResolver,
+
+		EopooResolver,
+
+		AddressResolver,
+
+		ContactResolver,
+
+		ReferentResolver,
+
+
 	],
 })
-export class AgalGenericModule {}
+export class AgalGenericModule { }

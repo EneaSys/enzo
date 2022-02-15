@@ -6,12 +6,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-
+import { MenuModule } from 'primeng/menu';
+import { RippleModule } from 'primeng/ripple';
+import { CardModule } from 'primeng/card';
 
 import { AgalCommonService } from './services/common.service';
 import { AgalPaginatorComponent } from './components/paginator/paginator.component';
-import { MenuModule } from 'primeng/menu';
-import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
 	imports: [ 
@@ -30,12 +30,17 @@ import { RippleModule } from 'primeng/ripple';
 		AgalPaginatorComponent,
 	],
 	exports: [
+		CommonModule,
 		FlexLayoutModule,
+
+		FormsModule,
+        ReactiveFormsModule,
 
 		TableModule,
 		ButtonModule,
 		MenuModule,
 		RippleModule,
+		CardModule,
 
 		AgalPaginatorComponent,
 	]
