@@ -6,11 +6,9 @@ import { EopooDTO } from 'aig-generic';
     templateUrl: './eopoo-detail-box.component.html',
     styleUrls: ['./eopoo-detail-box.component.scss']
 })
-export class AgalEopooDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
-
+export class AgalEopooDetailBoxComponent {
     @Input()
     eopoo: EopooDTO;
+
+	constructor( ) { }
 }

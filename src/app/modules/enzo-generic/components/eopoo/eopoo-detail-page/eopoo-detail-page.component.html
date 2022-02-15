@@ -1,6 +1,6 @@
 <div class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto" cdkScrollable>
-    <mat-drawer-container class="flex-auto overflow-hidden">
 
+	<mat-drawer-container class="flex-auto overflow-hidden">
         <mat-drawer-content class="flex flex-col">
             <div class="flex-auto">
 				<div class="flex items-center pl-2 ml-auto space-x-2 print:hidden p-2 pl-4 pr-4 ">
@@ -14,7 +14,7 @@
 				
 				<div class="enzo-content p-4" fxLayout="row" fxLayoutAlign="space-between start">
 					<p-card fxFlex="50">
-						<agal-eopoo-type-detail-box [eopooType]="eopooDTO.eopooType"></agal-eopoo-type-detail-box>
+						<agal-eopoo-detail-box [eopoo]="eopooDTO"></agal-eopoo-detail-box>
 					</p-card>
 				</div>
             </div>
@@ -30,7 +30,6 @@
 
 			<div class="py-10">
 				<div class="mx-6 text-3xl font-bold tracking-tighter">Colonne</div>
-
 				<div class="mx-6 mt-10">
 					<div class="flex items-center">
 						<mat-icon
@@ -42,9 +41,7 @@
 						<span class="text-sm leading-none mb-3">8 of 20 users used</span>
 					</div>
 				</div>
-
 				<div class="mx-6 text-3xl font-bold tracking-tighter">Filtri</div>
-
 				<div class="mx-6 mt-10">
 					<div class="flex items-center">
 						<mat-icon
@@ -58,8 +55,8 @@
 				</div>
 			</div>
         </mat-drawer>
-
     </mat-drawer-container>
+
 </div>
 
 
