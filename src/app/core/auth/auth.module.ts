@@ -5,6 +5,7 @@ import { PigesAuthModule, PIGES_CONFIG } from '@piges/auth-angular';
 
 import { EnzoAuthService } from './auth.service';
 import { EnzoAuthGuard } from './auth.guard';
+import { APP_URL } from 'app/app.constants';
 
 // Piges
 const pigesConfig = {
@@ -12,8 +13,9 @@ const pigesConfig = {
 	authorizeUrl: 'https://account.piges.io',
 	clientId: 'heemai88do8kq0685e02vbnnj',
 	clientSecret: '',
-	redirectUrl: window.location.origin + '/piges/auth/callback',
-	idp_identifier: ''
+	redirectUrl: APP_URL + '/piges/auth/callback',
+	idp_identifier: '',
+	clientUrl: APP_URL
 }
 
 @NgModule({

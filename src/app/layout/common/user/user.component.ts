@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { UserService } from 'app/core/user/user.service';
 import { Md5 } from 'ts-md5/dist/md5';
 import { EnzoAuthService } from 'app/core/auth/auth.service';
+import { APP_URL } from 'app/app.constants';
 
 @Component({
     selector       : 'user',
@@ -58,6 +59,6 @@ export class UserComponent implements OnInit, OnDestroy
     }
 
 	logout(): void {
-        this._enzoAuthService.logout(window.location.origin);
+        this._enzoAuthService.logout(APP_URL);
     }
 }

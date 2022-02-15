@@ -247,13 +247,20 @@ export class LayoutComponent implements OnInit, OnDestroy
      */
     private _updateTheme(): void
     {
+		for(let className in this._document.body.classList) {
+			if ( className.startsWith('theme-') ) {
+                this._document.body.classList.remove(className, className.split('-')[1]);
+            }
+		}
         // Find the class name for the previously selected theme and remove it
+		/*
         this._document.body.classList.forEach((className: string) => {
             if ( className.startsWith('theme-') )
             {
                 this._document.body.classList.remove(className, className.split('-')[1]);
             }
         });
+		*/
 
         // Add class name for the currently selected theme
         this._document.body.classList.add(`theme-${this.theme}`);

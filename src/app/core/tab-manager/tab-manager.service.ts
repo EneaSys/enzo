@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { APP_URL } from 'app/app.constants';
 
 @Injectable({
 	providedIn: 'root'
@@ -205,7 +206,7 @@ export class TabManagerService {
 		let component: any = {};
 		component.name = name;
 		{
-			let path = window.location.href.replace(window.location.origin, "")
+			let path = window.location.href.replace(APP_URL, "")
 			component.url = path;
 		}
 
