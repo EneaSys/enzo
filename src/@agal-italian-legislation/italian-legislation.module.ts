@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgalCoreModule } from '@agal-core/agal-core.module';
-import { EopooNamePipe } from '@agal-generic/pipe/eopoo-name.pipe';
 import { AigItalianLegislationApiModule } from 'aig-italianlegislation';
 
 import { AgalProcurementListLoaderComponent } from './components/procurement/procurement-list-loader/procurement-list-loader.component';
