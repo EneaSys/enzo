@@ -52,7 +52,7 @@ export class EnzoRappresentanteFiscaleListPageComponent extends EnzoGenericCompo
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/italian-legislation/rappresentante-fiscale/detail/"+e.id)
+				this.router.navigateByUrl("/i16n/pp/rappresentante-fiscale/detail/"+e.id)
 			},
 			childs: [
 				{

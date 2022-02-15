@@ -52,7 +52,7 @@ export class EnzoInsurancePolicyStatusListPageComponent extends EnzoGenericCompo
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/italian-legislation/insurance-policy-status/detail/"+e.id)
+				this.router.navigateByUrl("/i16n/pp/insurance-policy-status/detail/"+e.id)
 			},
 			childs: [
 				{

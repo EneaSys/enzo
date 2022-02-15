@@ -52,7 +52,7 @@ export class EnzoTerzoIntermediarioOSoggettoEmittenteListPageComponent extends E
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/italian-legislation/terzo-intermediario-o-soggetto-emittente/detail/"+e.id)
+				this.router.navigateByUrl("/i16n/pp/terzo-intermediario-o-soggetto-emittente/detail/"+e.id)
 			},
 			childs: [
 				{

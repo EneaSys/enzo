@@ -81,21 +81,21 @@ export const compactNavigation: FuseNavigationItem[] = [
                         title: 'Gare d\'appalto',
 						icon : 'iconsmind:letter_open',
                         type : 'basic',
-						link : '/il/pp/procurement'
+						link : '/i16n/pp/procurement'
                     },
                     {
                         id   : 'il-pp-procurement-lot',
                         title: 'Lotti di gara',
 						icon : 'iconsmind:stamp',
                         type : 'basic',
-						link : '/il/pp/procurement-lot'
+						link : '/i16n/pp/procurement-lot'
                     },
 					{
                         id   : 'il-pp-partecipation',
                         title: 'Partecipazioni',
 						icon : 'iconsmind:ruler_2',
                         type : 'basic',
-						link : '/il/pp/partecipation'
+						link : '/i16n/pp/partecipation'
                     },
 					{
                         id   : 'il-pp-settings',
@@ -107,19 +107,19 @@ export const compactNavigation: FuseNavigationItem[] = [
 								id   : 'il-pp-partecipation-status',
 								title: 'Stati partecipazioni',
 								type : 'basic',
-								link : '/il/pp/partecipation-status'
+								link : '/i16n/pp/partecipation-status'
 							},
 							{
 								id   : 'il-pp-insurance-policy-status',
 								title: 'Stati polizze',
 								type : 'basic',
-								link : '/il/pp/insurance-policy-status'
+								link : '/i16n/pp/insurance-policy-status'
 							},
 							{
 								id   : 'il-pp-preparation-status',
 								title: 'Stati preparazioni',
 								type : 'basic',
-								link : '/il/pp/preparation-status'
+								link : '/i16n/pp/preparation-status'
 							},
 						]
                     }

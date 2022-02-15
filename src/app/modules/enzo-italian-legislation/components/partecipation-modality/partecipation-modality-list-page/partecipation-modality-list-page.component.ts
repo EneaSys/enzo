@@ -52,7 +52,7 @@ export class EnzoPartecipationModalityListPageComponent extends EnzoGenericCompo
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/italian-legislation/partecipation-modality/detail/"+e.id)
+				this.router.navigateByUrl("/i16n/pp/partecipation-modality/detail/"+e.id)
 			},
 			childs: [
 				{

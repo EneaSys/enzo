@@ -52,7 +52,7 @@ export class EnzoPreparationStatusListPageComponent extends EnzoGenericComponent
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/italian-legislation/preparation-status/detail/"+e.id)
+				this.router.navigateByUrl("/i16n/pp/preparation-status/detail/"+e.id)
 			},
 			childs: [
 				{

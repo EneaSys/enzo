@@ -52,7 +52,7 @@ export class EnzoDossierListPageComponent extends EnzoGenericComponent1 {
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/italian-legislation/dossier/detail/"+e.id)
+				this.router.navigateByUrl("/i16n/pp/dossier/detail/"+e.id)
 			},
 			childs: [
 				{

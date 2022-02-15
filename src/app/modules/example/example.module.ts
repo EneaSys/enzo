@@ -50,6 +50,4 @@ const exampleRoutes: Route[] = [
 		AgalItalianLegislationModule,
     ]
 })
-export class ExampleModule
-{
-}
+export class ExampleModule { }
