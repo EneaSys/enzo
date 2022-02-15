@@ -11,47 +11,29 @@
 		<p-table styleClass="p-datatable-sm" [value]="ds" [lazy]="true" (onLazyLoad)="lazyLoad($event)"
 			[resizableColumns]="true" [selection]="selectedElements" (selectionChange)="selection($event)">
 
-			<ng-template pTemplate="header">
-				<tr>
-					<ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
-						<th *ngSwitchCase="'_ck'" style="width:30px"></th>
-						<th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn
-							pSortableColumn="id">id</th>
-						<!-- Filed of entity -->
-						<th *ngSwitchCase="'procurementLot.cig'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.cig"> cig </th>
-						<th *ngSwitchCase="'procurementLot.description'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.description"> description </th>
-						<th *ngSwitchCase="'procurementLot.sectorCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.sectorCode"> sectorCode </th>
-						<th *ngSwitchCase="'procurementLot.procedureCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.procedureCode"> procedureCode </th>
-						<th *ngSwitchCase="'procurementLot.modalityCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.modalityCode"> modalityCode </th>
-						<th *ngSwitchCase="'procurementLot.offerExpiryDate'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.offerExpiryDate"> offerExpiryDate </th>
-						<th *ngSwitchCase="'procurementLot.baseAmount'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.baseAmount"> baseAmount </th>
-						<th *ngSwitchCase="'procurementLot.candidacy'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.candidacy"> candidacy </th>
-						<th *ngSwitchCase="'procurementLot.securityAmount'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.securityAmount"> securityAmount </th>
-						<th *ngSwitchCase="'procurementLot.istatCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.istatCode"> istatCode </th>
-						<th *ngSwitchCase="'procurementLot.nutsCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.nutsCode"> nutsCode </th>
-						<th *ngSwitchCase="'procurementLot.cpvCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.cpvCode"> cpvCode </th>
-						<th *ngSwitchCase="'procurementLot.typeCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.typeCode"> typeCode </th>
-						<th *ngSwitchCase="'procurementLot.awardCriterionCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.awardCriterionCode"> awardCriterionCode </th>
-						<th *ngSwitchCase="'procurementLot.statusCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.statusCode"> statusCode </th>
-						<th *ngSwitchCase="'procurementLot.workLocationCode'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.workLocationCode"> workLocationCode </th>
-						<th *ngSwitchCase="'procurementLot.creationDateTime'" style="width:auto" pResizableColumn
-							pSortableColumn="procurementLot.creationDateTime"> creationDateTime </th>
+            <ng-template pTemplate="header">
+                <tr>
+                    <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+                        <th *ngSwitchCase="'_ck'" style="width:30px"></th>
+                        <th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
+                        <!-- Filed of entity -->
+                        <th *ngSwitchCase="'cig'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.cig"> cig </th>
+                        <th *ngSwitchCase="'description'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.description"> description </th>
+                        <th *ngSwitchCase="'sectorCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.sectorCode"> sectorCode </th>
+                        <th *ngSwitchCase="'procurementLot.procedureCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.procedureCode"> procedureCode </th>
+                        <th *ngSwitchCase="'procurementLot.modalityCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.modalityCode"> modalityCode </th>
+                        <th *ngSwitchCase="'procurementLot.offerExpiryDate'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.offerExpiryDate"> offerExpiryDate </th>
+                        <th *ngSwitchCase="'procurementLot.baseAmount'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.baseAmount"> baseAmount </th>
+                        <th *ngSwitchCase="'procurementLot.candidacy'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.candidacy"> candidacy </th>
+                        <th *ngSwitchCase="'procurementLot.securityAmount'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.securityAmount"> securityAmount </th>
+                        <th *ngSwitchCase="'procurementLot.istatCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.istatCode"> istatCode </th>
+                        <th *ngSwitchCase="'procurementLot.nutsCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.nutsCode"> nutsCode </th>
+                        <th *ngSwitchCase="'procurementLot.cpvCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.cpvCode"> cpvCode </th>
+                        <th *ngSwitchCase="'procurementLot.typeCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.typeCode"> typeCode </th>
+                        <th *ngSwitchCase="'procurementLot.awardCriterionCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.awardCriterionCode"> awardCriterionCode </th>
+                        <th *ngSwitchCase="'procurementLot.statusCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.statusCode"> statusCode </th>
+                        <th *ngSwitchCase="'procurementLot.workLocationCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.workLocationCode"> workLocationCode </th>
+                        <th *ngSwitchCase="'procurementLot.creationDateTime'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.creationDateTime"> creationDateTime </th>
 
 						<!-- Filed of relational entity -->
 						<th *ngSwitchCase="'procurement.contractorEopooCode'" style="width:auto" pResizableColumn
