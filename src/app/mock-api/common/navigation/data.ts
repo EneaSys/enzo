@@ -77,23 +77,16 @@ export const compactNavigation: FuseNavigationItem[] = [
                 type    : 'group',
                 children: [
                     {
-                        id   : 'il-pp-procurement',
-                        title: 'Gare d\'appalto',
-						icon : 'iconsmind:letter_open',
-                        type : 'basic',
-						link : '/i16n/pp/procurement'
-                    },
-                    {
                         id   : 'il-pp-procurement-lot',
                         title: 'Lotti di gara',
-						icon : 'iconsmind:stamp',
+						icon : 'iconsmind:letter_open',
                         type : 'basic',
 						link : '/i16n/pp/procurement-lot'
                     },
 					{
                         id   : 'il-pp-partecipation',
                         title: 'Partecipazioni',
-						icon : 'iconsmind:ruler_2',
+						icon : 'iconsmind:stamp',
                         type : 'basic',
 						link : '/i16n/pp/partecipation'
                     },

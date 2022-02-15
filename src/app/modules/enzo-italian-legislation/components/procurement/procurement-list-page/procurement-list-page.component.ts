@@ -22,7 +22,7 @@ export class EnzoProcurementListPageComponent extends EnzoGenericComponent1 {
 	};
 	procurementCount: number;
 
-	procurementListDc = ['_ck', 'id'];
+	procurementListDc = ['_ck', 'description', 'id'];
 	paginatorEvent(paginator: any) {
 		let procurementListPaginator = { ...paginator }
 		this.procurementListPaginator = procurementListPaginator;
