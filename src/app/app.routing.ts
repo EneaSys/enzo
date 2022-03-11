@@ -83,7 +83,7 @@ export const appRoutes: Route[] = [
 
 			{path: 'm8t', loadChildren: () => import('app/modules/management/management.module').then(m => m.EnzoManagementModule)},
 			{path: 'standard', loadChildren: () => import('app/modules/standard/standard.module').then(m => m.EnzoStandardModule)},
-            {path: 'i16n', loadChildren: () => import('app/modules/enzo-italian-legislation/italian-legislation.module').then(m => m.EnzoItalianLegislationModule)},
+            {path: 'italian-legislation', loadChildren: () => import('app/modules/enzo-italian-legislation/italian-legislation.module').then(m => m.EnzoItalianLegislationModule)},
 			{path: 'generic', loadChildren: () => import('app/modules/enzo-generic/generic.module').then(m => m.EnzoGenericModule)},
 
 

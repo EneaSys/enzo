@@ -81,14 +81,14 @@ export const compactNavigation: FuseNavigationItem[] = [
                         title: 'Lotti di gara',
 						icon : 'iconsmind:letter_open',
                         type : 'basic',
-						link : '/i16n/pp/procurement-lot'
+						link : '/italian-legislation/procurement-lot'
                     },
 					{
                         id   : 'il-pp-partecipation',
                         title: 'Partecipazioni',
 						icon : 'iconsmind:stamp',
                         type : 'basic',
-						link : '/i16n/pp/partecipation'
+						link : '/italian-legislation/partecipation'
                     },
 					{
                         id   : 'il-pp-settings',
@@ -100,19 +100,19 @@ export const compactNavigation: FuseNavigationItem[] = [
 								id   : 'il-pp-partecipation-status',
 								title: 'Stati partecipazioni',
 								type : 'basic',
-								link : '/i16n/pp/partecipation-status'
+								link : '/italian-legislation/partecipation-status'
 							},
 							{
 								id   : 'il-pp-insurance-policy-status',
 								title: 'Stati polizze',
 								type : 'basic',
-								link : '/i16n/pp/insurance-policy-status'
+								link : '/italian-legislation/insurance-policy-status'
 							},
 							{
 								id   : 'il-pp-preparation-status',
 								title: 'Stati preparazioni',
 								type : 'basic',
-								link : '/i16n/pp/preparation-status'
+								link : '/italian-legislation/preparation-status'
 							},
 						]
                     }
@@ -130,14 +130,14 @@ export const compactNavigation: FuseNavigationItem[] = [
                         title: 'Manager magazzino',
 						icon : 'iconsmind:building',
                         type : 'basic',
-						link : '/il/pp/procurement-lot'
+						link : '/italian-legislation/procurement-lot'
                     },
 					{
                         id   : 'c6e-inventory-item',
                         title: 'Inventario',
 						icon : 'iconsmind:windows',
                         type : 'basic',
-						link : '/il/pp/procurement'
+						link : '/italian-legislation/procurement'
                     },
 					{
                         id   : 'c6e-settings',
@@ -149,19 +149,19 @@ export const compactNavigation: FuseNavigationItem[] = [
 								id   : 'c6e-warehouse',
 								title: 'Magazzini',
 								type : 'basic',
-								link : '/il/pp/insurance-policy-status'
+								link : '/italian-legislation/insurance-policy-status'
 							},
 							{
 								id   : 'c6e-producer',
 								title: 'Produttori',
 								type : 'basic',
-								link : '/il/pp/insurance-policy-status'
+								link : '/italian-legislation/insurance-policy-status'
 							},
 							{
 								id   : 'c6e-whamrehouse-category',
 								title: 'Categorie inventario',
 								type : 'basic',
-								link : '/il/pp/preparation-status'
+								link : '/italian-legislation/preparation-status'
 							},
 						]
 					}

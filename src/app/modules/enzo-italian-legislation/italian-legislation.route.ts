@@ -150,11 +150,11 @@ export const italianLegislationRoutes: Route[] = [
 	},
 
 	{
-		path: 'pp/procurement',
+		path: 'procurement',
 		component: EnzoProcurementListPageComponent,
 	},
 	{
-		path: 'pp/procurement/detail/:id',
+		path: 'procurement/detail/:id',
 		component: EnzoProcurementDetailPageComponent,
 		resolve: {
 			procurement: ProcurementResolver,
@@ -172,22 +172,22 @@ export const italianLegislationRoutes: Route[] = [
 		},
 	},
 	{
-		path: 'pp/procurement-lot',
+		path: 'procurement-lot',
 		component: EnzoProcurementLotListPageComponent,
 	},
 	{
-		path: 'pp/procurement-lot/detail/:id',
+		path: 'procurement-lot/detail/:id',
 		component: EnzoProcurementLotDetailPageComponent,
 		resolve: {
 			procurementLot: ProcurementLotResolver,
 		},
 	},
 	{
-		path: 'pp/partecipation-status',
+		path: 'partecipation-status',
 		component: EnzoPartecipationStatusListPageComponent,
 	},
 	{
-		path: 'pp/partecipation-status/detail/:id',
+		path: 'partecipation-status/detail/:id',
 		component: EnzoPartecipationStatusDetailPageComponent,
 		resolve: {
 			partecipationStatus: PartecipationStatusResolver,
@@ -205,22 +205,22 @@ export const italianLegislationRoutes: Route[] = [
 		},
 	},
 	{
-		path: 'pp/partecipation',
+		path: 'partecipation',
 		component: EnzoPartecipationListPageComponent,
 	},
 	{
-		path: 'pp/partecipation/detail/:id',
+		path: 'partecipation/detail/:id',
 		component: EnzoPartecipationDetailPageComponent,
 		resolve: {
 			partecipation: PartecipationResolver,
 		},
 	},
 	{
-		path: 'pp/preparation-status',
+		path: 'preparation-status',
 		component: EnzoPreparationStatusListPageComponent,
 	},
 	{
-		path: 'pp/preparation-status/detail/:id',
+		path: 'preparation-status/detail/:id',
 		component: EnzoPreparationStatusDetailPageComponent,
 		resolve: {
 			preparationStatus: PreparationStatusResolver,
