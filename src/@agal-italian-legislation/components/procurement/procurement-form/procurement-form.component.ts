@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EopooDTO, ProcurementDTO } from 'aig-italianlegislation';
-import { Observable } from 'rxjs';
+import { ProcurementDTO } from 'aig-italianlegislation';
 
 @Component({
 	selector: 'agal-procurement-new-update-form',
