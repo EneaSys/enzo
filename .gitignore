@@ -9,7 +9,8 @@ publish.sh
 /bazel-out
 
 # jhipster generator
-
+.yo-rc.json
+*.jdl
 
 # dependencies
 /node_modules
