@@ -11,6 +11,7 @@ publish.sh
 # jhipster generator
 .yo-rc.json
 *.jdl
+.jhipster/
 
 # dependencies
 /node_modules
