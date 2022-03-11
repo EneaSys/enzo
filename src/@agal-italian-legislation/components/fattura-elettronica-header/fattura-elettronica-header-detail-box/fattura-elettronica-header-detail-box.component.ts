@@ -6,11 +6,10 @@ import { FatturaElettronicaHeaderDTO } from 'aig-italianlegislation';
     templateUrl: './fattura-elettronica-header-detail-box.component.html',
     styleUrls: ['./fattura-elettronica-header-detail-box.component.scss']
 })
-export class AgalFatturaElettronicaHeaderDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalFatturaElettronicaHeaderDetailBoxComponent {
 
-    @Input()
+	@Input()
     fatturaElettronicaHeader: FatturaElettronicaHeaderDTO;
+
+	constructor( ) { }
 }

@@ -6,11 +6,10 @@ import { DossierDTO } from 'aig-italianlegislation';
     templateUrl: './dossier-detail-box.component.html',
     styleUrls: ['./dossier-detail-box.component.scss']
 })
-export class AgalDossierDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDossierDetailBoxComponent {
 
-    @Input()
+	@Input()
     dossier: DossierDTO;
+
+	constructor( ) { }
 }

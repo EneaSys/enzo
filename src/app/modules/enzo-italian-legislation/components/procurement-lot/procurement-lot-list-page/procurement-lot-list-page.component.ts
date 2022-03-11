@@ -22,7 +22,7 @@ export class EnzoProcurementLotListPageComponent extends EnzoGenericComponent1 {
 	};
 	procurementLotCount: number;
 
-	procurementLotListDc = ['_ck', 'id', 'description', 'cig', 'procurement.contractorEopooCode'];
+	procurementLotListDc = [ '_ck' , 'id'];
 	paginatorEvent(paginator: any) {
 		let procurementLotListPaginator = { ...paginator }
 		this.procurementLotListPaginator = procurementLotListPaginator;

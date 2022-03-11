@@ -52,7 +52,7 @@ export class EnzoCessionarioCommittenteListPageComponent extends EnzoGenericComp
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/cessionario-committente/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/cessionario-committente/detail/"+e.id)
 			},
 			childs: [
 				{

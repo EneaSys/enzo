@@ -52,7 +52,7 @@ export class EnzoProcurementLotCategoryListPageComponent extends EnzoGenericComp
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/procurement-lot-category/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/procurement-lot-category/detail/"+e.id)
 			},
 			childs: [
 				{

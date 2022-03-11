@@ -6,11 +6,10 @@ import { DatiFattureCollegateDTO } from 'aig-italianlegislation';
     templateUrl: './dati-fatture-collegate-detail-box.component.html',
     styleUrls: ['./dati-fatture-collegate-detail-box.component.scss']
 })
-export class AgalDatiFattureCollegateDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiFattureCollegateDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiFattureCollegate: DatiFattureCollegateDTO;
+
+	constructor( ) { }
 }

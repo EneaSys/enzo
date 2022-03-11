@@ -52,7 +52,7 @@ export class EnzoFatturaPrincipaleListPageComponent extends EnzoGenericComponent
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/fattura-principale/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/fattura-principale/detail/"+e.id)
 			},
 			childs: [
 				{

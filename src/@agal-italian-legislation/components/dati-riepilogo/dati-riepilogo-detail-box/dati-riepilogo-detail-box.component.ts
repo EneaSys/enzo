@@ -6,11 +6,10 @@ import { DatiRiepilogoDTO } from 'aig-italianlegislation';
     templateUrl: './dati-riepilogo-detail-box.component.html',
     styleUrls: ['./dati-riepilogo-detail-box.component.scss']
 })
-export class AgalDatiRiepilogoDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiRiepilogoDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiRiepilogo: DatiRiepilogoDTO;
+
+	constructor( ) { }
 }

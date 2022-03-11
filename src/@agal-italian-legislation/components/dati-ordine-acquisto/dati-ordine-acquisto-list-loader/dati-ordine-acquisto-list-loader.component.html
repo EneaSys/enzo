@@ -22,12 +22,12 @@
                         <th *ngSwitchCase="'datiOrdineAcquisto.data'" style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.data"> data </th>
                         <th *ngSwitchCase="'datiOrdineAcquisto.numItem'" style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.numItem"> numItem </th>
                         <th *ngSwitchCase="'datiOrdineAcquisto.codiceCommessaConvenzione'" style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.codiceCommessaConvenzione"> codiceCommessaConvenzione </th>
-                        <th *ngSwitchCase="'datiOrdineAcquisto.codiceCup'" style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.codiceCup"> codiceCup </th>
-                        <th *ngSwitchCase="'datiOrdineAcquisto.codiceCig'" style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.codiceCig"> codiceCig </th>
+                        <th *ngSwitchCase="'datiOrdineAcquisto.codiceCUP'" style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.codiceCUP"> codiceCUP </th>
+                        <th *ngSwitchCase="'datiOrdineAcquisto.codiceCIG'" style="width:auto" pResizableColumn pSortableColumn="datiOrdineAcquisto.codiceCIG"> codiceCIG </th>
 
                                 <!-- Filed of relational entity -->
                     </ng-container>
-                    <th *ngIf="buttons" style="width:auto"></th>
+                    <th *ngIf="buttons" style="width:150px"></th>
 
                 </tr>
             </ng-template>
@@ -42,8 +42,8 @@
                          <td *ngSwitchCase="'data'">{{ e.data }}</td>
                          <td *ngSwitchCase="'numItem'">{{ e.numItem }}</td>
                          <td *ngSwitchCase="'codiceCommessaConvenzione'">{{ e.codiceCommessaConvenzione }}</td>
-                         <td *ngSwitchCase="'codiceCup'">{{ e.codiceCup }}</td>
-                         <td *ngSwitchCase="'codiceCig'">{{ e.codiceCig }}</td>
+                         <td *ngSwitchCase="'codiceCUP'">{{ e.codiceCUP }}</td>
+                         <td *ngSwitchCase="'codiceCIG'">{{ e.codiceCIG }}</td>
 
                 <!-- Filed of relational entity -->
                     </ng-container>

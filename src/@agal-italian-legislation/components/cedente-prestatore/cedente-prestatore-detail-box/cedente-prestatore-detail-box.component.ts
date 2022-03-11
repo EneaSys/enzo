@@ -6,11 +6,10 @@ import { CedentePrestatoreDTO } from 'aig-italianlegislation';
     templateUrl: './cedente-prestatore-detail-box.component.html',
     styleUrls: ['./cedente-prestatore-detail-box.component.scss']
 })
-export class AgalCedentePrestatoreDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalCedentePrestatoreDetailBoxComponent {
 
-    @Input()
+	@Input()
     cedentePrestatore: CedentePrestatoreDTO;
+
+	constructor( ) { }
 }

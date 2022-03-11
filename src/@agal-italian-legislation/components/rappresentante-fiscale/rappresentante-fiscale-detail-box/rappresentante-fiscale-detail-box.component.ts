@@ -6,11 +6,10 @@ import { RappresentanteFiscaleDTO } from 'aig-italianlegislation';
     templateUrl: './rappresentante-fiscale-detail-box.component.html',
     styleUrls: ['./rappresentante-fiscale-detail-box.component.scss']
 })
-export class AgalRappresentanteFiscaleDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalRappresentanteFiscaleDetailBoxComponent {
 
-    @Input()
+	@Input()
     rappresentanteFiscale: RappresentanteFiscaleDTO;
+
+	constructor( ) { }
 }

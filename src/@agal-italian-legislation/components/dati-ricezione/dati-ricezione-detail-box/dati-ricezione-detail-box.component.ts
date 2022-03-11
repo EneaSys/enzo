@@ -6,11 +6,10 @@ import { DatiRicezioneDTO } from 'aig-italianlegislation';
     templateUrl: './dati-ricezione-detail-box.component.html',
     styleUrls: ['./dati-ricezione-detail-box.component.scss']
 })
-export class AgalDatiRicezioneDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiRicezioneDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiRicezione: DatiRicezioneDTO;
+
+	constructor( ) { }
 }

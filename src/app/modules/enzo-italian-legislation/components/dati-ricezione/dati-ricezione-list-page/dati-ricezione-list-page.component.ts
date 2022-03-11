@@ -52,7 +52,7 @@ export class EnzoDatiRicezioneListPageComponent extends EnzoGenericComponent1 {
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/dati-ricezione/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/dati-ricezione/detail/"+e.id)
 			},
 			childs: [
 				{

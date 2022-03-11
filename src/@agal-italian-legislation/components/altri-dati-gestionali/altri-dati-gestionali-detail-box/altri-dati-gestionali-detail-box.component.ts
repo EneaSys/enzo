@@ -6,11 +6,10 @@ import { AltriDatiGestionaliDTO } from 'aig-italianlegislation';
     templateUrl: './altri-dati-gestionali-detail-box.component.html',
     styleUrls: ['./altri-dati-gestionali-detail-box.component.scss']
 })
-export class AgalAltriDatiGestionaliDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalAltriDatiGestionaliDetailBoxComponent {
 
-    @Input()
+	@Input()
     altriDatiGestionali: AltriDatiGestionaliDTO;
+
+	constructor( ) { }
 }

@@ -6,11 +6,10 @@ import { PartecipationModalityDTO } from 'aig-italianlegislation';
     templateUrl: './partecipation-modality-detail-box.component.html',
     styleUrls: ['./partecipation-modality-detail-box.component.scss']
 })
-export class AgalPartecipationModalityDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalPartecipationModalityDetailBoxComponent {
 
-    @Input()
+	@Input()
     partecipationModality: PartecipationModalityDTO;
+
+	constructor( ) { }
 }

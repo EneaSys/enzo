@@ -6,11 +6,10 @@ import { DatiBolloDTO } from 'aig-italianlegislation';
     templateUrl: './dati-bollo-detail-box.component.html',
     styleUrls: ['./dati-bollo-detail-box.component.scss']
 })
-export class AgalDatiBolloDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiBolloDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiBollo: DatiBolloDTO;
+
+	constructor( ) { }
 }

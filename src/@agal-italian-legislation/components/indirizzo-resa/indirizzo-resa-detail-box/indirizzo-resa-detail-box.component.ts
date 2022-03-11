@@ -6,11 +6,10 @@ import { IndirizzoResaDTO } from 'aig-italianlegislation';
     templateUrl: './indirizzo-resa-detail-box.component.html',
     styleUrls: ['./indirizzo-resa-detail-box.component.scss']
 })
-export class AgalIndirizzoResaDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalIndirizzoResaDetailBoxComponent {
 
-    @Input()
+	@Input()
     indirizzoResa: IndirizzoResaDTO;
+
+	constructor( ) { }
 }

@@ -6,11 +6,10 @@ import { InsurancePolicyDTO } from 'aig-italianlegislation';
     templateUrl: './insurance-policy-detail-box.component.html',
     styleUrls: ['./insurance-policy-detail-box.component.scss']
 })
-export class AgalInsurancePolicyDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalInsurancePolicyDetailBoxComponent {
 
-    @Input()
+	@Input()
     insurancePolicy: InsurancePolicyDTO;
+
+	constructor( ) { }
 }

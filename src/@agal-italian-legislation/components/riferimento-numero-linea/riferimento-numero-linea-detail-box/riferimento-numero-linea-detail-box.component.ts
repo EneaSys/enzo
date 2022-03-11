@@ -6,11 +6,10 @@ import { RiferimentoNumeroLineaDTO } from 'aig-italianlegislation';
     templateUrl: './riferimento-numero-linea-detail-box.component.html',
     styleUrls: ['./riferimento-numero-linea-detail-box.component.scss']
 })
-export class AgalRiferimentoNumeroLineaDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalRiferimentoNumeroLineaDetailBoxComponent {
 
-    @Input()
+	@Input()
     riferimentoNumeroLinea: RiferimentoNumeroLineaDTO;
+
+	constructor( ) { }
 }
