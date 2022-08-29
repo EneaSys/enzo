@@ -14,12 +14,13 @@
             <ng-template pTemplate="header">
                 <tr>
                     <ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
-                        <th *ngSwitchCase="'_ck'" style="width:30px"></th>
+                        <th *ngSwitchCase="'_ck'" style="width:30px" class="print:hidden"></th>
                         <th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
                         <!-- Filed of entity -->
                         <th *ngSwitchCase="'cig'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.cig"> cig </th>
                         <th *ngSwitchCase="'description'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.description"> description </th>
                         <th *ngSwitchCase="'sectorCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.sectorCode"> sectorCode </th>
+
                         <th *ngSwitchCase="'procurementLot.procedureCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.procedureCode"> procedureCode </th>
                         <th *ngSwitchCase="'procurementLot.modalityCode'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.modalityCode"> modalityCode </th>
                         <th *ngSwitchCase="'procurementLot.offerExpiryDate'" style="width:auto" pResizableColumn pSortableColumn="procurementLot.offerExpiryDate"> offerExpiryDate </th>
@@ -49,20 +50,20 @@
 						<th *ngSwitchCase="'procurement.creationDateTime'" style="width:auto" pResizableColumn
 							pSortableColumn="procurement.creationDateTime"> creationDateTime</th>
 					</ng-container>
-					<th *ngIf="buttons" style="width:150px"></th>
+					<th *ngIf="buttons" style="width:150px" class="print:hidden"></th>
 
 				</tr>
 			</ng-template>
 			<ng-template pTemplate="body" let-e>
 				<tr>
 					<ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
-						<td *ngSwitchCase="'_ck'">
+						<td *ngSwitchCase="'_ck'" class="print:hidden">
 							<p-tableCheckbox [value]="e"></p-tableCheckbox>
 						</td>
 						<td *ngSwitchCase="'id'">{{ e.id }}</td>
 						<!-- Filed of entity -->
 						<td *ngSwitchCase="'cig'">{{ e.cig }}</td>
-						<td *ngSwitchCase="'procurementLot.description'">{{ e.description }}</td>
+						<td *ngSwitchCase="'description'">{{ e.description }}</td>
 						<td *ngSwitchCase="'sectorCode'">{{ e.sectorCode }}</td>
 						<td *ngSwitchCase="'procedureCode'">{{ e.procedureCode }}</td>
 						<td *ngSwitchCase="'modalityCode'">{{ e.modalityCode }}</td>
@@ -80,15 +81,14 @@
 						<td *ngSwitchCase="'creationDateTime'">{{ e.creationDateTime }}</td>
 
 						<!-- Filed of relational entity -->
-						<td *ngSwitchCase="'procurement.contractorEopooCode'">{{ e.procurement.contractorEopooCode }}
-						</td>
+						<td *ngSwitchCase="'procurement.contractorEopooCode'">{{ e.procurement.contractorEopooCode }}</td>
 						<td *ngSwitchCase="'procurement.description'">{{ e.procurement.description }}</td>
 						<td *ngSwitchCase="'procurement.code'">{{ e.procurement.code }}</td>
 						<td *ngSwitchCase="'procurement.ref'">{{ e.procurement.ref }}</td>
 						<td *ngSwitchCase="'procurement.externalRef'">{{ e.procurement.externalRef }}</td>
 						<td *ngSwitchCase="'procurement.creationDateTime'">{{ e.procurement.creationDateTime }}</td>
 					</ng-container>
-					<td *ngIf="buttons" style="text-align:center">
+					<td *ngIf="buttons" style="text-align:center" class="print:hidden">
 						<ng-container *ngFor="let b of buttons">
 							<button pButton type="button" class="{{ b.class }} p-button-{{ b.severity }}"
 								[ngClass]="{'ui-button-icon-only': b.hideLabel}" label="{{ b.label }}"
@@ -98,8 +98,7 @@
 								<button pButton type="button" class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
 									pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)">
 								</button>
-								<p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body">
-								</p-menu>
+								<p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
 							</ng-container>
 						</ng-container>
 					</td>
