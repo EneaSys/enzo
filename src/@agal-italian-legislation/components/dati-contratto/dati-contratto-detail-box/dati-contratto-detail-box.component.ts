@@ -6,11 +6,10 @@ import { DatiContrattoDTO } from 'aig-italianlegislation';
     templateUrl: './dati-contratto-detail-box.component.html',
     styleUrls: ['./dati-contratto-detail-box.component.scss']
 })
-export class AgalDatiContrattoDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiContrattoDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiContratto: DatiContrattoDTO;
+
+	constructor( ) { }
 }

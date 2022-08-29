@@ -6,11 +6,10 @@ import { FatturaPrincipaleDTO } from 'aig-italianlegislation';
     templateUrl: './fattura-principale-detail-box.component.html',
     styleUrls: ['./fattura-principale-detail-box.component.scss']
 })
-export class AgalFatturaPrincipaleDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalFatturaPrincipaleDetailBoxComponent {
 
-    @Input()
+	@Input()
     fatturaPrincipale: FatturaPrincipaleDTO;
+
+	constructor( ) { }
 }

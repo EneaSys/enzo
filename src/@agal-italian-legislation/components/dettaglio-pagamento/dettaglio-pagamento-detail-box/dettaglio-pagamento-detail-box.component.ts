@@ -6,11 +6,10 @@ import { DettaglioPagamentoDTO } from 'aig-italianlegislation';
     templateUrl: './dettaglio-pagamento-detail-box.component.html',
     styleUrls: ['./dettaglio-pagamento-detail-box.component.scss']
 })
-export class AgalDettaglioPagamentoDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDettaglioPagamentoDetailBoxComponent {
 
-    @Input()
+	@Input()
     dettaglioPagamento: DettaglioPagamentoDTO;
+
+	constructor( ) { }
 }

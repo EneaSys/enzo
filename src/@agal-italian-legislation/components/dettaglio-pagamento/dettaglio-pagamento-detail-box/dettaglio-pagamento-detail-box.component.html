@@ -1,6 +1,5 @@
         <div class="h1 m-8 ml-16">{{ dettaglioPagamento }}</div>
         <div class="h4 ml-16">ID: <b>{{ dettaglioPagamento.id }}</b></div>
-
         <div class="h4 ml-16">beneficiario: <b>{{ dettaglioPagamento.beneficiario }}</b></div>
         <div class="h4 ml-16">modalitaPagamentoCode: <b>{{ dettaglioPagamento.modalitaPagamentoCode }}</b></div>
         <div class="h4 ml-16">dataRiferimentoTerminiPagamento: <b>{{ dettaglioPagamento.dataRiferimentoTerminiPagamento }}</b></div>
@@ -23,10 +22,7 @@
         <div class="h4 ml-16">dataDecorrenzaPenale: <b>{{ dettaglioPagamento.dataDecorrenzaPenale }}</b></div>
         <div class="h4 ml-16">codicePagamento: <b>{{ dettaglioPagamento.codicePagamento }}</b></div>
 
-
-
-
-
  *ngIf="eoopo.person"
 <div class="h4 ml-16">datiPagamento: <b>{{ dettaglioPagamento.datiPagamento.condizioniPagamento }}</b></div>
 
+<pre>{{ dettaglioPagamento }}</pre>

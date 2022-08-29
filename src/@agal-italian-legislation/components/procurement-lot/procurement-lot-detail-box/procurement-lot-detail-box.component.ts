@@ -6,11 +6,10 @@ import { ProcurementLotDTO } from 'aig-italianlegislation';
     templateUrl: './procurement-lot-detail-box.component.html',
     styleUrls: ['./procurement-lot-detail-box.component.scss']
 })
-export class AgalProcurementLotDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalProcurementLotDetailBoxComponent {
 
-    @Input()
+	@Input()
     procurementLot: ProcurementLotDTO;
+
+	constructor( ) { }
 }

@@ -22,7 +22,7 @@ export class EnzoProcurementLotListPageComponent extends EnzoGenericComponent1 {
 	};
 	procurementLotCount: number;
 
-	procurementLotListDc = ['_ck', 'id', 'description', 'cig', 'procurement.contractorEopooCode'];
+	procurementLotListDc = [ '_ck' , 'id', 'description'];
 	paginatorEvent(paginator: any) {
 		let procurementLotListPaginator = { ...paginator }
 		this.procurementLotListPaginator = procurementLotListPaginator;
@@ -52,7 +52,7 @@ export class EnzoProcurementLotListPageComponent extends EnzoGenericComponent1 {
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/procurement-lot/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/procurement-lot/detail/"+e.id)
 			},
 			childs: [
 				{

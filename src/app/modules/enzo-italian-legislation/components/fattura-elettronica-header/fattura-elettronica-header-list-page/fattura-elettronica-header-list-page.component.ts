@@ -52,7 +52,7 @@ export class EnzoFatturaElettronicaHeaderListPageComponent extends EnzoGenericCo
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/fattura-elettronica-header/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/fattura-elettronica-header/detail/"+e.id)
 			},
 			childs: [
 				{

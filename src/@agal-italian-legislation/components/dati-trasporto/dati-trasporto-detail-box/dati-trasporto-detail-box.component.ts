@@ -6,11 +6,10 @@ import { DatiTrasportoDTO } from 'aig-italianlegislation';
     templateUrl: './dati-trasporto-detail-box.component.html',
     styleUrls: ['./dati-trasporto-detail-box.component.scss']
 })
-export class AgalDatiTrasportoDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiTrasportoDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiTrasporto: DatiTrasportoDTO;
+
+	constructor( ) { }
 }

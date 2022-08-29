@@ -52,7 +52,7 @@ export class EnzoDesignatedCompanyListPageComponent extends EnzoGenericComponent
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/designated-company/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/designated-company/detail/"+e.id)
 			},
 			childs: [
 				{

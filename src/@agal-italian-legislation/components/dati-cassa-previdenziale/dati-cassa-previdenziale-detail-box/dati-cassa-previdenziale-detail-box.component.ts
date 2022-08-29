@@ -6,11 +6,10 @@ import { DatiCassaPrevidenzialeDTO } from 'aig-italianlegislation';
     templateUrl: './dati-cassa-previdenziale-detail-box.component.html',
     styleUrls: ['./dati-cassa-previdenziale-detail-box.component.scss']
 })
-export class AgalDatiCassaPrevidenzialeDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiCassaPrevidenzialeDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiCassaPrevidenziale: DatiCassaPrevidenzialeDTO;
+
+	constructor( ) { }
 }

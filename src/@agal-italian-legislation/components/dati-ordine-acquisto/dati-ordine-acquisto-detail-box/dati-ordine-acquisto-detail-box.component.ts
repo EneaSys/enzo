@@ -6,11 +6,10 @@ import { DatiOrdineAcquistoDTO } from 'aig-italianlegislation';
     templateUrl: './dati-ordine-acquisto-detail-box.component.html',
     styleUrls: ['./dati-ordine-acquisto-detail-box.component.scss']
 })
-export class AgalDatiOrdineAcquistoDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiOrdineAcquistoDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiOrdineAcquisto: DatiOrdineAcquistoDTO;
+
+	constructor( ) { }
 }

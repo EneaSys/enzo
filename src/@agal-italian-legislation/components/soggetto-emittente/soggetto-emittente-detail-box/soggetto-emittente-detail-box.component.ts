@@ -6,11 +6,10 @@ import { SoggettoEmittenteDTO } from 'aig-italianlegislation';
     templateUrl: './soggetto-emittente-detail-box.component.html',
     styleUrls: ['./soggetto-emittente-detail-box.component.scss']
 })
-export class AgalSoggettoEmittenteDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalSoggettoEmittenteDetailBoxComponent {
 
-    @Input()
+	@Input()
     soggettoEmittente: SoggettoEmittenteDTO;
+
+	constructor( ) { }
 }

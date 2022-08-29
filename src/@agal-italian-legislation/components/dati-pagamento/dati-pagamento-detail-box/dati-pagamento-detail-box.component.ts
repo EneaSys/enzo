@@ -6,11 +6,10 @@ import { DatiPagamentoDTO } from 'aig-italianlegislation';
     templateUrl: './dati-pagamento-detail-box.component.html',
     styleUrls: ['./dati-pagamento-detail-box.component.scss']
 })
-export class AgalDatiPagamentoDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiPagamentoDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiPagamento: DatiPagamentoDTO;
+
+	constructor( ) { }
 }

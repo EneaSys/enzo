@@ -6,11 +6,10 @@ import { DatiDdtDTO } from 'aig-italianlegislation';
     templateUrl: './dati-ddt-detail-box.component.html',
     styleUrls: ['./dati-ddt-detail-box.component.scss']
 })
-export class AgalDatiDdtDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiDdtDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiDdt: DatiDdtDTO;
+
+	constructor( ) { }
 }

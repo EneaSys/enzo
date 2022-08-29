@@ -6,11 +6,10 @@ import { DatiBeniServiziDTO } from 'aig-italianlegislation';
     templateUrl: './dati-beni-servizi-detail-box.component.html',
     styleUrls: ['./dati-beni-servizi-detail-box.component.scss']
 })
-export class AgalDatiBeniServiziDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiBeniServiziDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiBeniServizi: DatiBeniServiziDTO;
+
+	constructor( ) { }
 }

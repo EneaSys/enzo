@@ -52,7 +52,7 @@ export class EnzoDatiDdtListPageComponent extends EnzoGenericComponent1 {
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/dati-ddt/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/dati-ddt/detail/"+e.id)
 			},
 			childs: [
 				{

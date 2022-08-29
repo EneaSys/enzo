@@ -52,7 +52,7 @@ export class EnzoDatiGeneraliDocumentoListPageComponent extends EnzoGenericCompo
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/dati-generali-documento/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/dati-generali-documento/detail/"+e.id)
 			},
 			childs: [
 				{

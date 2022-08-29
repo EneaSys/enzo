@@ -6,11 +6,10 @@ import { DesignatedCompanyDTO } from 'aig-italianlegislation';
     templateUrl: './designated-company-detail-box.component.html',
     styleUrls: ['./designated-company-detail-box.component.scss']
 })
-export class AgalDesignatedCompanyDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDesignatedCompanyDetailBoxComponent {
 
-    @Input()
+	@Input()
     designatedCompany: DesignatedCompanyDTO;
+
+	constructor( ) { }
 }

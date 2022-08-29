@@ -6,11 +6,10 @@ import { AllegatiDTO } from 'aig-italianlegislation';
     templateUrl: './allegati-detail-box.component.html',
     styleUrls: ['./allegati-detail-box.component.scss']
 })
-export class AgalAllegatiDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalAllegatiDetailBoxComponent {
 
-    @Input()
+	@Input()
     allegati: AllegatiDTO;
+
+	constructor( ) { }
 }

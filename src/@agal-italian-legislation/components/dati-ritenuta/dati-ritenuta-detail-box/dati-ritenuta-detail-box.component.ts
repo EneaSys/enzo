@@ -6,11 +6,10 @@ import { DatiRitenutaDTO } from 'aig-italianlegislation';
     templateUrl: './dati-ritenuta-detail-box.component.html',
     styleUrls: ['./dati-ritenuta-detail-box.component.scss']
 })
-export class AgalDatiRitenutaDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiRitenutaDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiRitenuta: DatiRitenutaDTO;
+
+	constructor( ) { }
 }

@@ -6,11 +6,10 @@ import { TerzoIntermediarioOSoggettoEmittenteDTO } from 'aig-italianlegislation'
     templateUrl: './terzo-intermediario-o-soggetto-emittente-detail-box.component.html',
     styleUrls: ['./terzo-intermediario-o-soggetto-emittente-detail-box.component.scss']
 })
-export class AgalTerzoIntermediarioOSoggettoEmittenteDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalTerzoIntermediarioOSoggettoEmittenteDetailBoxComponent {
 
-    @Input()
+	@Input()
     terzoIntermediarioOSoggettoEmittente: TerzoIntermediarioOSoggettoEmittenteDTO;
+
+	constructor( ) { }
 }

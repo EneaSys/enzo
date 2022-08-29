@@ -6,11 +6,10 @@ import { ScontoMaggiorazioneLineaDTO } from 'aig-italianlegislation';
     templateUrl: './sconto-maggiorazione-linea-detail-box.component.html',
     styleUrls: ['./sconto-maggiorazione-linea-detail-box.component.scss']
 })
-export class AgalScontoMaggiorazioneLineaDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalScontoMaggiorazioneLineaDetailBoxComponent {
 
-    @Input()
+	@Input()
     scontoMaggiorazioneLinea: ScontoMaggiorazioneLineaDTO;
+
+	constructor( ) { }
 }

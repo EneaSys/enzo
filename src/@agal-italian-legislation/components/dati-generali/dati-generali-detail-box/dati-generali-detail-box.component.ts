@@ -6,11 +6,10 @@ import { DatiGeneraliDTO } from 'aig-italianlegislation';
     templateUrl: './dati-generali-detail-box.component.html',
     styleUrls: ['./dati-generali-detail-box.component.scss']
 })
-export class AgalDatiGeneraliDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiGeneraliDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiGenerali: DatiGeneraliDTO;
+
+	constructor( ) { }
 }

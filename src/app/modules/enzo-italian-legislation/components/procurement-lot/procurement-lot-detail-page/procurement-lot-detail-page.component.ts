@@ -19,7 +19,7 @@ export class EnzoProcurementLotDetailPageComponent extends EnzoGenericComponent1
   ) {
       super(_gcs);
       this.id = +this.route.snapshot.paramMap.get('id');
-		  this.tmCurrentComponent.name = 'Detail ' + this.id;
+		  this.tmCurrentComponent.name = this.route.snapshot.data.procurementLot.cig;
       this.onLoad();
     }
 

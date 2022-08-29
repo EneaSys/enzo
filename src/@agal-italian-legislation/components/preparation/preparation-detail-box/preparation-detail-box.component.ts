@@ -6,11 +6,10 @@ import { PreparationDTO } from 'aig-italianlegislation';
     templateUrl: './preparation-detail-box.component.html',
     styleUrls: ['./preparation-detail-box.component.scss']
 })
-export class AgalPreparationDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalPreparationDetailBoxComponent {
 
-    @Input()
+	@Input()
     preparation: PreparationDTO;
+
+	constructor( ) { }
 }

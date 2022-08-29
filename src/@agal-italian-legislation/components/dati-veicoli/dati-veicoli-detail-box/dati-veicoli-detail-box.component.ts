@@ -6,11 +6,10 @@ import { DatiVeicoliDTO } from 'aig-italianlegislation';
     templateUrl: './dati-veicoli-detail-box.component.html',
     styleUrls: ['./dati-veicoli-detail-box.component.scss']
 })
-export class AgalDatiVeicoliDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiVeicoliDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiVeicoli: DatiVeicoliDTO;
+
+	constructor( ) { }
 }

@@ -6,11 +6,10 @@ import { CessionarioCommittenteDTO } from 'aig-italianlegislation';
     templateUrl: './cessionario-committente-detail-box.component.html',
     styleUrls: ['./cessionario-committente-detail-box.component.scss']
 })
-export class AgalCessionarioCommittenteDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalCessionarioCommittenteDetailBoxComponent {
 
-    @Input()
+	@Input()
     cessionarioCommittente: CessionarioCommittenteDTO;
+
+	constructor( ) { }
 }

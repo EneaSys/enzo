@@ -144,527 +144,527 @@ import { AllegatiResolver } from '@agal-italian-legislation/resolvers/allegati.r
 
 export const italianLegislationRoutes: Route[] = [
 	{
-		path: '',
-		pathMatch: 'full',
+		path: '', 
+		pathMatch : 'full',
 		redirectTo: 'page'
 	},
 
-	{
-		path: 'pp/procurement',
-		component: EnzoProcurementListPageComponent,
-	},
-	{
-		path: 'pp/procurement/detail/:id',
-		component: EnzoProcurementDetailPageComponent,
-		resolve: {
-			procurement: ProcurementResolver,
+		{
+			path: 'procurement', 
+			component: EnzoProcurementListPageComponent,
 		},
-	},
-	{
-		path: 'procurement-lot-category',
-		component: EnzoProcurementLotCategoryListPageComponent,
-	},
-	{
-		path: 'procurement-lot-category/detail/:id',
-		component: EnzoProcurementLotCategoryDetailPageComponent,
-		resolve: {
-			procurementLotCategory: ProcurementLotCategoryResolver,
+		{
+			path: 'procurement/detail/:id', 
+			component: EnzoProcurementDetailPageComponent,
+			resolve: {
+                procurement: ProcurementResolver,
+            },
+		},       
+		{
+			path: 'procurement-lot-category', 
+			component: EnzoProcurementLotCategoryListPageComponent,
 		},
-	},
-	{
-		path: 'pp/procurement-lot',
-		component: EnzoProcurementLotListPageComponent,
-	},
-	{
-		path: 'pp/procurement-lot/detail/:id',
-		component: EnzoProcurementLotDetailPageComponent,
-		resolve: {
-			procurementLot: ProcurementLotResolver,
+		{
+			path: 'procurement-lot-category/detail/:id', 
+			component: EnzoProcurementLotCategoryDetailPageComponent,
+			resolve: {
+                procurementLotCategory: ProcurementLotCategoryResolver,
+            },
+		},       
+		{
+			path: 'procurement-lot', 
+			component: EnzoProcurementLotListPageComponent,
 		},
-	},
-	{
-		path: 'pp/partecipation-status',
-		component: EnzoPartecipationStatusListPageComponent,
-	},
-	{
-		path: 'pp/partecipation-status/detail/:id',
-		component: EnzoPartecipationStatusDetailPageComponent,
-		resolve: {
-			partecipationStatus: PartecipationStatusResolver,
+		{
+			path: 'procurement-lot/detail/:id', 
+			component: EnzoProcurementLotDetailPageComponent,
+			resolve: {
+                procurementLot: ProcurementLotResolver,
+            },
+		},       
+		{
+			path: 'partecipation-status', 
+			component: EnzoPartecipationStatusListPageComponent,
 		},
-	},
-	{
-		path: 'partecipation-modality',
-		component: EnzoPartecipationModalityListPageComponent,
-	},
-	{
-		path: 'partecipation-modality/detail/:id',
-		component: EnzoPartecipationModalityDetailPageComponent,
-		resolve: {
-			partecipationModality: PartecipationModalityResolver,
+		{
+			path: 'partecipation-status/detail/:id', 
+			component: EnzoPartecipationStatusDetailPageComponent,
+			resolve: {
+                partecipationStatus: PartecipationStatusResolver,
+            },
+		},       
+		{
+			path: 'partecipation-modality', 
+			component: EnzoPartecipationModalityListPageComponent,
 		},
-	},
-	{
-		path: 'pp/partecipation',
-		component: EnzoPartecipationListPageComponent,
-	},
-	{
-		path: 'pp/partecipation/detail/:id',
-		component: EnzoPartecipationDetailPageComponent,
-		resolve: {
-			partecipation: PartecipationResolver,
+		{
+			path: 'partecipation-modality/detail/:id', 
+			component: EnzoPartecipationModalityDetailPageComponent,
+			resolve: {
+                partecipationModality: PartecipationModalityResolver,
+            },
+		},       
+		{
+			path: 'partecipation', 
+			component: EnzoPartecipationListPageComponent,
 		},
-	},
-	{
-		path: 'pp/preparation-status',
-		component: EnzoPreparationStatusListPageComponent,
-	},
-	{
-		path: 'pp/preparation-status/detail/:id',
-		component: EnzoPreparationStatusDetailPageComponent,
-		resolve: {
-			preparationStatus: PreparationStatusResolver,
+		{
+			path: 'partecipation/detail/:id', 
+			component: EnzoPartecipationDetailPageComponent,
+			resolve: {
+                partecipation: PartecipationResolver,
+            },
+		},       
+		{
+			path: 'preparation-status', 
+			component: EnzoPreparationStatusListPageComponent,
 		},
-	},
-	{
-		path: 'preparation-modality',
-		component: EnzoPreparationModalityListPageComponent,
-	},
-	{
-		path: 'preparation-modality/detail/:id',
-		component: EnzoPreparationModalityDetailPageComponent,
-		resolve: {
-			preparationModality: PreparationModalityResolver,
+		{
+			path: 'preparation-status/detail/:id', 
+			component: EnzoPreparationStatusDetailPageComponent,
+			resolve: {
+                preparationStatus: PreparationStatusResolver,
+            },
+		},       
+		{
+			path: 'preparation-modality', 
+			component: EnzoPreparationModalityListPageComponent,
 		},
-	},
-	{
-		path: 'preparation',
-		component: EnzoPreparationListPageComponent,
-	},
-	{
-		path: 'preparation/detail/:id',
-		component: EnzoPreparationDetailPageComponent,
-		resolve: {
-			preparation: PreparationResolver,
+		{
+			path: 'preparation-modality/detail/:id', 
+			component: EnzoPreparationModalityDetailPageComponent,
+			resolve: {
+                preparationModality: PreparationModalityResolver,
+            },
+		},       
+		{
+			path: 'preparation', 
+			component: EnzoPreparationListPageComponent,
 		},
-	},
-	{
-		path: 'designated-company',
-		component: EnzoDesignatedCompanyListPageComponent,
-	},
-	{
-		path: 'designated-company/detail/:id',
-		component: EnzoDesignatedCompanyDetailPageComponent,
-		resolve: {
-			designatedCompany: DesignatedCompanyResolver,
+		{
+			path: 'preparation/detail/:id', 
+			component: EnzoPreparationDetailPageComponent,
+			resolve: {
+                preparation: PreparationResolver,
+            },
+		},       
+		{
+			path: 'designated-company', 
+			component: EnzoDesignatedCompanyListPageComponent,
 		},
-	},
-	{
-		path: 'insurance-policy-status',
-		component: EnzoInsurancePolicyStatusListPageComponent,
-	},
-	{
-		path: 'insurance-policy-status/detail/:id',
-		component: EnzoInsurancePolicyStatusDetailPageComponent,
-		resolve: {
-			insurancePolicyStatus: InsurancePolicyStatusResolver,
+		{
+			path: 'designated-company/detail/:id', 
+			component: EnzoDesignatedCompanyDetailPageComponent,
+			resolve: {
+                designatedCompany: DesignatedCompanyResolver,
+            },
+		},       
+		{
+			path: 'insurance-policy-status', 
+			component: EnzoInsurancePolicyStatusListPageComponent,
 		},
-	},
-	{
-		path: 'insurance-policy',
-		component: EnzoInsurancePolicyListPageComponent,
-	},
-	{
-		path: 'insurance-policy/detail/:id',
-		component: EnzoInsurancePolicyDetailPageComponent,
-		resolve: {
-			insurancePolicy: InsurancePolicyResolver,
+		{
+			path: 'insurance-policy-status/detail/:id', 
+			component: EnzoInsurancePolicyStatusDetailPageComponent,
+			resolve: {
+                insurancePolicyStatus: InsurancePolicyStatusResolver,
+            },
+		},       
+		{
+			path: 'insurance-policy', 
+			component: EnzoInsurancePolicyListPageComponent,
 		},
-	},
-	{
-		path: 'dossier',
-		component: EnzoDossierListPageComponent,
-	},
-	{
-		path: 'dossier/detail/:id',
-		component: EnzoDossierDetailPageComponent,
-		resolve: {
-			dossier: DossierResolver,
+		{
+			path: 'insurance-policy/detail/:id', 
+			component: EnzoInsurancePolicyDetailPageComponent,
+			resolve: {
+                insurancePolicy: InsurancePolicyResolver,
+            },
+		},       
+		{
+			path: 'dossier', 
+			component: EnzoDossierListPageComponent,
 		},
-	},
-	{
-		path: 'fattura-elettronica-header',
-		component: EnzoFatturaElettronicaHeaderListPageComponent,
-	},
-	{
-		path: 'fattura-elettronica-header/detail/:id',
-		component: EnzoFatturaElettronicaHeaderDetailPageComponent,
-		resolve: {
-			fatturaElettronicaHeader: FatturaElettronicaHeaderResolver,
+		{
+			path: 'dossier/detail/:id', 
+			component: EnzoDossierDetailPageComponent,
+			resolve: {
+                dossier: DossierResolver,
+            },
+		},       
+		{
+			path: 'fattura-elettronica-header', 
+			component: EnzoFatturaElettronicaHeaderListPageComponent,
 		},
-	},
-	{
-		path: 'dati-trasmissione',
-		component: EnzoDatiTrasmissioneListPageComponent,
-	},
-	{
-		path: 'dati-trasmissione/detail/:id',
-		component: EnzoDatiTrasmissioneDetailPageComponent,
-		resolve: {
-			datiTrasmissione: DatiTrasmissioneResolver,
+		{
+			path: 'fattura-elettronica-header/detail/:id', 
+			component: EnzoFatturaElettronicaHeaderDetailPageComponent,
+			resolve: {
+                fatturaElettronicaHeader: FatturaElettronicaHeaderResolver,
+            },
+		},       
+		{
+			path: 'dati-trasmissione', 
+			component: EnzoDatiTrasmissioneListPageComponent,
 		},
-	},
-	{
-		path: 'cedente-prestatore',
-		component: EnzoCedentePrestatoreListPageComponent,
-	},
-	{
-		path: 'cedente-prestatore/detail/:id',
-		component: EnzoCedentePrestatoreDetailPageComponent,
-		resolve: {
-			cedentePrestatore: CedentePrestatoreResolver,
+		{
+			path: 'dati-trasmissione/detail/:id', 
+			component: EnzoDatiTrasmissioneDetailPageComponent,
+			resolve: {
+                datiTrasmissione: DatiTrasmissioneResolver,
+            },
+		},       
+		{
+			path: 'cedente-prestatore', 
+			component: EnzoCedentePrestatoreListPageComponent,
 		},
-	},
-	{
-		path: 'rappresentante-fiscale',
-		component: EnzoRappresentanteFiscaleListPageComponent,
-	},
-	{
-		path: 'rappresentante-fiscale/detail/:id',
-		component: EnzoRappresentanteFiscaleDetailPageComponent,
-		resolve: {
-			rappresentanteFiscale: RappresentanteFiscaleResolver,
+		{
+			path: 'cedente-prestatore/detail/:id', 
+			component: EnzoCedentePrestatoreDetailPageComponent,
+			resolve: {
+                cedentePrestatore: CedentePrestatoreResolver,
+            },
+		},       
+		{
+			path: 'rappresentante-fiscale', 
+			component: EnzoRappresentanteFiscaleListPageComponent,
 		},
-	},
-	{
-		path: 'cessionario-committente',
-		component: EnzoCessionarioCommittenteListPageComponent,
-	},
-	{
-		path: 'cessionario-committente/detail/:id',
-		component: EnzoCessionarioCommittenteDetailPageComponent,
-		resolve: {
-			cessionarioCommittente: CessionarioCommittenteResolver,
+		{
+			path: 'rappresentante-fiscale/detail/:id', 
+			component: EnzoRappresentanteFiscaleDetailPageComponent,
+			resolve: {
+                rappresentanteFiscale: RappresentanteFiscaleResolver,
+            },
+		},       
+		{
+			path: 'cessionario-committente', 
+			component: EnzoCessionarioCommittenteListPageComponent,
 		},
-	},
-	{
-		path: 'terzo-intermediario-o-soggetto-emittente',
-		component: EnzoTerzoIntermediarioOSoggettoEmittenteListPageComponent,
-	},
-	{
-		path: 'terzo-intermediario-o-soggetto-emittente/detail/:id',
-		component: EnzoTerzoIntermediarioOSoggettoEmittenteDetailPageComponent,
-		resolve: {
-			terzoIntermediarioOSoggettoEmittente: TerzoIntermediarioOSoggettoEmittenteResolver,
+		{
+			path: 'cessionario-committente/detail/:id', 
+			component: EnzoCessionarioCommittenteDetailPageComponent,
+			resolve: {
+                cessionarioCommittente: CessionarioCommittenteResolver,
+            },
+		},       
+		{
+			path: 'terzo-intermediario-o-soggetto-emittente', 
+			component: EnzoTerzoIntermediarioOSoggettoEmittenteListPageComponent,
 		},
-	},
-	{
-		path: 'soggetto-emittente',
-		component: EnzoSoggettoEmittenteListPageComponent,
-	},
-	{
-		path: 'soggetto-emittente/detail/:id',
-		component: EnzoSoggettoEmittenteDetailPageComponent,
-		resolve: {
-			soggettoEmittente: SoggettoEmittenteResolver,
+		{
+			path: 'terzo-intermediario-o-soggetto-emittente/detail/:id', 
+			component: EnzoTerzoIntermediarioOSoggettoEmittenteDetailPageComponent,
+			resolve: {
+                terzoIntermediarioOSoggettoEmittente: TerzoIntermediarioOSoggettoEmittenteResolver,
+            },
+		},       
+		{
+			path: 'soggetto-emittente', 
+			component: EnzoSoggettoEmittenteListPageComponent,
 		},
-	},
-	{
-		path: 'fattura-elettronica-body',
-		component: EnzoFatturaElettronicaBodyListPageComponent,
-	},
-	{
-		path: 'fattura-elettronica-body/detail/:id',
-		component: EnzoFatturaElettronicaBodyDetailPageComponent,
-		resolve: {
-			fatturaElettronicaBody: FatturaElettronicaBodyResolver,
+		{
+			path: 'soggetto-emittente/detail/:id', 
+			component: EnzoSoggettoEmittenteDetailPageComponent,
+			resolve: {
+                soggettoEmittente: SoggettoEmittenteResolver,
+            },
+		},       
+		{
+			path: 'fattura-elettronica-body', 
+			component: EnzoFatturaElettronicaBodyListPageComponent,
 		},
-	},
-	{
-		path: 'dati-generali',
-		component: EnzoDatiGeneraliListPageComponent,
-	},
-	{
-		path: 'dati-generali/detail/:id',
-		component: EnzoDatiGeneraliDetailPageComponent,
-		resolve: {
-			datiGenerali: DatiGeneraliResolver,
+		{
+			path: 'fattura-elettronica-body/detail/:id', 
+			component: EnzoFatturaElettronicaBodyDetailPageComponent,
+			resolve: {
+                fatturaElettronicaBody: FatturaElettronicaBodyResolver,
+            },
+		},       
+		{
+			path: 'dati-generali', 
+			component: EnzoDatiGeneraliListPageComponent,
 		},
-	},
-	{
-		path: 'dati-generali-documento',
-		component: EnzoDatiGeneraliDocumentoListPageComponent,
-	},
-	{
-		path: 'dati-generali-documento/detail/:id',
-		component: EnzoDatiGeneraliDocumentoDetailPageComponent,
-		resolve: {
-			datiGeneraliDocumento: DatiGeneraliDocumentoResolver,
+		{
+			path: 'dati-generali/detail/:id', 
+			component: EnzoDatiGeneraliDetailPageComponent,
+			resolve: {
+                datiGenerali: DatiGeneraliResolver,
+            },
+		},       
+		{
+			path: 'dati-generali-documento', 
+			component: EnzoDatiGeneraliDocumentoListPageComponent,
 		},
-	},
-	{
-		path: 'dati-ritenuta',
-		component: EnzoDatiRitenutaListPageComponent,
-	},
-	{
-		path: 'dati-ritenuta/detail/:id',
-		component: EnzoDatiRitenutaDetailPageComponent,
-		resolve: {
-			datiRitenuta: DatiRitenutaResolver,
+		{
+			path: 'dati-generali-documento/detail/:id', 
+			component: EnzoDatiGeneraliDocumentoDetailPageComponent,
+			resolve: {
+                datiGeneraliDocumento: DatiGeneraliDocumentoResolver,
+            },
+		},       
+		{
+			path: 'dati-ritenuta', 
+			component: EnzoDatiRitenutaListPageComponent,
 		},
-	},
-	{
-		path: 'dati-bollo',
-		component: EnzoDatiBolloListPageComponent,
-	},
-	{
-		path: 'dati-bollo/detail/:id',
-		component: EnzoDatiBolloDetailPageComponent,
-		resolve: {
-			datiBollo: DatiBolloResolver,
+		{
+			path: 'dati-ritenuta/detail/:id', 
+			component: EnzoDatiRitenutaDetailPageComponent,
+			resolve: {
+                datiRitenuta: DatiRitenutaResolver,
+            },
+		},       
+		{
+			path: 'dati-bollo', 
+			component: EnzoDatiBolloListPageComponent,
 		},
-	},
-	{
-		path: 'dati-cassa-previdenziale',
-		component: EnzoDatiCassaPrevidenzialeListPageComponent,
-	},
-	{
-		path: 'dati-cassa-previdenziale/detail/:id',
-		component: EnzoDatiCassaPrevidenzialeDetailPageComponent,
-		resolve: {
-			datiCassaPrevidenziale: DatiCassaPrevidenzialeResolver,
+		{
+			path: 'dati-bollo/detail/:id', 
+			component: EnzoDatiBolloDetailPageComponent,
+			resolve: {
+                datiBollo: DatiBolloResolver,
+            },
+		},       
+		{
+			path: 'dati-cassa-previdenziale', 
+			component: EnzoDatiCassaPrevidenzialeListPageComponent,
 		},
-	},
-	{
-		path: 'sconto-maggiorazione',
-		component: EnzoScontoMaggiorazioneListPageComponent,
-	},
-	{
-		path: 'sconto-maggiorazione/detail/:id',
-		component: EnzoScontoMaggiorazioneDetailPageComponent,
-		resolve: {
-			scontoMaggiorazione: ScontoMaggiorazioneResolver,
+		{
+			path: 'dati-cassa-previdenziale/detail/:id', 
+			component: EnzoDatiCassaPrevidenzialeDetailPageComponent,
+			resolve: {
+                datiCassaPrevidenziale: DatiCassaPrevidenzialeResolver,
+            },
+		},       
+		{
+			path: 'sconto-maggiorazione', 
+			component: EnzoScontoMaggiorazioneListPageComponent,
 		},
-	},
-	{
-		path: 'dati-ordine-acquisto',
-		component: EnzoDatiOrdineAcquistoListPageComponent,
-	},
-	{
-		path: 'dati-ordine-acquisto/detail/:id',
-		component: EnzoDatiOrdineAcquistoDetailPageComponent,
-		resolve: {
-			datiOrdineAcquisto: DatiOrdineAcquistoResolver,
+		{
+			path: 'sconto-maggiorazione/detail/:id', 
+			component: EnzoScontoMaggiorazioneDetailPageComponent,
+			resolve: {
+                scontoMaggiorazione: ScontoMaggiorazioneResolver,
+            },
+		},       
+		{
+			path: 'dati-ordine-acquisto', 
+			component: EnzoDatiOrdineAcquistoListPageComponent,
 		},
-	},
-	{
-		path: 'dati-contratto',
-		component: EnzoDatiContrattoListPageComponent,
-	},
-	{
-		path: 'dati-contratto/detail/:id',
-		component: EnzoDatiContrattoDetailPageComponent,
-		resolve: {
-			datiContratto: DatiContrattoResolver,
+		{
+			path: 'dati-ordine-acquisto/detail/:id', 
+			component: EnzoDatiOrdineAcquistoDetailPageComponent,
+			resolve: {
+                datiOrdineAcquisto: DatiOrdineAcquistoResolver,
+            },
+		},       
+		{
+			path: 'dati-contratto', 
+			component: EnzoDatiContrattoListPageComponent,
 		},
-	},
-	{
-		path: 'dati-convenzione',
-		component: EnzoDatiConvenzioneListPageComponent,
-	},
-	{
-		path: 'dati-convenzione/detail/:id',
-		component: EnzoDatiConvenzioneDetailPageComponent,
-		resolve: {
-			datiConvenzione: DatiConvenzioneResolver,
+		{
+			path: 'dati-contratto/detail/:id', 
+			component: EnzoDatiContrattoDetailPageComponent,
+			resolve: {
+                datiContratto: DatiContrattoResolver,
+            },
+		},       
+		{
+			path: 'dati-convenzione', 
+			component: EnzoDatiConvenzioneListPageComponent,
 		},
-	},
-	{
-		path: 'dati-ricezione',
-		component: EnzoDatiRicezioneListPageComponent,
-	},
-	{
-		path: 'dati-ricezione/detail/:id',
-		component: EnzoDatiRicezioneDetailPageComponent,
-		resolve: {
-			datiRicezione: DatiRicezioneResolver,
+		{
+			path: 'dati-convenzione/detail/:id', 
+			component: EnzoDatiConvenzioneDetailPageComponent,
+			resolve: {
+                datiConvenzione: DatiConvenzioneResolver,
+            },
+		},       
+		{
+			path: 'dati-ricezione', 
+			component: EnzoDatiRicezioneListPageComponent,
 		},
-	},
-	{
-		path: 'dati-fatture-collegate',
-		component: EnzoDatiFattureCollegateListPageComponent,
-	},
-	{
-		path: 'dati-fatture-collegate/detail/:id',
-		component: EnzoDatiFattureCollegateDetailPageComponent,
-		resolve: {
-			datiFattureCollegate: DatiFattureCollegateResolver,
+		{
+			path: 'dati-ricezione/detail/:id', 
+			component: EnzoDatiRicezioneDetailPageComponent,
+			resolve: {
+                datiRicezione: DatiRicezioneResolver,
+            },
+		},       
+		{
+			path: 'dati-fatture-collegate', 
+			component: EnzoDatiFattureCollegateListPageComponent,
 		},
-	},
-	{
-		path: 'dati-sal',
-		component: EnzoDatiSalListPageComponent,
-	},
-	{
-		path: 'dati-sal/detail/:id',
-		component: EnzoDatiSalDetailPageComponent,
-		resolve: {
-			datiSal: DatiSalResolver,
+		{
+			path: 'dati-fatture-collegate/detail/:id', 
+			component: EnzoDatiFattureCollegateDetailPageComponent,
+			resolve: {
+                datiFattureCollegate: DatiFattureCollegateResolver,
+            },
+		},       
+		{
+			path: 'dati-sal', 
+			component: EnzoDatiSalListPageComponent,
 		},
-	},
-	{
-		path: 'dati-ddt',
-		component: EnzoDatiDdtListPageComponent,
-	},
-	{
-		path: 'dati-ddt/detail/:id',
-		component: EnzoDatiDdtDetailPageComponent,
-		resolve: {
-			datiDdt: DatiDdtResolver,
+		{
+			path: 'dati-sal/detail/:id', 
+			component: EnzoDatiSalDetailPageComponent,
+			resolve: {
+                datiSal: DatiSalResolver,
+            },
+		},       
+		{
+			path: 'dati-ddt', 
+			component: EnzoDatiDdtListPageComponent,
 		},
-	},
-	{
-		path: 'riferimento-numero-linea',
-		component: EnzoRiferimentoNumeroLineaListPageComponent,
-	},
-	{
-		path: 'riferimento-numero-linea/detail/:id',
-		component: EnzoRiferimentoNumeroLineaDetailPageComponent,
-		resolve: {
-			riferimentoNumeroLinea: RiferimentoNumeroLineaResolver,
+		{
+			path: 'dati-ddt/detail/:id', 
+			component: EnzoDatiDdtDetailPageComponent,
+			resolve: {
+                datiDdt: DatiDdtResolver,
+            },
+		},       
+		{
+			path: 'riferimento-numero-linea', 
+			component: EnzoRiferimentoNumeroLineaListPageComponent,
 		},
-	},
-	{
-		path: 'dati-trasporto',
-		component: EnzoDatiTrasportoListPageComponent,
-	},
-	{
-		path: 'dati-trasporto/detail/:id',
-		component: EnzoDatiTrasportoDetailPageComponent,
-		resolve: {
-			datiTrasporto: DatiTrasportoResolver,
+		{
+			path: 'riferimento-numero-linea/detail/:id', 
+			component: EnzoRiferimentoNumeroLineaDetailPageComponent,
+			resolve: {
+                riferimentoNumeroLinea: RiferimentoNumeroLineaResolver,
+            },
+		},       
+		{
+			path: 'dati-trasporto', 
+			component: EnzoDatiTrasportoListPageComponent,
 		},
-	},
-	{
-		path: 'indirizzo-resa',
-		component: EnzoIndirizzoResaListPageComponent,
-	},
-	{
-		path: 'indirizzo-resa/detail/:id',
-		component: EnzoIndirizzoResaDetailPageComponent,
-		resolve: {
-			indirizzoResa: IndirizzoResaResolver,
+		{
+			path: 'dati-trasporto/detail/:id', 
+			component: EnzoDatiTrasportoDetailPageComponent,
+			resolve: {
+                datiTrasporto: DatiTrasportoResolver,
+            },
+		},       
+		{
+			path: 'indirizzo-resa', 
+			component: EnzoIndirizzoResaListPageComponent,
 		},
-	},
-	{
-		path: 'fattura-principale',
-		component: EnzoFatturaPrincipaleListPageComponent,
-	},
-	{
-		path: 'fattura-principale/detail/:id',
-		component: EnzoFatturaPrincipaleDetailPageComponent,
-		resolve: {
-			fatturaPrincipale: FatturaPrincipaleResolver,
+		{
+			path: 'indirizzo-resa/detail/:id', 
+			component: EnzoIndirizzoResaDetailPageComponent,
+			resolve: {
+                indirizzoResa: IndirizzoResaResolver,
+            },
+		},       
+		{
+			path: 'fattura-principale', 
+			component: EnzoFatturaPrincipaleListPageComponent,
 		},
-	},
-	{
-		path: 'dati-beni-servizi',
-		component: EnzoDatiBeniServiziListPageComponent,
-	},
-	{
-		path: 'dati-beni-servizi/detail/:id',
-		component: EnzoDatiBeniServiziDetailPageComponent,
-		resolve: {
-			datiBeniServizi: DatiBeniServiziResolver,
+		{
+			path: 'fattura-principale/detail/:id', 
+			component: EnzoFatturaPrincipaleDetailPageComponent,
+			resolve: {
+                fatturaPrincipale: FatturaPrincipaleResolver,
+            },
+		},       
+		{
+			path: 'dati-beni-servizi', 
+			component: EnzoDatiBeniServiziListPageComponent,
 		},
-	},
-	{
-		path: 'dettaglio-linea',
-		component: EnzoDettaglioLineaListPageComponent,
-	},
-	{
-		path: 'dettaglio-linea/detail/:id',
-		component: EnzoDettaglioLineaDetailPageComponent,
-		resolve: {
-			dettaglioLinea: DettaglioLineaResolver,
+		{
+			path: 'dati-beni-servizi/detail/:id', 
+			component: EnzoDatiBeniServiziDetailPageComponent,
+			resolve: {
+                datiBeniServizi: DatiBeniServiziResolver,
+            },
+		},       
+		{
+			path: 'dettaglio-linea', 
+			component: EnzoDettaglioLineaListPageComponent,
 		},
-	},
-	{
-		path: 'sconto-maggiorazione-linea',
-		component: EnzoScontoMaggiorazioneLineaListPageComponent,
-	},
-	{
-		path: 'sconto-maggiorazione-linea/detail/:id',
-		component: EnzoScontoMaggiorazioneLineaDetailPageComponent,
-		resolve: {
-			scontoMaggiorazioneLinea: ScontoMaggiorazioneLineaResolver,
+		{
+			path: 'dettaglio-linea/detail/:id', 
+			component: EnzoDettaglioLineaDetailPageComponent,
+			resolve: {
+                dettaglioLinea: DettaglioLineaResolver,
+            },
+		},       
+		{
+			path: 'sconto-maggiorazione-linea', 
+			component: EnzoScontoMaggiorazioneLineaListPageComponent,
 		},
-	},
-	{
-		path: 'altri-dati-gestionali',
-		component: EnzoAltriDatiGestionaliListPageComponent,
-	},
-	{
-		path: 'altri-dati-gestionali/detail/:id',
-		component: EnzoAltriDatiGestionaliDetailPageComponent,
-		resolve: {
-			altriDatiGestionali: AltriDatiGestionaliResolver,
+		{
+			path: 'sconto-maggiorazione-linea/detail/:id', 
+			component: EnzoScontoMaggiorazioneLineaDetailPageComponent,
+			resolve: {
+                scontoMaggiorazioneLinea: ScontoMaggiorazioneLineaResolver,
+            },
+		},       
+		{
+			path: 'altri-dati-gestionali', 
+			component: EnzoAltriDatiGestionaliListPageComponent,
 		},
-	},
-	{
-		path: 'dati-riepilogo',
-		component: EnzoDatiRiepilogoListPageComponent,
-	},
-	{
-		path: 'dati-riepilogo/detail/:id',
-		component: EnzoDatiRiepilogoDetailPageComponent,
-		resolve: {
-			datiRiepilogo: DatiRiepilogoResolver,
+		{
+			path: 'altri-dati-gestionali/detail/:id', 
+			component: EnzoAltriDatiGestionaliDetailPageComponent,
+			resolve: {
+                altriDatiGestionali: AltriDatiGestionaliResolver,
+            },
+		},       
+		{
+			path: 'dati-riepilogo', 
+			component: EnzoDatiRiepilogoListPageComponent,
 		},
-	},
-	{
-		path: 'dati-pagamento',
-		component: EnzoDatiPagamentoListPageComponent,
-	},
-	{
-		path: 'dati-pagamento/detail/:id',
-		component: EnzoDatiPagamentoDetailPageComponent,
-		resolve: {
-			datiPagamento: DatiPagamentoResolver,
+		{
+			path: 'dati-riepilogo/detail/:id', 
+			component: EnzoDatiRiepilogoDetailPageComponent,
+			resolve: {
+                datiRiepilogo: DatiRiepilogoResolver,
+            },
+		},       
+		{
+			path: 'dati-pagamento', 
+			component: EnzoDatiPagamentoListPageComponent,
 		},
-	},
-	{
-		path: 'dettaglio-pagamento',
-		component: EnzoDettaglioPagamentoListPageComponent,
-	},
-	{
-		path: 'dettaglio-pagamento/detail/:id',
-		component: EnzoDettaglioPagamentoDetailPageComponent,
-		resolve: {
-			dettaglioPagamento: DettaglioPagamentoResolver,
+		{
+			path: 'dati-pagamento/detail/:id', 
+			component: EnzoDatiPagamentoDetailPageComponent,
+			resolve: {
+                datiPagamento: DatiPagamentoResolver,
+            },
+		},       
+		{
+			path: 'dettaglio-pagamento', 
+			component: EnzoDettaglioPagamentoListPageComponent,
 		},
-	},
-	{
-		path: 'dati-veicoli',
-		component: EnzoDatiVeicoliListPageComponent,
-	},
-	{
-		path: 'dati-veicoli/detail/:id',
-		component: EnzoDatiVeicoliDetailPageComponent,
-		resolve: {
-			datiVeicoli: DatiVeicoliResolver,
+		{
+			path: 'dettaglio-pagamento/detail/:id', 
+			component: EnzoDettaglioPagamentoDetailPageComponent,
+			resolve: {
+                dettaglioPagamento: DettaglioPagamentoResolver,
+            },
+		},       
+		{
+			path: 'dati-veicoli', 
+			component: EnzoDatiVeicoliListPageComponent,
 		},
-	},
-	{
-		path: 'allegati',
-		component: EnzoAllegatiListPageComponent,
-	},
-	{
-		path: 'allegati/detail/:id',
-		component: EnzoAllegatiDetailPageComponent,
-		resolve: {
-			allegati: AllegatiResolver,
+		{
+			path: 'dati-veicoli/detail/:id', 
+			component: EnzoDatiVeicoliDetailPageComponent,
+			resolve: {
+                datiVeicoli: DatiVeicoliResolver,
+            },
+		},       
+		{
+			path: 'allegati', 
+			component: EnzoAllegatiListPageComponent,
 		},
-	},
-
+		{
+			path: 'allegati/detail/:id', 
+			component: EnzoAllegatiDetailPageComponent,
+			resolve: {
+                allegati: AllegatiResolver,
+            },
+		},       
+    
 ];

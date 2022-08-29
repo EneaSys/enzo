@@ -6,11 +6,10 @@ import { DatiSalDTO } from 'aig-italianlegislation';
     templateUrl: './dati-sal-detail-box.component.html',
     styleUrls: ['./dati-sal-detail-box.component.scss']
 })
-export class AgalDatiSalDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDatiSalDetailBoxComponent {
 
-    @Input()
+	@Input()
     datiSal: DatiSalDTO;
+
+	constructor( ) { }
 }

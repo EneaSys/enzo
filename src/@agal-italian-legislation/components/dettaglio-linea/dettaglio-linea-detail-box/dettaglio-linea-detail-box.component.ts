@@ -6,11 +6,10 @@ import { DettaglioLineaDTO } from 'aig-italianlegislation';
     templateUrl: './dettaglio-linea-detail-box.component.html',
     styleUrls: ['./dettaglio-linea-detail-box.component.scss']
 })
-export class AgalDettaglioLineaDetailBoxComponent implements OnInit {
-    constructor(
-    ) { }
-    ngOnInit(): void {}
+export class AgalDettaglioLineaDetailBoxComponent {
 
-    @Input()
+	@Input()
     dettaglioLinea: DettaglioLineaDTO;
+
+	constructor( ) { }
 }

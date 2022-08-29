@@ -1,0 +1,42 @@
+<form *ngIf="step.form" [formGroup]="procurementNewUpdateForm" (ngSubmit)="submit()">
+	<div class="p-fluid grid">
+		<div class="field col-12 md:col-4">
+			<span class="p-float-label">
+				<input type="text" id="contractorEopooCode" pInputText [(ngModel)]="contractorEopooCode">
+				<label for="contractorEopooCode">contractorEopooCode</label>
+			</span>
+		</div>
+		<div class="field col-12 md:col-4">
+			<span class="p-float-label">
+				<input type="text" id="description" pInputText [(ngModel)]="description">
+				<label for="description">description</label>
+			</span>
+		</div>
+		<div class="field col-12 md:col-4">
+			<span class="p-float-label">
+				<input type="text" id="code" pInputText [(ngModel)]="code">
+				<label for="code">code</label>
+			</span>
+		</div>
+		<div class="field col-12 md:col-4">
+			<span class="p-float-label">
+				<input type="text" id="ref" pInputText [(ngModel)]="ref">
+				<label for="ref">ref</label>
+			</span>
+		</div>
+		<div class="field col-12 md:col-4">
+			<span class="p-float-label">
+				<input type="text" id="externalRef" pInputText [(ngModel)]="externalRef">
+				<label for="externalRef">externalRef</label>
+			</span>
+		</div>
+
+		<div class="field col-12 md:col-4">
+			<span class="p-float-label">
+				<p-calendar inputId="creationDateTime" [(ngModel)]="creationDateTime"></p-calendar>
+				<label for="creationDateTime">creationDateTime</label>
+			</span>
+		</div>
+
+	</div>
+</form>

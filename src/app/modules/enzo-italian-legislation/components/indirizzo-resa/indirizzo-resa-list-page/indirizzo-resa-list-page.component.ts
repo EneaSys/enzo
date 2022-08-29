@@ -52,7 +52,7 @@ export class EnzoIndirizzoResaListPageComponent extends EnzoGenericComponent1 {
 			class: "p-button-sm p-button-outlined",
 			command: (e: any) => {
 				this._gcs.tabManagerService.openInTab()
-				this.router.navigateByUrl("/i16n/pp/indirizzo-resa/detail/"+e.id)
+				this.router.navigateByUrl("/italian-legislation/indirizzo-resa/detail/"+e.id)
 			},
 			childs: [
 				{
