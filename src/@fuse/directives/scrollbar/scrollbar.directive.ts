@@ -138,7 +138,7 @@ export class FuseScrollbarDirective implements OnChanges, OnInit, OnDestroy
         this._destroy();
 
         // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
+        this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }
 

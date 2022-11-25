@@ -23,6 +23,10 @@
 				</div>
 
 				<div class="enzo-content">
+					<aig-procurement-lot-list-loader 
+						[dcs]="procurementLotListDc" [buttons]="tableButtons" 
+					></aig-procurement-lot-list-loader>
+						
 					<agal-procurement-lot-list-loader 
 						[dcs]="procurementLotListDc" [buttons]="tableButtons" 
 						[paginator]="procurementLotListPaginator" (resultCount)="procurementLotCount=$event"> 

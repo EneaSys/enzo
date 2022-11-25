@@ -47,7 +47,7 @@ export class CompactLayoutComponent implements OnInit, OnDestroy
     ngOnDestroy(): void {
 		this.tabManagerService.removeAllTabs();
         // Unsubscribe from all subscriptions
-        this._unsubscribeAll.next();
+        this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
     }
 

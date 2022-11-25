@@ -99,6 +99,7 @@ import { EnzoDatiVeicoliDetailPageComponent } from './components/dati-veicoli/da
 import { EnzoAllegatiListPageComponent } from './components/allegati/allegati-list-page/allegati-list-page.component';
 import { EnzoAllegatiDetailPageComponent } from './components/allegati/allegati-detail-page/allegati-detail-page.component';
 import { AgalGenericModule } from '@agal-generic/generic.module';
+import { AigItalianLegislationModule } from '@aig-italian-legislation/italian-legislation.module';
 
 @NgModule({
 	imports: [ 
@@ -107,6 +108,8 @@ import { AgalGenericModule } from '@agal-generic/generic.module';
 
 		AgalItalianLegislationModule,
 		AgalGenericModule,
+
+		AigItalianLegislationModule,
 
 		
 	],

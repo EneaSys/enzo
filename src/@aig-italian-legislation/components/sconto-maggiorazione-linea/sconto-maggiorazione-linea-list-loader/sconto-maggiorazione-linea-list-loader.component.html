@@ -1,0 +1,91 @@
+<div *ngIf="loading">LOADING</div>
+<ng-container [ngSwitch]="view">
+	<div *ngSwitchCase="'NONE'"></div>
+	<div *ngSwitchCase="'CARD'">
+		<div *ngFor="let e of ds">
+			<pre>{{ e | json }}</pre>
+		</div>
+	</div>
+	<div *ngSwitchDefault>
+		<p-table styleClass="p-datatable-sm" [value]="ds" [lazy]="true" (onLazyLoad)="lazyLoad($event)"
+			[resizableColumns]="true" [selection]="selectedElements" (selectionChange)="selection($event)">
+
+			<ng-template pTemplate="header">
+				<tr>
+					<ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+						<th *ngSwitchCase="'_ck'" style="width:30px"></th>
+						<th *ngSwitchCase="'id'" style="text-align:center; width: 50px" pResizableColumn pSortableColumn="id">id</th>
+						<!-- Filed of entity -->
+<th *ngSwitchCase="'percentuale'" style="width:auto" pResizableColumn pSortableColumn="scontoMaggiorazioneLinea.percentuale"> percentuale </th>
+<th *ngSwitchCase="'importo'" style="width:auto" pResizableColumn pSortableColumn="scontoMaggiorazioneLinea.importo"> importo </th>
+<th *ngSwitchCase="'tipoScontoMaggiorazioneCode'" style="width:auto" pResizableColumn pSortableColumn="scontoMaggiorazioneLinea.tipoScontoMaggiorazioneCode"> tipoScontoMaggiorazioneCode </th>
+<!-- Filed of relational entity -->
+<th *ngSwitchCase="'dettaglioLinea.numeroLinea'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.numeroLinea"> numeroLinea</th>
+<th *ngSwitchCase="'dettaglioLinea.tipoCessionePrestazioneCode'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.tipoCessionePrestazioneCode"> tipoCessionePrestazioneCode</th>
+<th *ngSwitchCase="'dettaglioLinea.codiceArticoloTipo'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.codiceArticoloTipo"> codiceArticoloTipo</th>
+<th *ngSwitchCase="'dettaglioLinea.codiceArticoloValore'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.codiceArticoloValore"> codiceArticoloValore</th>
+<th *ngSwitchCase="'dettaglioLinea.descrizione'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.descrizione"> descrizione</th>
+<th *ngSwitchCase="'dettaglioLinea.quantita'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.quantita"> quantita</th>
+<th *ngSwitchCase="'dettaglioLinea.unitaMisura'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.unitaMisura"> unitaMisura</th>
+<th *ngSwitchCase="'dettaglioLinea.dataInizioPeriodo'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.dataInizioPeriodo"> dataInizioPeriodo</th>
+<th *ngSwitchCase="'dettaglioLinea.dataFinePeriodo'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.dataFinePeriodo"> dataFinePeriodo</th>
+<th *ngSwitchCase="'dettaglioLinea.prezzoUnitario'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.prezzoUnitario"> prezzoUnitario</th>
+<th *ngSwitchCase="'dettaglioLinea.prezzoTotale'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.prezzoTotale"> prezzoTotale</th>
+<th *ngSwitchCase="'dettaglioLinea.aliquotaIva'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.aliquotaIva"> aliquotaIva</th>
+<th *ngSwitchCase="'dettaglioLinea.ritenuta'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.ritenuta"> ritenuta</th>
+<th *ngSwitchCase="'dettaglioLinea.naturaCode'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.naturaCode"> naturaCode</th>
+<th *ngSwitchCase="'dettaglioLinea.riferimentoAmministrazione'" style="width:auto" pResizableColumn pSortableColumn="dettaglioLinea.riferimentoAmministrazione"> riferimentoAmministrazione</th>
+					</ng-container>
+					<th *ngIf="buttons" style="width:150px"></th>
+
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="body" let-e>
+				<tr>
+					<ng-container *ngFor="let dc of dcs" [ngSwitch]="dc">
+						<td *ngSwitchCase="'_ck'"><p-tableCheckbox [value]="e"></p-tableCheckbox></td>
+						<td *ngSwitchCase="'id'">{{ e.id }}</td>
+						<!-- Filed of entity -->
+						 <td *ngSwitchCase="'percentuale'">{{ e.percentuale }}</td>
+						 <td *ngSwitchCase="'importo'">{{ e.importo }}</td>
+						 <td *ngSwitchCase="'tipoScontoMaggiorazioneCode'">{{ e.tipoScontoMaggiorazioneCode }}</td>
+
+				<!-- Filed of relational entity -->
+						<td *ngSwitchCase="'dettaglioLinea.numeroLinea'">{{ e.dettaglioLinea.numeroLinea }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.tipoCessionePrestazioneCode'">{{ e.dettaglioLinea.tipoCessionePrestazioneCode }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.codiceArticoloTipo'">{{ e.dettaglioLinea.codiceArticoloTipo }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.codiceArticoloValore'">{{ e.dettaglioLinea.codiceArticoloValore }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.descrizione'">{{ e.dettaglioLinea.descrizione }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.quantita'">{{ e.dettaglioLinea.quantita }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.unitaMisura'">{{ e.dettaglioLinea.unitaMisura }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.dataInizioPeriodo'">{{ e.dettaglioLinea.dataInizioPeriodo }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.dataFinePeriodo'">{{ e.dettaglioLinea.dataFinePeriodo }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.prezzoUnitario'">{{ e.dettaglioLinea.prezzoUnitario }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.prezzoTotale'">{{ e.dettaglioLinea.prezzoTotale }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.aliquotaIva'">{{ e.dettaglioLinea.aliquotaIva }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.ritenuta'">{{ e.dettaglioLinea.ritenuta }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.naturaCode'">{{ e.dettaglioLinea.naturaCode }}</td>
+						<td *ngSwitchCase="'dettaglioLinea.riferimentoAmministrazione'">{{ e.dettaglioLinea.riferimentoAmministrazione }}</td>
+					</ng-container>
+						<td *ngIf="buttons" style="text-align:center">
+						<ng-container *ngFor="let b of buttons">
+							<button pButton type="button" 
+								class="{{ b.class }} p-button-{{ b.severity }}" [ngClass]="{'ui-button-icon-only': b.hideLabel}" 
+								label="{{ b.label }}" icon="{{ b.icon }}" (click)="b.command(e)">
+							</button>
+							<ng-container *ngIf="b.childs">
+								<button pButton type="button" 
+									class="{{ b.class }} ml-0.5 p-button-{{ b.severity }}"
+									pRipple icon="pi pi-chevron-down" (click)="menu.toggle($event)">
+								</button>
+								<p-menu #menu [popup]="true" [model]="decoreButtons(b.childs, e)" appendTo="body"></p-menu>
+							</ng-container>
+						</ng-container>
+					</td>
+
+				</tr>
+			</ng-template>
+		</p-table>
+	</div>
+</ng-container> 
+ 

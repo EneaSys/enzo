@@ -1,0 +1,22 @@
+		<div class="h1 m-8 ml-16">{{ insurancePolicy }}</div>
+		<div class="h4 ml-16">ID: <b>{{ insurancePolicy.id }}</b></div>
+		<div class="h4 ml-16">companyPreparatorEopooCode: <b>{{ insurancePolicy.companyPreparatorEopooCode }}</b></div>
+		<div class="h4 ml-16">note: <b>{{ insurancePolicy.note }}</b></div>
+		<div class="h4 ml-16">totalAmount: <b>{{ insurancePolicy.totalAmount }}</b></div>
+
+ *ngIf="eoopo.person"
+<div class="h4 ml-16">insurancePolicyStatus: <b>{{ insurancePolicy.status.description }}</b></div>
+ *ngIf="eoopo.person"
+<div class="h4 ml-16">partecipation: <b>{{ insurancePolicy.partecipation.proposerEopooCode }}</b></div>
+ *ngIf="eoopo.person"
+<div class="h4 ml-16">partecipation: <b>{{ insurancePolicy.partecipation.partecipationTypeCode }}</b></div>
+ *ngIf="eoopo.person"
+<div class="h4 ml-16">partecipation: <b>{{ insurancePolicy.partecipation.siteInspection }}</b></div>
+ *ngIf="eoopo.person"
+<div class="h4 ml-16">partecipation: <b>{{ insurancePolicy.partecipation.offering }}</b></div>
+ *ngIf="eoopo.person"
+<div class="h4 ml-16">partecipation: <b>{{ insurancePolicy.partecipation.note }}</b></div>
+ *ngIf="eoopo.person"
+<div class="h4 ml-16">partecipation: <b>{{ insurancePolicy.partecipation.creationDateTime }}</b></div>
+
+<pre>{{ insurancePolicy }}</pre>
